@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.fusionscoutingapp.LimitedTextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane prefHeight="1000.0" prefWidth="1324.0" style="-fx-background-color: #c9b5d4;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fusionscoutingapp.FXMLController">
+   <Button layoutX="373.0" layoutY="135.0" mnemonicParsing="false" onAction="#decrementUCST" prefHeight="39.0" prefWidth="37.0" text="-">
+      <font>
+         <Font size="18.0" />
+      </font></Button>
+   <Button layoutX="373.0" layoutY="220.0" mnemonicParsing="false" onAction="#decrementLCST" prefHeight="39.0" prefWidth="37.0" text="-">
+      <font>
+         <Font size="18.0" />
+      </font></Button>
+   <Button layoutX="373.0" layoutY="313.0" mnemonicParsing="false" onAction="#decrementCMDT" prefHeight="39.0" prefWidth="37.0" text="-">
+      <font>
+         <Font size="18.0" />
+      </font></Button>
+   <LimitedTextField fx:id="ucst" layoutX="459.0" layoutY="131.0" prefHeight="39.0" prefWidth="56.0" text="0">
+      <font>
+         <Font size="18.0" />
+      </font></LimitedTextField>
+   <LimitedTextField fx:id="lcst" layoutX="459.0" layoutY="220.0" prefHeight="39.0" prefWidth="56.0" text="0">
+      <font>
+         <Font size="18.0" />
+      </font></LimitedTextField>
+   <LimitedTextField fx:id="cmdt" layoutX="459.0" layoutY="313.0" prefHeight="39.0" prefWidth="56.0" text="0">
+      <font>
+         <Font size="18.0" />
+      </font></LimitedTextField>
+   <Button layoutX="563.0" layoutY="131.0" mnemonicParsing="false" onAction="#incrementUCST" prefHeight="39.0" prefWidth="37.0" text="+">
+      <font>
+         <Font size="18.0" />
+      </font></Button>
+   <Button layoutX="563.0" layoutY="220.0" mnemonicParsing="false" onAction="#incrementLCST" prefHeight="39.0" prefWidth="37.0" text="+">
+      <font>
+         <Font size="18.0" />
+      </font></Button>
+   <Button layoutX="572.0" layoutY="313.0" mnemonicParsing="false" onAction="#incrementCMDT" prefHeight="39.0" prefWidth="37.0" text="+">
+      <font>
+         <Font size="18.0" />
+      </font></Button>
+   <Button layoutX="14.0" layoutY="441.0" mnemonicParsing="false" onAction="#goToPrevPage" prefHeight="60.0" prefWidth="170.0" style="-fx-font-weight: bold;" text="Prev Page">
+      <font>
+         <Font size="27.0" />
+      </font>
+   </Button>
+   <Button layoutX="1132.0" layoutY="441.0" mnemonicParsing="false" onAction="#goToNextPage" prefHeight="60.0" prefWidth="170.0" style="-fx-font-weight: bold;" text="Next Page">
+      <font>
+         <Font size="27.0" />
+      </font>
+   </Button>
+   <Label layoutX="117.0" layoutY="127.0" style="-fx-font-weight: bold;" text="High Nodes" textAlignment="CENTER">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </Label>
+   <Label layoutX="110.0" layoutY="216.0" style="-fx-font-weight: bold;" text="Middle Nodes">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </Label>
+   <Label layoutX="101.0" layoutY="309.0" style="-fx-font-weight: bold;" text="Hybrid Nodes">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </Label>
+   <Label layoutX="590.0" layoutY="14.0" style="-fx-font-weight: bold;" text="Teleop">
+      <font>
+         <Font size="72.0" />
+      </font>
+   </Label>
+   <Label layoutX="751.0" layoutY="181.0" style="-fx-font-weight: bold;" text="Links" textAlignment="CENTER">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </Label>
+   <Button layoutX="864.0" layoutY="185.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="37.0" text="-">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Button>
+   <Button layoutX="1004.0" layoutY="185.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="37.0" text="+">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Button>
+   <LimitedTextField fx:id="ucst1" layoutX="921.0" layoutY="185.0" prefHeight="39.0" prefWidth="56.0" text="0">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </LimitedTextField>
+</Pane>

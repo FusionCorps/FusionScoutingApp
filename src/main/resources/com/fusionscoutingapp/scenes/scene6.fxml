@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1000.0" prefWidth="1324.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fusionscoutingapp.FXMLController">
+   <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="363.0" layoutY="14.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#sendInfo" prefHeight="168.0" prefWidth="697.0" text="Generate QR Code" textOverrun="CLIP">
+      <font>
+         <Font size="72.0" />
+      </font>
+   </Button>
+   <Button alignment="CENTER" contentDisplay="CENTER" layoutX="1049.0" layoutY="546.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#resetAll" prefHeight="251.0" prefWidth="252.0" style="-fx-background-color: #ff0000;" text="Start Over" textFill="#00ff1e" wrapText="true">
+      <font>
+         <Font size="68.0" />
+      </font>
+   </Button>
+   <Button layoutX="69.0" layoutY="554.0" mnemonicParsing="false" onAction="#goToPrevPage" prefHeight="224.0" prefWidth="206.0" text="Prev Page">
+      <font>
+         <Font size="36.0" />
+      </font>
+   </Button>
+   <ImageView fx:id="imageBox" fitHeight="510.0" fitWidth="510.0" layoutX="407.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true" />
+   <Button layoutX="69.0" layoutY="232.0" mnemonicParsing="false" onAction="#doCopyToClipboard" prefHeight="237.0" prefWidth="206.0" text="Copy Data (Text)" textAlignment="CENTER" wrapText="true">
+      <font>
+         <Font size="34.0" />
+      </font>
+   </Button>
+   <Button layoutX="1082.0" layoutY="247.0" mnemonicParsing="false" onAction="#doCopyToClipboard" prefHeight="227.0" prefWidth="206.0" text="Copy Data (QR Code)" textAlignment="CENTER" wrapText="true">
+      <font>
+         <Font size="34.0" />
+      </font>
+   </Button>
+   <Text fx:id="reminderBox" fill="WHITE" layoutX="62.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You Scouted Team XXXX." wrappingWidth="200.0">
+      <font>
+         <Font size="39.0" />
+      </font></Text>
+</Pane>

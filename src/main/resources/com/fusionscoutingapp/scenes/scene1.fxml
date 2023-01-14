@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.fusionscoutingapp.LimitedTextField?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onTouchPressed="#reloadData" prefHeight="1000.0" prefWidth="1324.0" style="-fx-background-color: #94aad6;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fusionscoutingapp.FXMLController">
+   <Text layoutX="24.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Scouter Name">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </Text>
+   <LimitedTextField fx:id="sln" layoutX="14.0" layoutY="134.0" onKeyPressed="#limit" prefHeight="36.0" prefWidth="233.0" promptText="John D / John Doe">
+      <font>
+         <Font size="16.0" />
+      </font></LimitedTextField>
+
+   <ComboBox fx:id="ml" layoutX="195.0" layoutY="227.0" prefHeight="39.0" prefWidth="170.0">
+      <items>
+         <FXCollections fx:factory="observableArrayList">
+            <String fx:value="Qualification" />
+            <String fx:value="Quarter-Final" />
+            <String fx:value="Semi-Final" />
+            <String fx:value="Final" />
+         </FXCollections>
+      </items>
+   </ComboBox>
+
+   <Text layoutX="12.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Match Num">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </Text>
+   <LimitedTextField fx:id="mn" layoutX="195.0" layoutY="327.0" onKeyPressed="#limit" prefHeight="40.0" prefWidth="170.0" style="-fx-font-weight: bold;">
+      <font>
+         <Font size="18.0" />
+      </font></LimitedTextField>
+
+   <ComboBox fx:id="ran" layoutX="641.0" layoutY="216.0" prefHeight="39.0" prefWidth="142.0" visibleRowCount="6">
+      <items>
+         <FXCollections fx:factory="observableArrayList">
+            <String fx:value="Red-1" />
+            <String fx:value="Red-2" />
+            <String fx:value="Red-3" />
+            <String fx:value="Blue-1" />
+            <String fx:value="Blue-2" />
+            <String fx:value="Blue-3" />
+         </FXCollections>
+      </items>
+   </ComboBox>
+
+   <Text layoutX="330.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Team Num">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </Text>
+   <LimitedTextField fx:id="tn" layoutX="308.0" layoutY="134.0" onKeyPressed="#limit" promptText="27/118/6672">
+      <font>
+         <Font size="17.0" />
+      </font></LimitedTextField>
+
+   <Button layoutX="20.0" layoutY="430.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="170.0" style="-fx-font-weight: bold;" text="Prev Page">
+      <font>
+         <Font size="27.0" />
+      </font>
+   </Button>
+   <Button layoutX="1140.0" layoutY="430.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="60.0" prefWidth="170.0" style="-fx-font-weight: bold;" text="Next Page">
+      <font>
+         <Font size="27.0" />
+      </font>
+   </Button>
+   <ImageView fitHeight="243.0" fitWidth="523.0" layoutX="793.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../field_image.png" />
+   </ImageView>
+   <ComboBox fx:id="rp" layoutX="635.0" layoutY="327.0" prefHeight="39.0" prefWidth="142.0" visibleRowCount="15">
+      <items>
+         <FXCollections fx:factory="observableArrayList">
+            <String fx:value="1" />
+            <String fx:value="2" />
+            <String fx:value="3" />
+            <String fx:value="4" />
+         </FXCollections>
+      </items>
+   </ComboBox>
+   <Text layoutX="392.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Robot Alliance Number" textAlignment="CENTER" wrappingWidth="233.5999999999999">
+      <font>
+         <Font size="30.0" />
+      </font>
+   </Text>
+   <Text layoutX="369.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Robot Field Position (white numbers)" textAlignment="CENTER" wrappingWidth="279.3999999999999">
+      <font>
+         <Font size="26.0" />
+      </font>
+   </Text>
+   <Text layoutX="10.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Match Level">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </Text>
+   <ImageView fitHeight="70.0" fitWidth="362.0" layoutX="907.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../team_ids.png" />
+   </ImageView>
+   <Label layoutX="556.0" layoutY="14.0" style="-fx-font-weight: bold;" text="Pregame" textAlignment="CENTER">
+      <font>
+         <Font size="72.0" />
+      </font>
+   </Label>
+</Pane>

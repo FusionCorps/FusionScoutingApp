@@ -1,0 +1,22 @@
+<component name="ArtifactManager">
+  <artifact name="FusionScoutingApp:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/FusionScoutingApp_jar</output-path>
+    <root id="root">
+      <element id="archive" name="FusionScoutingApp.jar">
+        <element id="module-output" name="FusionScoutingApp" />
+      </element>
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:19" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:win:19" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:19" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:win:19" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:win:19" />
+      <element id="library" level="project" name="Maven: com.google.zxing:javase:3.5.0" />
+      <element id="library" level="project" name="Maven: com.google.zxing:core:3.5.0" />
+      <element id="library" level="project" name="Maven: com.beust:jcommander:1.82" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:19" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:19" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:win:19" />
+      <element id="library" level="project" name="Maven: com.github.jai-imageio:jai-imageio-core:1.4.0" />
+    </root>
+  </artifact>
+</component>

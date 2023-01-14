@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.fusionscoutingapp.LimitedTextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1324.0" style="-fx-background-color: #fde2ca;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fusionscoutingapp.FXMLController">
+   <CheckBox fx:id="ta" layoutX="46.0" layoutY="171.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" style="-fx-font-weight: bold;" text="Mobility/Left Commmunity?">
+      <font>
+         <Font size="32.0" />
+      </font></CheckBox>
+   <Button alignment="CENTER" layoutX="403.0" layoutY="286.0" mnemonicParsing="false" onAction="#incrementACA" prefHeight="39.0" prefWidth="40.0" text="+">
+      <font>
+         <Font size="16.0" />
+      </font></Button>
+   <LimitedTextField fx:id="aca" layoutX="353.0" layoutY="286.0" prefHeight="39.0" prefWidth="40.0" text="0">
+      <font>
+         <Font size="16.0" />
+      </font></LimitedTextField>
+   <Button layoutX="296.0" layoutY="286.0" mnemonicParsing="false" onAction="#decrementACA" prefHeight="39.0" prefWidth="40.0" text="—" />
+   <Text layoutX="20.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="GP Acquired (besides preload)" textAlignment="CENTER" wrappingWidth="266.69091796875">
+      <font>
+         <Font size="32.0" />
+      </font></Text>
+   <Button layoutX="1140.0" layoutY="430.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="60.0" prefWidth="170.0" style="-fx-font-weight: bold;" text="Next Page">
+      <font>
+         <Font size="27.0" />
+      </font>
+   </Button>
+   <Button layoutX="20.0" layoutY="430.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="170.0" style="-fx-font-weight: bold;" text="Prev Page">
+      <font>
+         <Font size="27.0" />
+      </font>
+   </Button>
+   <Text layoutX="625.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="High Nodes">
+      <font>
+         <Font size="32.0" />
+      </font></Text>
+   <Text layoutX="625.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Middle Nodes">
+      <font>
+         <Font size="32.0" />
+      </font></Text>
+   <Text layoutX="625.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Hybrid Nodes">
+      <font>
+         <Font size="32.0" />
+      </font></Text>
+   <Button layoutX="882.0" layoutY="175.0" mnemonicParsing="false" onAction="#decrementUCSA" prefHeight="39.0" prefWidth="40.0" text="—" />
+   <Button layoutX="882.0" layoutY="228.0" mnemonicParsing="false" onAction="#decrementCMDA" prefHeight="39.0" prefWidth="40.0" text="—" />
+   <Button layoutX="882.0" layoutY="286.0" mnemonicParsing="false" onAction="#decrementLCSA" prefHeight="39.0" prefWidth="40.0" text="—" />
+   <LimitedTextField fx:id="ucsa" layoutX="933.0" layoutY="175.0" prefHeight="39.0" prefWidth="40.0" text="0">
+      <font>
+         <Font size="16.0" />
+      </font></LimitedTextField>
+   <LimitedTextField fx:id="lcsa" layoutX="933.0" layoutY="286.0" prefHeight="39.0" prefWidth="40.0" text="0">
+      <font>
+         <Font size="16.0" />
+      </font></LimitedTextField>
+   <LimitedTextField fx:id="cmda" layoutX="933.0" layoutY="228.0" prefHeight="39.0" prefWidth="40.0" text="0">
+      <font>
+         <Font size="16.0" />
+      </font></LimitedTextField>
+   <Button layoutX="989.0" layoutY="175.0" mnemonicParsing="false" onAction="#incrementUCSA" prefHeight="39.0" prefWidth="40.0" text="+">
+      <font>
+         <Font size="16.0" />
+      </font></Button>
+   <Button layoutX="989.0" layoutY="286.0" mnemonicParsing="false" onAction="#incrementLCSA" prefHeight="39.0" prefWidth="40.0" text="+" />
+   <Button layoutX="989.0" layoutY="221.0" mnemonicParsing="false" onAction="#incrementCMDA" prefHeight="39.0" prefWidth="40.0" text="+">
+      <font>
+         <Font size="16.0" />
+      </font></Button>
+   <CheckBox fx:id="cp" layoutX="46.0" layoutY="107.0" mnemonicParsing="false" style="-fx-font-weight: bold;" text="Game Piece (GP) Preload?">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </CheckBox>
+   <CheckBox layoutX="55.0" layoutY="364.0" mnemonicParsing="false" style="-fx-font-weight: bold;" text="Docked?">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </CheckBox>
+   <CheckBox layoutX="250.0" layoutY="364.0" mnemonicParsing="false" style="-fx-font-weight: bold;" text="If Docked, Engaged?">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </CheckBox>
+   <Label layoutX="520.0" layoutY="14.0" style="-fx-font-weight: bold;" text="Auton">
+      <font>
+         <Font size="72.0" />
+      </font>
+   </Label>
+</Pane>

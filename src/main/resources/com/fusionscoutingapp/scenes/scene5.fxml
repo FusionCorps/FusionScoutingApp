@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1324.0" style="-fx-background-color: #ccffcc;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fusionscoutingapp.FXMLController">
+   <Text layoutX="495.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Miscellaneous">
+      <font>
+         <Font size="73.0" />
+      </font>
+   </Text>
+   <ComboBox fx:id="de" layoutX="35.0" layoutY="159.0" prefHeight="39.0" prefWidth="193.0">
+      <items>
+         <FXCollections fx:factory="observableArrayList">
+            <String fx:value="N/A" />
+            <String fx:value="Below Average" />
+            <String fx:value="Average" />
+            <String fx:value="Above Average" />
+         </FXCollections>
+      </items>
+   </ComboBox>
+   <ComboBox fx:id="dp" layoutX="425.0" layoutY="152.0" prefHeight="39.0" prefWidth="202.0">
+      <items>
+         <FXCollections fx:factory="observableArrayList">
+            <String fx:value="N/A" />
+            <String fx:value="Below Average" />
+            <String fx:value="Average" />
+            <String fx:value="Above Average" />
+         </FXCollections>
+      </items>
+   </ComboBox>
+   <CheckBox fx:id="dt" layoutX="411.0" layoutY="245.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="242.0" text="Died/Tipped?">
+      <font>
+         <Font size="27.0" />
+      </font></CheckBox>
+   <Text layoutX="20.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Fouls">
+      <font>
+         <Font size="27.0" />
+      </font></Text>
+   <Button layoutX="98.0" layoutY="256.0" mnemonicParsing="false" onAction="#decrementF" prefHeight="39.0" prefWidth="37.0" text="-">
+      <font>
+         <Font size="18.0" />
+      </font></Button>
+   <Button layoutX="179.0" layoutY="256.0" mnemonicParsing="false" onAction="#incrementF" prefHeight="39.0" prefWidth="37.0" text="+">
+      <font>
+         <Font size="18.0" />
+      </font></Button>
+   <LimitedTextField fx:id="f" layoutX="138.0" layoutY="256.0" prefHeight="41.0" prefWidth="37.0" text="0">
+      <font>
+         <Font size="18.0" />
+      </font></LimitedTextField>
+   <Button layoutX="20.0" layoutY="430.0" mnemonicParsing="false" onAction="#goToPrevPage" prefHeight="60.0" prefWidth="170.0" text="Prev Page">
+      <font>
+         <Font size="27.0" />
+      </font>
+   </Button>
+   <Button layoutX="1140.0" layoutY="430.0" mnemonicParsing="false" onAction="#goToNextPage" prefHeight="60.0" prefWidth="170.0" text="Next Page">
+      <font>
+         <Font size="27.0" />
+      </font>
+   </Button>
+   <Text layoutX="26.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Tech. Fouls">
+      <font>
+         <Font size="27.0" />
+      </font></Text>
+   <Button layoutX="177.0" layoutY="332.0" mnemonicParsing="false" onAction="#decrementTF" prefHeight="39.0" prefWidth="37.0" text="-">
+      <font>
+         <Font size="18.0" />
+      </font></Button>
+   <LimitedTextField fx:id="tf" layoutX="218.0" layoutY="332.0" prefHeight="39.0" prefWidth="37.0" text="0">
+      <font>
+         <Font size="18.0" />
+      </font></LimitedTextField>
+   <Button layoutX="260.0" layoutY="332.0" mnemonicParsing="false" onAction="#incrementTF" prefHeight="39.0" prefWidth="37.0" text="+">
+      <font>
+         <Font size="18.0" />
+      </font></Button>
+   <TextArea fx:id="co" layoutX="713.0" layoutY="106.0" prefHeight="278.0" prefWidth="566.0" promptText="Comments (swerve/tank, fast/slow speed, climb time, crippled by defense?-couldn't score; driver ability/style;strategic/problem solving; type of fouls drawn: pinning,damage to other robots, inside other robot's frame perimeter; consistent shooting from a few spots; anything else notable " wrapText="true">
+      <font>
+         <Font size="18.0" />
+      </font></TextArea>
+   <Text layoutX="29.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Defense Evasion">
+      <font>
+         <Font size="27.0" />
+      </font></Text>
+   <Text layoutX="390.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Defense Performance">
+      <font>
+         <Font size="27.0" />
+      </font></Text>
+</Pane>
