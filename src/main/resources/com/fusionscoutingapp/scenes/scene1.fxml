@@ -27,8 +27,7 @@
       <items>
          <FXCollections fx:factory="observableArrayList">
             <String fx:value="Qualification" />
-            <String fx:value="Quarter-Final" />
-            <String fx:value="Semi-Final" />
+            <String fx:value="Double Elimination" />
             <String fx:value="Final" />
          </FXCollections>
       </items>
@@ -44,7 +43,7 @@
          <Font size="18.0" />
       </font></LimitedTextField>
 
-   <ComboBox fx:id="ran" layoutX="641.0" layoutY="216.0" prefHeight="39.0" prefWidth="142.0" visibleRowCount="6">
+   <ComboBox fx:id="ran" layoutX="635.0" layoutY="328.0" prefHeight="39.0" prefWidth="142.0" visibleRowCount="6">
       <items>
          <FXCollections fx:factory="observableArrayList">
             <String fx:value="Red-1" />
@@ -80,7 +79,7 @@
    <ImageView fitHeight="243.0" fitWidth="523.0" layoutX="793.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../field_image.png" />
    </ImageView>
-   <ComboBox fx:id="rp" layoutX="635.0" layoutY="327.0" prefHeight="39.0" prefWidth="142.0" visibleRowCount="15">
+   <ComboBox fx:id="rfp" layoutX="640.0" layoutY="221.0" prefHeight="39.0" prefWidth="142.0" visibleRowCount="15">
       <items>
          <FXCollections fx:factory="observableArrayList">
             <String fx:value="1" />

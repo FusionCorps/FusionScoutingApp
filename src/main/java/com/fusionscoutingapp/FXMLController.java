@@ -1,17 +1,23 @@
 //TODO  checkBox pickup cones/cubes
-//TODO high/mid/hybrid
+//TODO high/mid/hybrid DONE
 //TODO type of intake - ground/handoff
-//TODO climb time
+//TODO cycle timer/docking timer
+//TODO CSS styling - do in SceneBuilder or external CSS sheet
 
 
 package com.fusionscoutingapp;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.awt.*;
@@ -21,13 +27,42 @@ import java.util.HashMap;
 
 public class FXMLController {
 
-    //scene0:begin
     //scene1:pregame
     //scene2:auton
     //scene3:teleop
     //scene4:endgame
-    //scene5:othernotes
+    //scene5:other notes
     //scene6:QR CODE
+
+//data for each page
+
+    //page 1
+    @FXML private LimitedTextField sln; //scouter last name`
+    @FXML private LimitedTextField tn; //team number
+    @FXML private ComboBox<String> ml; //match level
+    @FXML private LimitedTextField mn; //match number
+    @FXML private ComboBox<String> ran; //robot alliance number
+    @FXML private ComboBox<String> rfp; //robot field position
+
+    //page 2
+    @FXML private LimitedTextField aca, ucsa, lcsa, cmda; //cargo acquired, ucargo, lcargo, cargodropped
+    @FXML private CheckBox ta; //taxied
+    @FXML private CheckBox cp; //cargo preload
+    //page 3
+    @FXML private LimitedTextField ucst, lcst, cmdt; //ucargo, lcargo, cargodropped
+    //page4
+    @FXML private CheckBox cla; //climb attempt
+    @FXML private ComboBox<String> cl; //climb level
+    //page5
+    @FXML private CheckBox dt; // died/tipped
+    @FXML private ComboBox<String> de; //defensive evasion
+    @FXML private ComboBox<String> dp; //defensive performance
+    @FXML private TextArea co; //comments
+    @FXML private LimitedTextField f; //fouls
+    @FXML private LimitedTextField tf; //tech fouls
+    //page 6
+    @FXML private ImageView imageBox;
+    @FXML private Text reminderBox;
 
 
     //used for changing pages

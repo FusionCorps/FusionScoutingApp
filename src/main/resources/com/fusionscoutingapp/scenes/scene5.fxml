@@ -6,6 +6,7 @@
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
 
+<?import com.fusionscoutingapp.LimitedTextField?>
 <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1324.0" style="-fx-background-color: #ccffcc;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fusionscoutingapp.FXMLController">
    <Text layoutX="495.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Miscellaneous">
       <font>
@@ -52,12 +53,12 @@
       <font>
          <Font size="18.0" />
       </font></LimitedTextField>
-   <Button layoutX="20.0" layoutY="430.0" mnemonicParsing="false" onAction="#goToPrevPage" prefHeight="60.0" prefWidth="170.0" text="Prev Page">
+   <Button layoutX="20.0" layoutY="430.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="170.0" text="Prev Page">
       <font>
          <Font size="27.0" />
       </font>
    </Button>
-   <Button layoutX="1140.0" layoutY="430.0" mnemonicParsing="false" onAction="#goToNextPage" prefHeight="60.0" prefWidth="170.0" text="Next Page">
+   <Button layoutX="1140.0" layoutY="430.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="60.0" prefWidth="170.0" text="Next Page">
       <font>
          <Font size="27.0" />
       </font>
