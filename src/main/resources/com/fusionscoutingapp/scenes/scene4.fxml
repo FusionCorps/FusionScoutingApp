@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.fusionscoutingapp.LimitedTextField?>
-<?import java.lang.Integer?>
+<?import com.fusionscoutingapp.Timer?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
@@ -22,12 +21,7 @@
          <Font size="27.0" />
       </font>
    </Button>
-   <LimitedTextField layoutX="181.0" layoutY="225.0" prefHeight="78.0" prefWidth="127.0" style="-fx-font-weight: bold;" text="0">
-      <font>
-         <Font size="37.0" />
-      </font>
-   </LimitedTextField>
-   <Text layoutX="51.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Docking Time (in seconds, 0 if not docked)" textAlignment="CENTER" wrappingWidth="404.203125">
+   <Text layoutX="51.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Docking Time (in seconds)" textAlignment="CENTER" wrappingWidth="404.203125">
       <font>
          <Font size="32.0" />
       </font>
@@ -52,19 +46,9 @@
          <Font size="32.0" />
       </font>
    </Label>
-   <Label layoutX="412.0" layoutY="356.0" style="-fx-font-weight: bold;" text="# Docked/Engaged Robots">
+   <Timer layoutX="214.0" layoutY="165.0">
       <font>
          <Font size="32.0" />
       </font>
-   </Label>
-   <ComboBox fx:id="numde" layoutX="830.0" layoutY="361.0" prefHeight="45.0" prefWidth="207.0">
-      <items>
-         <FXCollections fx:factory="observableArrayList">
-            <Integer fx:value="0" />
-            <Integer fx:value="1" />
-            <Integer fx:value="2" />
-            <Integer fx:value="3" />
-         </FXCollections>
-      </items>
-   </ComboBox>
+   </Timer>
 </Pane>

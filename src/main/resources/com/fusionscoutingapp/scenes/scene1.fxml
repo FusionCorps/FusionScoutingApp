@@ -18,12 +18,12 @@
          <Font size="32.0" />
       </font>
    </Text>
-   <LimitedTextField fx:id="sln" layoutX="14.0" layoutY="134.0" onKeyPressed="#limit" prefHeight="36.0" prefWidth="233.0" promptText="John D / John Doe">
+   <LimitedTextField fx:id="p_sn" layoutX="14.0" layoutY="134.0" onKeyPressed="#limit" prefHeight="36.0" prefWidth="233.0" promptText="John D / John Doe">
       <font>
          <Font size="16.0" />
       </font></LimitedTextField>
 
-   <ComboBox fx:id="ml" layoutX="195.0" layoutY="227.0" prefHeight="39.0" prefWidth="170.0">
+   <ComboBox fx:id="p_mlvl" layoutX="195.0" layoutY="227.0" prefHeight="39.0" prefWidth="170.0">
       <items>
          <FXCollections fx:factory="observableArrayList">
             <String fx:value="Qualification" />
@@ -38,12 +38,12 @@
          <Font size="32.0" />
       </font>
    </Text>
-   <LimitedTextField fx:id="mn" layoutX="195.0" layoutY="327.0" onKeyPressed="#limit" prefHeight="40.0" prefWidth="170.0" style="-fx-font-weight: bold;">
+   <LimitedTextField fx:id="p_mnum" layoutX="195.0" layoutY="327.0" onKeyPressed="#limit" prefHeight="40.0" prefWidth="170.0" style="-fx-font-weight: bold;">
       <font>
          <Font size="18.0" />
       </font></LimitedTextField>
 
-   <ComboBox fx:id="ran" layoutX="635.0" layoutY="328.0" prefHeight="39.0" prefWidth="142.0" visibleRowCount="6">
+   <ComboBox fx:id="p_ran" layoutX="635.0" layoutY="328.0" prefHeight="39.0" prefWidth="142.0" visibleRowCount="6">
       <items>
          <FXCollections fx:factory="observableArrayList">
             <String fx:value="Red-1" />
@@ -61,12 +61,12 @@
          <Font size="32.0" />
       </font>
    </Text>
-   <LimitedTextField fx:id="tn" layoutX="308.0" layoutY="134.0" onKeyPressed="#limit" promptText="27/118/6672">
+   <LimitedTextField fx:id="p_tnum" layoutX="308.0" layoutY="134.0" onKeyPressed="#limit" promptText="27/118/6672">
       <font>
          <Font size="17.0" />
       </font></LimitedTextField>
 
-   <Button layoutX="20.0" layoutY="430.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="170.0" style="-fx-font-weight: bold;" text="Prev Page">
+   <Button layoutX="20.0" layoutY="430.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="170.0" style="-fx-font-weight: bold;" text="Prev Page">
       <font>
          <Font size="27.0" />
       </font>
@@ -79,7 +79,7 @@
    <ImageView fitHeight="243.0" fitWidth="523.0" layoutX="793.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../field_image.png" />
    </ImageView>
-   <ComboBox fx:id="rfp" layoutX="640.0" layoutY="221.0" prefHeight="39.0" prefWidth="142.0" visibleRowCount="15">
+   <ComboBox fx:id="p_rfp" layoutX="640.0" layoutY="221.0" prefHeight="39.0" prefWidth="142.0" visibleRowCount="15">
       <items>
          <FXCollections fx:factory="observableArrayList">
             <String fx:value="1" />

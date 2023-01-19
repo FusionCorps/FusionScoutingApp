@@ -3,7 +3,10 @@ package com.fusionscoutingapp;
 import java.awt.*;
 import java.awt.datatransfer.*;
 import java.awt.image.BufferedImage;
-// from https://stackoverflow.com/questions/4552045/copy-bufferedimage-to-clipboard
+
+/**
+ * Taken from https://stackoverflow.com/questions/4552045/copy-bufferedimage-to-clipboard
+ */
 public class CopyImageToClipBoard implements ClipboardOwner {
 
     public void copyImage(BufferedImage bi)

@@ -8,7 +8,10 @@ import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TextField;
-
+/**
+ * A restrictive, customizable text field.
+ * Taken from <a href="https://gist.github.com/Hisha/9053172304c65ab34716">...</a>.
+ */
 public class LimitedTextField extends TextField {
     private final IntegerProperty maxLength = new SimpleIntegerProperty(this,
             "maxLength", -1);

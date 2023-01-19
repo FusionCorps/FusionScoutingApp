@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.controlsfx.control.Rating?>
 
-<?import com.fusionscoutingapp.LimitedTextField?>
-<Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1324.0" style="-fx-background-color: #ccffcc;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fusionscoutingapp.FXMLController">
-   <Text layoutX="495.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Miscellaneous">
+<Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1324.0" style="-fx-background-color: #ccffcc;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fusionscoutingapp.FXMLController">
+   <Text layoutX="495.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Quantitative">
       <font>
          <Font size="73.0" />
       </font>
@@ -23,7 +28,7 @@
          </FXCollections>
       </items>
    </ComboBox>
-   <ComboBox fx:id="dp" layoutX="425.0" layoutY="152.0" prefHeight="39.0" prefWidth="202.0">
+   <ComboBox fx:id="dp" layoutX="403.0" layoutY="156.0" prefHeight="39.0" prefWidth="202.0">
       <items>
          <FXCollections fx:factory="observableArrayList">
             <String fx:value="N/A" />
@@ -33,26 +38,10 @@
          </FXCollections>
       </items>
    </ComboBox>
-   <CheckBox fx:id="dt" layoutX="411.0" layoutY="245.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="242.0" text="Died/Tipped?">
+   <CheckBox fx:id="dt" layoutX="442.0" layoutY="216.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="261.0" style="-fx-font-weight: bold;" text="Died/Tipped?">
       <font>
-         <Font size="27.0" />
+         <Font size="32.0" />
       </font></CheckBox>
-   <Text layoutX="20.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Fouls">
-      <font>
-         <Font size="27.0" />
-      </font></Text>
-   <Button layoutX="98.0" layoutY="256.0" mnemonicParsing="false" onAction="#decrementF" prefHeight="39.0" prefWidth="37.0" text="-">
-      <font>
-         <Font size="18.0" />
-      </font></Button>
-   <Button layoutX="179.0" layoutY="256.0" mnemonicParsing="false" onAction="#incrementF" prefHeight="39.0" prefWidth="37.0" text="+">
-      <font>
-         <Font size="18.0" />
-      </font></Button>
-   <LimitedTextField fx:id="f" layoutX="138.0" layoutY="256.0" prefHeight="41.0" prefWidth="37.0" text="0">
-      <font>
-         <Font size="18.0" />
-      </font></LimitedTextField>
    <Button layoutX="20.0" layoutY="430.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="170.0" text="Prev Page">
       <font>
          <Font size="27.0" />
@@ -63,32 +52,44 @@
          <Font size="27.0" />
       </font>
    </Button>
-   <Text layoutX="26.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Tech. Fouls">
+   <TextArea fx:id="co" layoutX="713.0" layoutY="103.0" prefHeight="278.0" prefWidth="566.0" promptText="Comments (fouls, strategy, anything else notable)" wrapText="true">
       <font>
-         <Font size="27.0" />
-      </font></Text>
-   <Button layoutX="177.0" layoutY="332.0" mnemonicParsing="false" onAction="#decrementTF" prefHeight="39.0" prefWidth="37.0" text="-">
-      <font>
-         <Font size="18.0" />
-      </font></Button>
-   <LimitedTextField fx:id="tf" layoutX="218.0" layoutY="332.0" prefHeight="39.0" prefWidth="37.0" text="0">
-      <font>
-         <Font size="18.0" />
-      </font></LimitedTextField>
-   <Button layoutX="260.0" layoutY="332.0" mnemonicParsing="false" onAction="#incrementTF" prefHeight="39.0" prefWidth="37.0" text="+">
-      <font>
-         <Font size="18.0" />
-      </font></Button>
-   <TextArea fx:id="co" layoutX="713.0" layoutY="106.0" prefHeight="278.0" prefWidth="566.0" promptText="Comments (swerve/tank, fast/slow speed, climb time, crippled by defense?-couldn't score; driver ability/style;strategic/problem solving; type of fouls drawn: pinning,damage to other robots, inside other robot's frame perimeter; consistent shooting from a few spots; anything else notable " wrapText="true">
-      <font>
-         <Font size="18.0" />
+         <Font size="23.0" />
       </font></TextArea>
    <Text layoutX="29.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Defense Evasion">
       <font>
          <Font size="27.0" />
       </font></Text>
-   <Text layoutX="390.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Defense Performance">
+   <Text layoutX="363.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Defense Performance">
       <font>
          <Font size="27.0" />
       </font></Text>
+   <CheckBox layoutX="442.0" layoutY="339.0" mnemonicParsing="false" style="-fx-font-weight: bold;" text="Everybot?">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </CheckBox>
+   <Label layoutX="44.0" layoutY="346.0" style="-fx-font-weight: bold;" text="Driver Skill">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </Label>
+   <Rating layoutX="227.0" layoutY="348.0" prefHeight="35.0" prefWidth="164.0" rating="3.0" />
+   <CheckBox layoutX="442.0" layoutY="280.0" mnemonicParsing="false" style="-fx-font-weight: bold;" text="Swerve?">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </CheckBox>
+   <Label layoutX="40.0" layoutY="218.0" style="-fx-font-weight: bold;" text="Intake Rating">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </Label>
+   <Rating layoutX="250.0" layoutY="228.0" max="4" />
+   <Label layoutX="41.0" layoutY="282.0" style="-fx-font-weight: bold;" text="Drive Speed">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </Label>
+   <Rating layoutX="231.0" layoutY="289.0" rating="3.0" />
 </Pane>

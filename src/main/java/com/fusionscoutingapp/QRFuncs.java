@@ -18,8 +18,8 @@ public class QRFuncs {
 
         Path filePath = Paths.get(path);
         MatrixToImageWriter.writeToPath(bitMatrix, "PNG", filePath);
-        bufferedImage = MatrixToImageWriter.toBufferedImage(bitMatrix);
 
+        bufferedImage = MatrixToImageWriter.toBufferedImage(bitMatrix);
         return bufferedImage;
     }
 }
