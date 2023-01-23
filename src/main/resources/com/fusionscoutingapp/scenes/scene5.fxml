@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
+<?import com.fusionscoutingapp.LimitedTextField?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -18,30 +18,6 @@
          <Font size="73.0" />
       </font>
    </Text>
-   <ComboBox fx:id="de" layoutX="35.0" layoutY="159.0" prefHeight="39.0" prefWidth="193.0">
-      <items>
-         <FXCollections fx:factory="observableArrayList">
-            <String fx:value="N/A" />
-            <String fx:value="Below Average" />
-            <String fx:value="Average" />
-            <String fx:value="Above Average" />
-         </FXCollections>
-      </items>
-   </ComboBox>
-   <ComboBox fx:id="dp" layoutX="403.0" layoutY="156.0" prefHeight="39.0" prefWidth="202.0">
-      <items>
-         <FXCollections fx:factory="observableArrayList">
-            <String fx:value="N/A" />
-            <String fx:value="Below Average" />
-            <String fx:value="Average" />
-            <String fx:value="Above Average" />
-         </FXCollections>
-      </items>
-   </ComboBox>
-   <CheckBox fx:id="dt" layoutX="442.0" layoutY="216.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="261.0" style="-fx-font-weight: bold;" text="Died/Tipped?">
-      <font>
-         <Font size="32.0" />
-      </font></CheckBox>
    <Button layoutX="20.0" layoutY="430.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="170.0" text="Prev Page">
       <font>
          <Font size="27.0" />
@@ -52,44 +28,60 @@
          <Font size="27.0" />
       </font>
    </Button>
-   <TextArea fx:id="co" layoutX="713.0" layoutY="103.0" prefHeight="278.0" prefWidth="566.0" promptText="Comments (fouls, strategy, anything else notable)" wrapText="true">
+   <TextArea fx:id="n_co" layoutX="740.0" layoutY="103.0" prefHeight="286.0" prefWidth="539.0" promptText="Comments (fouls, strategy, anything else notable)" wrapText="true">
       <font>
          <Font size="23.0" />
       </font></TextArea>
-   <Text layoutX="29.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Defense Evasion">
-      <font>
-         <Font size="27.0" />
-      </font></Text>
-   <Text layoutX="363.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Defense Performance">
-      <font>
-         <Font size="27.0" />
-      </font></Text>
-   <CheckBox layoutX="442.0" layoutY="339.0" mnemonicParsing="false" style="-fx-font-weight: bold;" text="Everybot?">
+   <CheckBox fx:id="n_everybot" layoutX="474.0" layoutY="131.0" mnemonicParsing="false" style="-fx-font-weight: bold;" text="Everybot?">
       <font>
          <Font size="32.0" />
       </font>
    </CheckBox>
-   <Label layoutX="44.0" layoutY="346.0" style="-fx-font-weight: bold;" text="Driver Skill">
+   <Label layoutX="30.0" layoutY="352.0" style="-fx-font-weight: bold;" text="Driver Skill">
       <font>
          <Font size="32.0" />
       </font>
    </Label>
-   <Rating layoutX="227.0" layoutY="348.0" prefHeight="35.0" prefWidth="164.0" rating="3.0" />
-   <CheckBox layoutX="442.0" layoutY="280.0" mnemonicParsing="false" style="-fx-font-weight: bold;" text="Swerve?">
-      <font>
-         <Font size="32.0" />
-      </font>
-   </CheckBox>
-   <Label layoutX="40.0" layoutY="218.0" style="-fx-font-weight: bold;" text="Intake Rating">
+   <Rating fx:id="n_drat" layoutX="230.0" layoutY="355.0" prefHeight="35.0" prefWidth="164.0" rating="3.0" />
+   <Label layoutX="60.0" layoutY="218.0" style="-fx-font-weight: bold;" text="Intake">
       <font>
          <Font size="32.0" />
       </font>
    </Label>
-   <Rating layoutX="250.0" layoutY="228.0" max="4" />
-   <Label layoutX="41.0" layoutY="282.0" style="-fx-font-weight: bold;" text="Drive Speed">
+   <Rating fx:id="n_intake" layoutX="230.0" layoutY="227.0" rating="3.0" />
+   <Label layoutX="20.0" layoutY="284.0" style="-fx-font-weight: bold;" text="Drive Speed">
       <font>
          <Font size="32.0" />
       </font>
    </Label>
-   <Rating layoutX="231.0" layoutY="289.0" rating="3.0" />
+   <Rating fx:id="n_spd" layoutX="230.0" layoutY="292.0" rating="3.0" />
+   <Label layoutX="35.0" layoutY="113.0" style="-fx-font-weight: bold;" text="Drivetrain">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </Label>
+   <Rating fx:id="n_dtrainrat" layoutX="230.0" layoutY="122.0" />
+   <Text layoutX="480.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Scouter Name">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </Text>
+   <LimitedTextField fx:id="n_sn" layoutX="470.0" layoutY="290.0" onKeyPressed="#limit" prefHeight="36.0" prefWidth="233.0" promptText="John D / John Doe">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </LimitedTextField>
+   <RadioButton layoutX="52.0" layoutY="170.0" mnemonicParsing="false" style="-fx-font-weight: bold;" text="Swerve">
+      <font>
+         <Font size="22.0" />
+      </font>
+      <toggleGroup>
+         <ToggleGroup fx:id="n_dtraintype" />
+      </toggleGroup>
+   </RadioButton>
+   <RadioButton layoutX="198.0" layoutY="171.0" mnemonicParsing="false" style="-fx-font-weight: bold;" text="Tank" toggleGroup="$n_dtraintype">
+      <font>
+         <Font size="22.0" />
+      </font>
+   </RadioButton>
 </Pane>

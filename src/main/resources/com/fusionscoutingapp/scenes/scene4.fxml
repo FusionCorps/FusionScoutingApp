@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.fusionscoutingapp.Timer?>
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -21,7 +21,7 @@
          <Font size="27.0" />
       </font>
    </Button>
-   <Text layoutX="51.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Docking Time (in seconds)" textAlignment="CENTER" wrappingWidth="404.203125">
+   <Text layoutX="34.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Balance Time (in seconds)" textAlignment="CENTER" wrappingWidth="404.203125">
       <font>
          <Font size="32.0" />
       </font>
@@ -31,24 +31,67 @@
          <Font size="72.0" />
       </font>
    </Label>
-   <ComboBox layoutX="800.0" layoutY="254.0" prefHeight="59.0" prefWidth="303.0">
-      <items>
-         <FXCollections fx:factory="observableArrayList">
-            <String fx:value="Docked+Engaged" />
-            <String fx:value="Docked (not engaged)" />
-            <String fx:value="Attempted but Failed" />
-            <String fx:value="Parked" />
-         </FXCollections>
-      </items>
-   </ComboBox>
-   <Label layoutX="520.0" layoutY="267.0" style="-fx-font-weight: bold;" text="Charging Station:" textAlignment="CENTER">
+   <Label layoutX="589.0" layoutY="145.0" style="-fx-font-weight: bold;" text="Charging Station" textAlignment="CENTER">
       <font>
          <Font size="32.0" />
       </font>
    </Label>
-   <Timer layoutX="214.0" layoutY="165.0">
+   <Timer fx:id="e_timer" layoutX="436.0" layoutY="125.0" prefHeight="47.0" prefWidth="76.0" style="-fx-font-weight: bold; -fx-background-color: #000000;" text="0.00" textAlignment="CENTER" textFill="WHITE">
       <font>
          <Font size="32.0" />
       </font>
    </Timer>
+   <CheckBox fx:id="e_shut" layoutX="63.0" layoutY="274.0" mnemonicParsing="false" style="-fx-font-weight: bold;" text="Shuttlebot?">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </CheckBox>
+   <CheckBox fx:id="e_budclimb" layoutX="63.0" layoutY="321.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="404.0" style="-fx-font-weight: bold;" text="Buddy Climb? (helped other robot climb)" wrapText="true">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </CheckBox>
+   <Button layoutX="69.0" layoutY="182.0" mnemonicParsing="false" onAction="#startTimer" prefHeight="57.0" prefWidth="110.0" text="Start">
+      <font>
+         <Font size="27.0" />
+      </font>
+   </Button>
+   <Button layoutX="224.0" layoutY="182.0" mnemonicParsing="false" onAction="#stopTimer" text="Pause">
+      <font>
+         <Font size="27.0" />
+      </font>
+   </Button>
+   <Button layoutX="378.0" layoutY="182.0" mnemonicParsing="false" onAction="#resetTimer" text="Reset">
+      <font>
+         <Font size="27.0" />
+      </font>
+   </Button>
+   <RadioButton layoutX="597.0" layoutY="202.0" mnemonicParsing="false" text="Engage">
+      <font>
+         <Font size="32.0" />
+      </font>
+      <toggleGroup>
+         <ToggleGroup fx:id="e_balstat" />
+      </toggleGroup>
+   </RadioButton>
+   <RadioButton layoutX="783.0" layoutY="202.0" mnemonicParsing="false" text="Dock" toggleGroup="$e_balstat">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </RadioButton>
+   <RadioButton layoutX="791.0" layoutY="263.0" mnemonicParsing="false" text="Fail" toggleGroup="$e_balstat">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </RadioButton>
+   <RadioButton layoutX="597.0" layoutY="263.0" mnemonicParsing="false" text="Park" toggleGroup="$e_balstat">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </RadioButton>
+   <RadioButton layoutX="599.0" layoutY="327.0" mnemonicParsing="false" text="N/A" toggleGroup="$e_balstat">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </RadioButton>
 </Pane>

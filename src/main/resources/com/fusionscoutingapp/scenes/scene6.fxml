@@ -22,12 +22,12 @@
       </font>
    </Button>
    <ImageView fx:id="imageBox" fitHeight="510.0" fitWidth="510.0" layoutX="407.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true" />
-   <Button layoutX="69.0" layoutY="232.0" mnemonicParsing="false" onAction="#doCopyToClipboard" prefHeight="237.0" prefWidth="206.0" text="Copy Data (Text)" textAlignment="CENTER" wrapText="true">
+   <Button layoutX="69.0" layoutY="232.0" mnemonicParsing="false" onAction="#copyToClipboard" prefHeight="237.0" prefWidth="206.0" text="Copy Data (Text)" textAlignment="CENTER" wrapText="true">
       <font>
          <Font size="34.0" />
       </font>
    </Button>
-   <Button layoutX="1082.0" layoutY="247.0" mnemonicParsing="false" onAction="#doCopyToClipboard" prefHeight="227.0" prefWidth="206.0" text="Copy Data (QR Code)" textAlignment="CENTER" wrapText="true">
+   <Button layoutX="1082.0" layoutY="247.0" mnemonicParsing="false" onAction="#copyToClipboard" prefHeight="227.0" prefWidth="206.0" text="Copy Data (QR Code)" textAlignment="CENTER" wrapText="true">
       <font>
          <Font size="34.0" />
       </font>

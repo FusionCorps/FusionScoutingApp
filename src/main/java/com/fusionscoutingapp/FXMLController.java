@@ -14,8 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -25,6 +24,7 @@ import org.controlsfx.control.Rating;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.TextArea;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.image.BufferedImage;
@@ -46,38 +46,47 @@ public class FXMLController {
 //data for each page, variables should be named the same as corresponding fx:ids for consistency
 
     //page 1 - pregame
-    @FXML private LimitedTextField p_sn; //scouter name`
+
     @FXML private LimitedTextField p_tnum; //team number
-    @FXML private ComboBox<String> p_mlvl; //match level
+//    @FXML private ComboBox<String> p_mlvl; //match level
     @FXML private LimitedTextField p_mnum; //match number
-    @FXML private ComboBox<String> p_ran; //robot alliance number
-    @FXML private ComboBox<String> p_rfp; //robot field position
+    @FXML private ToggleGroup p_ra; //robot alliance
+    @FXML private ToggleGroup p_sloc; //starting location
 
     //page 2 - auton
     @FXML private CheckBox a_mob; //mobility
-    @FXML private ComboBox<String> a_pre; // game piece preload
-    @FXML private ComboBox<String> a_cstat; //charging station robot status
+    @FXML private ToggleGroup a_pre; // GP type preload
+    @FXML private int a_pickup; //GP intaked
+    @FXML private int a_cones; //cones intaked
+    @FXML private int a_cubes; //cubes intaked
+    @FXML private ToggleGroup a_balstat; //auton balance status
 
-    //page 3 - teleop/endgame
-    @FXML private LimitedTextField t_neut; //neutral zone game pieces intaked
-    @FXML private LimitedTextField t_singlesub; //single substation game pieces intaked
-    @FXML private LimitedTextField t_doublesub; //double substation game pieces intaked
-    @FXML private LimitedTextField t_cmty; //community game pieces intaked
+    //page 3 - teleop
+    @FXML private LimitedTextField t_neut; //neutral zone GP intaked
+    @FXML private LimitedTextField t_singlesub; //singlesub GP intaked
+    @FXML private LimitedTextField t_doublesub; //doublesub GP intaked
+    @FXML private LimitedTextField t_cmty; //community GP intaked
+    @FXML private LimitedTextField t_cones; //cones intaked
+    @FXML private LimitedTextField t_cubes; //cubes intaked
 
-    @FXML private ComboBox<String> e_cstat; //charging station robot status
+
+    //page 4 - endgame
+    @FXML private CheckBox e_shut; //shuttlebot
+    @FXML private ToggleGroup e_balstat; //endgame balance status
     @FXML private CheckBox e_budclmb; //buddy climb
-    @FXML private ComboBox<String> e_statloc; //endgame charging station
-    @FXML private Timer e_timer; //docking timer
+    @FXML private Timer e_timer; //balance time
 
-    //page4 - qualitative notes
-    @FXML private Rating n_drat; //driver rating
+    //page5 - qualitative notes
+    @FXML private Rating n_dtrainrat; //drivetrain rating
+    @FXML private ToggleGroup n_dtraintype; //drivetrain type
+    @FXML private Rating n_intake; //intake rating
     @FXML private Rating n_spd; //robot speed (1 slow, 5 fast)
-    @FXML private CheckBox n_dt; // died/tipped
-    @FXML private ComboBox<String> de; //defensive evasion
-    @FXML private ComboBox<String> n_dp; //defensive performance
+    @FXML private Rating n_drat; //driver rating
+    @FXML private LimitedTextField n_sn; //scouter name`
     @FXML private TextArea n_co; //general comments
+    @FXML private CheckBox n_everybot; //everybot
 
-    //page5 - QR code
+    //page6 - QR code
     @FXML private ImageView imageBox; //QR code image display box
     @FXML private Text reminderBox; //You scouted, "[insert team #, alliance #]"
 
@@ -115,6 +124,7 @@ public class FXMLController {
         info = new HashMap<>();
         nextPage(event);
     }
+
     public void nextPage(ActionEvent event) throws IOException {
 //        System.out.println("prev page is " + sceneIndex);
         collectData();
@@ -134,8 +144,7 @@ public class FXMLController {
 
     //changes page to the scene specified by sceneIndex
     public static void setPage(Stage stage, int page) throws IOException {
-        System.out.println(page);
-        var thing = FXMLController.class.getResource("scenes/scene" + (page) + ".fxml");
+        System.out.println("page" + page);
         Parent root = FXMLLoader.load(FXMLController.class.getResource("scenes/scene" + (sceneIndex) + ".fxml"));
         Scene scene = new Scene(root);
         stage.setTitle("Scouting App Page" + (page));
@@ -147,6 +156,7 @@ public class FXMLController {
         stage.setMaximized(true);
         stage.show();
     }
+
     //sends data to QR code creator and displays it on screen
     public void sendInfo() throws Exception {
        data = new StringBuilder();
@@ -188,12 +198,12 @@ public class FXMLController {
     //sends data to info storage HashMap, needs to be edited with introduction of new data elements
     public void collectData() {
         if (sceneIndex == 1) {
-            info.put("p_sn", p_sn.getText());
+
             info.put("p_tnum", p_tnum.getText());
-            info.put("p_mlvl", p_mlvl.getValue());
+//            info.put("p_mlvl", p_mlvl.getValue());
             info.put("p_mnum", p_mnum.getText());
-            info.put("p_ran", p_ran.getValue());
-            info.put("p_rfp", p_rfp.getValue());
+            info.put("p_ra", p_ra.getSelectedToggle().getUserData().toString());
+            info.put("p_sloc", p_sloc.getSelectedToggle().getUserData().toString());
 //        } else if (sceneIndex == 2) {
 //            info.put("cp", String.valueOf(cp.isSelected()));
 //            info.put("aca", aca.getText());
@@ -208,27 +218,27 @@ public class FXMLController {
 //        } else if (sceneIndex == 4) {
 //            info.put("cla", String.valueOf(cla.isSelected()));
 //            info.put("cl", cl.getValue());
-//        } else if (sceneIndex == 5) {
-//            info.put("dt", String.valueOf(dt.isSelected()));
-//            info.put("dp", dp.getValue());
-//            info.put("de", de.getValue());
-//            info.put("co", co.getText());
-//            info.put("f", f.getText());
-//            info.put("tf", tf.getText());
+        } else if (sceneIndex == 5) {
+            info.put("n_dtrainrat", String.valueOf(n_dtrainrat.getRating()));
+            info.put("n_dtraintype", n_dtraintype.getSelectedToggle().toString());
+            info.put("n_intake", String.valueOf(n_intake.getRating()));
+            info.put("n_spd", String.valueOf(n_spd.getRating()));
+            info.put("n_drat", String.valueOf(n_drat.getRating()));
+            info.put("n_sn", n_sn.getText());
+            info.put("n_co", n_co.getText());
         } else {
             System.out.println("default case");
         }
-        System.out.println(Arrays.toString(info.entrySet().toArray()));
+        System.out.println("stuff:" + Arrays.toString(info.entrySet().toArray()));
     }
     //reloads data for a scene, should be called when loading scene
     public void reloadData() {
             if (sceneIndex == 1) {
-                if (info.get("p_sn") != null) p_sn.setText(info.get("p_sn"));
                 if (info.get("p_tnum") != null) p_tnum.setText(info.get("p_tnum"));
-                if (info.get("p_mlvl") != null) p_mlvl.setValue(info.get("p_mlvl"));
+//                if (info.get("p_mlvl") != null) p_mlvl.setValue(info.get("p_mlvl"));
                 if (info.get("p_mnum") != null) p_mnum.setText(info.get("p_mnum"));
-                if (info.get("p_ran") != null) p_ran.setValue(info.get("p_ran"));
-                if (info.get("p_rfp") != null) p_rfp.setValue(info.get("p_rfp"));
+//                if (info.get("p_ra") != null) p_ra.selectToggle(p_ra.getToggles());
+//                if (info.get("p_sloc") != null) p_sloc.selectToggle(p_sloc.getToggles().get(info.get("p_sloc")));
 //            } else if (sceneIndex == 2) {
 //                if(info.get("cp")!=null)cp.setSelected(Boolean.parseBoolean(info.get("cp")));
 //                if(info.get("aca")!=null)aca.setText(info.get("aca"));
@@ -260,7 +270,7 @@ public class FXMLController {
     }
 
     //copies either data text or QR code based on button source that was clicked
-    public void doCopyToClipboard(ActionEvent event) {
+    public void copyToClipboard(ActionEvent event) {
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
         if (event.getSource().getClass().equals(javafx.scene.control.Button.class))
             if (((javafx.scene.control.Button) event.getSource()).getText().contains("Text")) {
@@ -273,21 +283,19 @@ public class FXMLController {
             }
     }
 
-    //outputs data to text file
-    public void outputDataToFile() {
+    //outputs data to text file and QR code
+    public void outputAll() {
+        //text file
         try {
             FileWriter writer = new FileWriter("C:\\Users\\robotics\\Desktop\\scoutingFiles\\" +
-                info.get("p_mnum") + "-" +
-                info.get("p_tnum") + "-" +
-                info.get("p_ran") + ".txt");
-             writer.write(data.toString());
+                    info.get("p_mnum") + "-" +
+                    info.get("p_tnum") + "-" +
+                    info.get("p_ran") + ".txt");
+            writer.write(data.toString());
         } catch (IOException e) {
-            System.out.println("outputData failed");;
+            System.out.println("outputData text file failed");;
         }
-    }
-
-    //outputs data to QR code
-    public void outputQRCode() {
+        //qr code
         try {
             String filePath = "C:\\Users\\robotics\\Desktop\\scoutingQRCodes\\" +
                     info.get("p_mnum") + "-" +
@@ -298,14 +306,8 @@ public class FXMLController {
             File qrFile = new File(filePath);
             ImageIO.write(bufferedImage, fileType, qrFile);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("outputData qr code failed");;
         }
-    }
-
-    //outputs data to text file and QR code
-    public void outputAll() {
-        outputDataToFile();
-        outputQRCode();
     }
 
     //puts restrictions on certain data fields
@@ -319,10 +321,15 @@ public class FXMLController {
             src.setIntegerField();
             src.setMaxLength(3);
         }
-        else if (src.equals(p_sn)) { //scouter name
+        else if (src.equals(n_sn)) { //scouter name
             src.setRestrict("[A-Za-z ]"); //letters + spaces only
             src.setMaxLength(30);
         }
     }
+
+    //
+    public void startTimer(ActionEvent event) {((Timer)event.getSource()).start();}
+    public void stopTimer(ActionEvent event) {((Timer)event.getSource()).stop();}
+    public void resetTimer(ActionEvent event) {((Timer)event.getSource()).reset();}
 
 }
