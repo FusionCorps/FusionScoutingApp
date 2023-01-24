@@ -52,6 +52,7 @@ public class FXMLController {
     @FXML private LimitedTextField p_mnum; //match number
     @FXML private ToggleGroup p_ra; //robot alliance
     @FXML private ToggleGroup p_sloc; //starting location
+    private int p_raIndex, p_slocIndex; //index of selected radio button in each group
 
     //page 2 - auton
     @FXML private CheckBox a_mob; //mobility
@@ -60,6 +61,7 @@ public class FXMLController {
     @FXML private int a_cones; //cones intaked
     @FXML private int a_cubes; //cubes intaked
     @FXML private ToggleGroup a_balstat; //auton balance status
+    private int a_preIndex, a_balstatIndex; //index of selected radio button in each group
 
     //page 3 - teleop
     @FXML private LimitedTextField t_neut; //neutral zone GP intaked
@@ -85,6 +87,7 @@ public class FXMLController {
     @FXML private LimitedTextField n_sn; //scouter name`
     @FXML private TextArea n_co; //general comments
     @FXML private CheckBox n_everybot; //everybot
+    private  int n_dtraintypeIndex; //index of selected radio button in each group
 
     //page6 - QR code
     @FXML private ImageView imageBox; //QR code image display box
@@ -164,7 +167,7 @@ public class FXMLController {
        info.put("tca", String.valueOf(tca));
        for (Object keyName : info.keySet()) {
            data.append(keyName).append("=");
-           if (info.get(keyName) == null) {}
+           if (info.get(keyName) == null) continue;
            else if (info.get(keyName).equals("true"))  data.append("1");
            else if (info.get(keyName).equals("false")) data.append("0");
            else if (info.get(keyName).equals("N/A") || info.get(keyName).equals("N/A or Failed")) data.append("0");
@@ -197,37 +200,37 @@ public class FXMLController {
 
     //sends data to info storage HashMap, needs to be edited with introduction of new data elements
     public void collectData() {
-        if (sceneIndex == 1) {
-
-            info.put("p_tnum", p_tnum.getText());
-//            info.put("p_mlvl", p_mlvl.getValue());
-            info.put("p_mnum", p_mnum.getText());
-            info.put("p_ra", p_ra.getSelectedToggle().getUserData().toString());
-            info.put("p_sloc", p_sloc.getSelectedToggle().getUserData().toString());
-//        } else if (sceneIndex == 2) {
-//            info.put("cp", String.valueOf(cp.isSelected()));
-//            info.put("aca", aca.getText());
-//            info.put("ucsa", ucsa.getText());
-//            info.put("lcsa", lcsa.getText());
-//            info.put("cmda", cmda.getText());
-//            info.put("ta", String.valueOf(ta.isSelected()));
-//        } else if (sceneIndex == 3) {
-//            info.put("ucst", ucst.getText());
-//            info.put("lcst", lcst.getText());
-//            info.put("cmdt", cmdt.getText());
-//        } else if (sceneIndex == 4) {
-//            info.put("cla", String.valueOf(cla.isSelected()));
-//            info.put("cl", cl.getValue());
-        } else if (sceneIndex == 5) {
-            info.put("n_dtrainrat", String.valueOf(n_dtrainrat.getRating()));
-            info.put("n_dtraintype", n_dtraintype.getSelectedToggle().toString());
-            info.put("n_intake", String.valueOf(n_intake.getRating()));
-            info.put("n_spd", String.valueOf(n_spd.getRating()));
-            info.put("n_drat", String.valueOf(n_drat.getRating()));
-            info.put("n_sn", n_sn.getText());
-            info.put("n_co", n_co.getText());
-        } else {
-            System.out.println("default case");
+        switch (sceneIndex) {
+            case 1:
+                info.put("p_tnum", p_tnum.getText());
+//                info.put("p_mlvl", p_mlvl.getValue());
+                info.put("p_mnum", p_mnum.getText());
+                //get index of selected radio button in p_ra.getToggles()
+                p_raIndex = p_ra.getToggles().indexOf(p_ra.getSelectedToggle());
+                //get index of selected radio button in p_sloc.getToggles()
+                p_slocIndex = p_sloc.getToggles().indexOf(p_sloc.getSelectedToggle());
+                break;
+            case 2:
+//              //TODO
+                break;
+            case 3:
+                //TODO
+                break;
+            case 4:
+                //TODO
+                break;
+            case 5:
+                info.put("n_dtrainrat", String.valueOf(n_dtrainrat.getRating()));
+                info.put("n_dtraintype", n_dtraintype.getSelectedToggle().toString());
+                info.put("n_intake", String.valueOf(n_intake.getRating()));
+                info.put("n_spd", String.valueOf(n_spd.getRating()));
+                info.put("n_drat", String.valueOf(n_drat.getRating()));
+                info.put("n_sn", n_sn.getText());
+                info.put("n_co", n_co.getText());
+                break;
+            default:
+                System.out.println("collectData() default");
+                break;
         }
         System.out.println("stuff:" + Arrays.toString(info.entrySet().toArray()));
     }
@@ -237,8 +240,8 @@ public class FXMLController {
                 if (info.get("p_tnum") != null) p_tnum.setText(info.get("p_tnum"));
 //                if (info.get("p_mlvl") != null) p_mlvl.setValue(info.get("p_mlvl"));
                 if (info.get("p_mnum") != null) p_mnum.setText(info.get("p_mnum"));
-//                if (info.get("p_ra") != null) p_ra.selectToggle(p_ra.getToggles());
-//                if (info.get("p_sloc") != null) p_sloc.selectToggle(p_sloc.getToggles().get(info.get("p_sloc")));
+                if(info.get("p_ra")!=null) p_ra.selectToggle(p_ra.getToggles().get(p_raIndex));
+                if (info.get("p_sloc") != null) p_sloc.selectToggle(p_sloc.getToggles().get(p_slocIndex));
 //            } else if (sceneIndex == 2) {
 //                if(info.get("cp")!=null)cp.setSelected(Boolean.parseBoolean(info.get("cp")));
 //                if(info.get("aca")!=null)aca.setText(info.get("aca"));
@@ -292,8 +295,9 @@ public class FXMLController {
                     info.get("p_tnum") + "-" +
                     info.get("p_ran") + ".txt");
             writer.write(data.toString());
+            writer.close();
         } catch (IOException e) {
-            System.out.println("outputData text file failed");;
+            System.out.println("outputData text file failed");
         }
         //qr code
         try {
@@ -301,12 +305,11 @@ public class FXMLController {
                     info.get("p_mnum") + "-" +
                     info.get("p_tnum") + "-" +
                     info.get("p_ran") + ".png";
-            int size = 250;
             String fileType = "png";
             File qrFile = new File(filePath);
             ImageIO.write(bufferedImage, fileType, qrFile);
         } catch (IOException e) {
-            System.out.println("outputData qr code failed");;
+            System.out.println("outputData qr code failed");
         }
     }
 
