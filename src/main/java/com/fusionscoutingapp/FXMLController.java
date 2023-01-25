@@ -15,9 +15,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.controlsfx.control.Rating;
@@ -31,6 +33,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -57,9 +60,9 @@ public class FXMLController {
     //page 2 - auton
     @FXML private CheckBox a_mob; //mobility
     @FXML private ToggleGroup a_pre; // GP type preload
-    @FXML private int a_pickup; //GP intaked
-    @FXML private int a_cones; //cones intaked
-    @FXML private int a_cubes; //cubes intaked
+    @FXML ArrayList<Integer> a_pickup; //GP intaked at community
+    private ArrayList<Integer> a_cones = new ArrayList<>(); //cones placed
+    private ArrayList<Integer> a_cubes = new ArrayList<>(); //cubes placed
     @FXML private ToggleGroup a_balstat; //auton balance status
     private int a_preIndex, a_balstatIndex; //index of selected radio button in each group
 
@@ -196,8 +199,6 @@ public class FXMLController {
 //        System.out.println(Arrays.toString(info.entrySet().toArray()) + "info sent");
         }
 
-    //collects data from each page and stores it in a hashmap
-
     //sends data to info storage HashMap, needs to be edited with introduction of new data elements
     public void collectData() {
         switch (sceneIndex) {
@@ -207,11 +208,20 @@ public class FXMLController {
                 info.put("p_mnum", p_mnum.getText());
                 //get index of selected radio button in p_ra.getToggles()
                 p_raIndex = p_ra.getToggles().indexOf(p_ra.getSelectedToggle());
+                info.put("p_ra", p_ra.getToggles().get(p_raIndex).getUserData().toString());
                 //get index of selected radio button in p_sloc.getToggles()
                 p_slocIndex = p_sloc.getToggles().indexOf(p_sloc.getSelectedToggle());
+                info.put("p_sloc", p_sloc.getToggles().get(p_slocIndex).getUserData().toString());
                 break;
             case 2:
-//              //TODO
+                info.put("a_mob", String.valueOf(a_mob.isSelected()));
+                a_preIndex = a_pre.getToggles().indexOf(a_pre.getSelectedToggle());
+                info.put("a_pre", a_pre.getToggles().get(a_preIndex).getUserData().toString());
+//                info.put("a_pickup", a_pickup.toString());
+                info.put("a_cones", a_cones.toString());
+                info.put("a_cubes", a_cubes.toString());
+                a_balstatIndex = a_balstat.getToggles().indexOf(a_balstat.getSelectedToggle());
+                info.put("a_balstat", a_balstat.getToggles().get(a_balstatIndex).getUserData().toString());
                 break;
             case 3:
                 //TODO
@@ -330,7 +340,47 @@ public class FXMLController {
         }
     }
 
-    //
+    public void manipCones(ActionEvent event) {
+        Button btn = (Button) event.getSource();
+        System.out.println(btn.getUserData().toString());
+        if (btn.getStyle().contains("-fx-background-color: white;")) {
+            btn.setStyle("-fx-background-color: yellow; -fx-border-color: black;");
+            a_cones.add(Integer.valueOf(btn.getUserData().toString()));
+        } else if (btn.getStyle().contains("-fx-background-color: yellow;")) {
+            btn.setStyle("-fx-background-color: white; -fx-border-color: black;");
+            a_cones.remove(Integer.valueOf(btn.getUserData().toString()));
+        }
+    }
+    public void manipCubes(ActionEvent event) {
+            Button btn = (Button) event.getSource();
+            System.out.println();
+            if (btn.getStyle().contains("-fx-background-color: white;")) {
+                btn.setStyle("-fx-background-color: purple; -fx-border-color: black;");
+                a_cubes.add(Integer.valueOf(btn.getUserData().toString()));
+            } else if (btn.getStyle().contains("-fx-background-color: purple;")) {
+                btn.setStyle("-fx-background-color: white; -fx-border-color: black;");
+                a_cubes.remove(Integer.valueOf(btn.getUserData().toString()));
+
+            }
+        }
+    public void manipVar(ActionEvent event) {
+        Button btn = (Button) event.getSource();
+        if (btn.getStyle().contains("-fx-background-color: white;")) {
+            btn.setStyle("-fx-background-color: yellow; -fx-border-color: black;");
+            a_cones.add(Integer.valueOf(btn.getUserData().toString()));
+        } else if (btn.getStyle().contains("-fx-background-color: yellow;")) {
+            btn.setStyle("-fx-background-color: purple; -fx-border-color: black;");
+            a_cones.remove(Integer.valueOf(btn.getUserData().toString()));
+            a_cubes.add(Integer.valueOf(btn.getUserData().toString()));
+
+        }
+        else if (btn.getStyle().contains("-fx-background-color: purple;")) {
+            btn.setStyle("-fx-background-color: white; -fx-border-color: black;");
+            a_cubes.remove(Integer.valueOf(btn.getUserData().toString()));
+        }
+    }
+
+    //timer functions
     public void startTimer(ActionEvent event) {((Timer)event.getSource()).start();}
     public void stopTimer(ActionEvent event) {((Timer)event.getSource()).stop();}
     public void resetTimer(ActionEvent event) {((Timer)event.getSource()).reset();}
