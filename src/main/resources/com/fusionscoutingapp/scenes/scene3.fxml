@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.fusionscoutingapp.LimitedTextField?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
 <Pane prefHeight="1000.0" prefWidth="1324.0" style="-fx-background-color: #c9b5d4;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fusionscoutingapp.FXMLController">
@@ -42,12 +46,12 @@
 <!--      <font>-->
 <!--         <Font size="18.0" />-->
 <!--      </font></Button>-->
-   <Button layoutX="20.0" layoutY="441.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="170.0" style="-fx-font-weight: bold;" text="Prev Page">
+   <Button layoutX="21.0" layoutY="770.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="170.0" style="-fx-font-weight: bold;" text="Prev Page">
       <font>
          <Font size="27.0" />
       </font>
    </Button>
-   <Button layoutX="1140.0" layoutY="441.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="60.0" prefWidth="170.0" style="-fx-font-weight: bold;" text="Next Page">
+   <Button layoutX="1130.0" layoutY="770.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="60.0" prefWidth="170.0" style="-fx-font-weight: bold;" text="Next Page">
       <font>
          <Font size="27.0" />
       </font>
@@ -72,31 +76,136 @@
          <Font size="72.0" />
       </font>
    </Label>
-   <Button layoutX="318.0" layoutY="153.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: Ffff00;" />
-   <Button layoutX="405.0" layoutY="260.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" />
-   <Button layoutX="405.0" layoutY="180.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" />
-   <Button layoutX="919.0" layoutY="195.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" />
-   <Button layoutX="969.0" layoutY="195.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" />
-   <Button layoutX="1019.0" layoutY="195.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" />
-   <Button layoutX="1069.0" layoutY="195.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" />
-   <Button layoutX="1119.0" layoutY="195.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" />
-   <Button layoutX="1169.0" layoutY="195.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" />
-   <Button layoutX="313.0" layoutY="340.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" />
-   <Button layoutX="300.0" layoutY="340.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" />
-   <Button layoutX="460.0" layoutY="340.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" />
-   <Button layoutX="540.0" layoutY="340.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" />
-   <Button layoutX="620.0" layoutY="340.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" />
-   <Button layoutX="700.0" layoutY="339.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" />
-   <Button layoutX="780.0" layoutY="340.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" />
-   <Button layoutX="860.0" layoutY="340.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" />
-   <Button layoutX="940.0" layoutY="340.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" />
-   <Button layoutX="1020.0" layoutY="340.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" />
-   <Button layoutX="1169.0" layoutY="245.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" />
-   <Button layoutX="1119.0" layoutY="245.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" />
-   <Button layoutX="1069.0" layoutY="245.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" />
-   <Button layoutX="1019.0" layoutY="245.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" />
-   <Button layoutX="969.0" layoutY="245.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" />
-   <Button layoutX="380.0" layoutY="340.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: #800080;" />
-   <Button layoutX="919.0" layoutY="245.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" />
-   <Button layoutX="298.0" layoutY="259.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" />
+   <GridPane fx:id="t_grid" layoutX="144.0" layoutY="410.0" prefHeight="333.0" prefWidth="999.0">
+      <columnConstraints>
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+      <children>
+         <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="1" />
+         <Button mnemonicParsing="false" onAction="#manipCubes" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="2" GridPane.columnIndex="1" />
+         <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="3" GridPane.columnIndex="2" />
+         <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="4" GridPane.columnIndex="3" />
+         <Button mnemonicParsing="false" onAction="#manipCubes" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="5" GridPane.columnIndex="4" />
+         <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="6" GridPane.columnIndex="5" />
+         <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="7" GridPane.columnIndex="6" />
+         <Button mnemonicParsing="false" onAction="#manipCubes" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="8" GridPane.columnIndex="7" />
+         <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="9" GridPane.columnIndex="8" />
+         <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="10" GridPane.rowIndex="1" />
+         <Button mnemonicParsing="false" onAction="#manipCubes" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="11" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="12" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+         <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="13" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+         <Button mnemonicParsing="false" onAction="#manipCubes" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="14" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+         <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="15" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+         <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="16" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+         <Button mnemonicParsing="false" onAction="#manipCubes" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="17" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+         <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="18" GridPane.columnIndex="8" GridPane.rowIndex="1" />
+         <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="19" GridPane.rowIndex="2" />
+         <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="20" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="21" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+         <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="22" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+         <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="23" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+         <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="24" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+         <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="25" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+         <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="26" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+         <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="27" GridPane.columnIndex="8" GridPane.rowIndex="2" />
+      </children>
+   </GridPane>
+   <Label layoutX="42.0" layoutY="102.0" style="-fx-font-weight: bold;" text="Pickups in...">
+      <font>
+         <Font size="50.0" />
+      </font>
+   </Label>
+   <Label layoutX="50.0" layoutY="202.0" style="-fx-font-weight: bold;" text="Community">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </Label>
+   <Label layoutX="39.0" layoutY="300.0" style="-fx-font-weight: bold;" text="Neutral Zone">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </Label>
+   <Label layoutX="549.0" layoutY="202.0" style="-fx-font-weight: bold;" text="Single Substation (ground)">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </Label>
+   <Label layoutX="560.0" layoutY="302.0" style="-fx-font-weight: bold;" text="Double Substation (shelf)">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </Label>
+   <Button layoutX="270.0" layoutY="200.0" mnemonicParsing="false" onAction="#decrementT_cmty" prefHeight="0.0" prefWidth="51.0" style="-fx-font-weight: bold;" text="–">
+      <font>
+         <Font size="24.0" />
+      </font>
+   </Button>
+   <Button layoutX="401.0" layoutY="200.0" mnemonicParsing="false" onAction="#incrementT_cmty" prefHeight="45.0" prefWidth="51.0" style="-fx-font-weight: bold;" text="+">
+      <font>
+         <Font size="24.0" />
+      </font>
+   </Button>
+   <LimitedTextField fx:id="t_cmty" layoutX="335.0" layoutY="200.0" prefHeight="45.0" prefWidth="55.0" text="0">
+      <font>
+         <Font size="24.0" />
+      </font>
+   </LimitedTextField>
+   <LimitedTextField fx:id="t_neutzone" layoutX="335.0" layoutY="300.0" prefHeight="45.0" prefWidth="55.0" text="0">
+      <font>
+         <Font size="24.0" />
+      </font>
+   </LimitedTextField>
+   <LimitedTextField fx:id="t_singlesub" layoutX="1045.0" layoutY="200.0" prefHeight="45.0" prefWidth="55.0" text="0">
+      <font>
+         <Font size="24.0" />
+      </font>
+   </LimitedTextField>
+   <LimitedTextField fx:id="t_doublesub" layoutX="1045.0" layoutY="300.0" prefHeight="45.0" prefWidth="55.0" text="0">
+      <font>
+         <Font size="24.0" />
+      </font>
+   </LimitedTextField>
+   <Button layoutX="270.0" layoutY="298.0" mnemonicParsing="false" onAction="#decrementT_neutzone" prefHeight="0.0" prefWidth="51.0" style="-fx-font-weight: bold;" text="–">
+      <font>
+         <Font size="24.0" />
+      </font>
+   </Button>
+   <Button layoutX="977.0" layoutY="200.0" mnemonicParsing="false" onAction="#decrementT_singlesub" prefHeight="0.0" prefWidth="51.0" style="-fx-font-weight: bold;" text="–">
+      <font>
+         <Font size="24.0" />
+      </font>
+   </Button>
+   <Button layoutX="974.0" layoutY="300.0" mnemonicParsing="false" onAction="#decrementT_doublesub" prefHeight="0.0" prefWidth="51.0" style="-fx-font-weight: bold;" text="–">
+      <font>
+         <Font size="24.0" />
+      </font>
+   </Button>
+   <Button layoutX="401.0" layoutY="298.0" mnemonicParsing="false" onAction="#incrementT_neutzone" prefHeight="0.0" prefWidth="51.0" style="-fx-font-weight: bold;" text="+">
+      <font>
+         <Font size="24.0" />
+      </font>
+   </Button>
+   <Button layoutX="1118.0" layoutY="298.0" mnemonicParsing="false" onAction="#incrementT_doublesub" prefHeight="0.0" prefWidth="51.0" style="-fx-font-weight: bold;" text="+">
+      <font>
+         <Font size="24.0" />
+      </font>
+   </Button>
+   <Button layoutX="1118.0" layoutY="200.0" mnemonicParsing="false" onAction="#incrementT_singlesub" prefHeight="0.0" prefWidth="51.0" style="-fx-font-weight: bold;" text="+">
+      <font>
+         <Font size="24.0" />
+      </font>
+   </Button>
 </Pane>

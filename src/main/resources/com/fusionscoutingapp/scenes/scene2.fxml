@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
@@ -91,10 +93,7 @@
          <Font size="32.0" />
       </font>
    </Label>
-   <RadioButton layoutX="438.0" layoutY="185.0" mnemonicParsing="false" style="-fx-font-weight: bold;" text="Engage">
-      <userData>
-         
-      </userData>
+   <RadioButton layoutX="438.0" layoutY="185.0" mnemonicParsing="false" style="-fx-font-weight: bold;" text="Engage" userData="Engage">
       <font>
          <Font size="32.0" />
       </font>
@@ -102,17 +101,26 @@
          <ToggleGroup fx:id="a_balstat" />
       </toggleGroup>
    </RadioButton>
-   <RadioButton layoutX="640.0" layoutY="190.0" mnemonicParsing="false" style="-fx-font-weight: bold;" text="Dock" toggleGroup="$a_balstat">
+   <RadioButton layoutX="640.0" layoutY="190.0" mnemonicParsing="false" style="-fx-font-weight: bold;" text="Dock" userData="Dock">
+       <toggleGroup>
+            <fx:reference source="a_balstat" />
+       </toggleGroup>
       <font>
          <Font size="32.0" />
       </font>
    </RadioButton>
-   <RadioButton layoutX="647.0" layoutY="256.0" mnemonicParsing="false" style="-fx-font-weight: bold;" text="N/A" toggleGroup="$a_balstat">
+   <RadioButton layoutX="647.0" layoutY="256.0" mnemonicParsing="false" style="-fx-font-weight: bold;" text="N/A" userData="N/A">
+       <toggleGroup>
+            <fx:reference source="a_balstat" />
+       </toggleGroup>
       <font>
          <Font size="32.0" />
       </font>
    </RadioButton>
-   <RadioButton layoutX="437.0" layoutY="256.0" mnemonicParsing="false" style="-fx-font-weight: bold;" text="Fail" toggleGroup="$a_balstat">
+   <RadioButton layoutX="437.0" layoutY="256.0" mnemonicParsing="false" style="-fx-font-weight: bold;" text="Fail" userData="Fail">
+      <toggleGroup>
+            <fx:reference source="a_balstat" />
+      </toggleGroup>
       <font>
          <Font size="32.0" />
       </font>
@@ -135,7 +143,7 @@
          <Font size="32.0" />
       </font>
    </RadioButton>
-   <GridPane layoutX="160.0" layoutY="430.0" prefHeight="333.0" prefWidth="999.0">
+   <GridPane fx:id="a_grid" layoutX="160.0" layoutY="430.0" prefHeight="333.0" prefWidth="999.0">
      <columnConstraints>
        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -172,14 +180,36 @@
          <Button mnemonicParsing="false" onAction="#manipCubes" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="17" GridPane.columnIndex="7" GridPane.rowIndex="1" />
          <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="18" GridPane.columnIndex="8" GridPane.rowIndex="1" />
          <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="19" GridPane.rowIndex="2" />
+         <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="20" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="21" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+         <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="22" GridPane.columnIndex="3" GridPane.rowIndex="2" />
          <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="23" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-         <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="19" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-         <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="19" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-         <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="19" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-         <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="19" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-         <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="19" GridPane.columnIndex="6" GridPane.rowIndex="2" />
-         <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="19" GridPane.columnIndex="7" GridPane.rowIndex="2" />
-         <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="19" GridPane.columnIndex="8" GridPane.rowIndex="2" />
+         <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="24" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+         <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="25" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+         <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="26" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+         <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="27" GridPane.columnIndex="8" GridPane.rowIndex="2" />
+      </children>
+   </GridPane>
+   <ImageView fitHeight="310.0" fitWidth="295.0" layoutX="925.0" layoutY="75.0" pickOnBounds="true">
+      <image>
+         <Image url="@../GPstart.png" />
+      </image>
+   </ImageView>
+   <GridPane fx:id="a_preGrid" layoutX="930.0" layoutY="98.0" prefHeight="256.0" prefWidth="95.0">
+     <columnConstraints>
+       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+     </columnConstraints>
+     <rowConstraints>
+       <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+       <RowConstraints maxHeight="60.0" minHeight="0.0" prefHeight="15.200018310560468" vgrow="SOMETIMES" />
+       <RowConstraints maxHeight="60.0" minHeight="0.0" prefHeight="65.6" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="60.0" minHeight="0.0" prefHeight="17.599999999999994" vgrow="SOMETIMES" />
+     </rowConstraints>
+      <children>
+         <Button mnemonicParsing="false" onAction="#manipGPStart" prefHeight="53.0" prefWidth="100.0" style="-fx-background-color: white; -fx-border-color: black;" userData="1" />
+         <Button mnemonicParsing="false" onAction="#manipGPStart" prefHeight="53.0" prefWidth="100.0" style="-fx-background-color: white; -fx-border-color: black;" userData="2" GridPane.rowIndex="1" />
+         <Button mnemonicParsing="false" onAction="#manipGPStart" prefHeight="53.0" prefWidth="100.0" style="-fx-background-color: white; -fx-border-color: black;" userData="3" GridPane.rowIndex="2" />
+         <Button mnemonicParsing="false" onAction="#manipGPStart" prefHeight="53.0" prefWidth="100.0" style="-fx-background-color: white; -fx-border-color: black;" userData="4" GridPane.rowIndex="3" />
       </children>
    </GridPane>
 </Pane>

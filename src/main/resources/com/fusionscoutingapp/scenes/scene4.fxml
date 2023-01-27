@@ -21,7 +21,7 @@
          <Font size="27.0" />
       </font>
    </Button>
-   <Text layoutX="34.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Balance Time (in seconds)" textAlignment="CENTER" wrappingWidth="404.203125">
+   <Text layoutX="22.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Balance Time (in seconds)" textAlignment="CENTER" wrappingWidth="404.203125">
       <font>
          <Font size="32.0" />
       </font>
@@ -36,12 +36,12 @@
          <Font size="32.0" />
       </font>
    </Label>
-   <Timer fx:id="e_timer" layoutX="436.0" layoutY="125.0" prefHeight="47.0" prefWidth="76.0" style="-fx-font-weight: bold; -fx-background-color: #000000;" text="0.00" textAlignment="CENTER" textFill="WHITE">
+   <Timer fx:id="e_timer" layoutX="436.0" layoutY="125.0" prefHeight="43.0" prefWidth="71.0" style="-fx-font-weight: bold;" text="0.00">
       <font>
-         <Font size="32.0" />
+         <Font size="26.0" />
       </font>
    </Timer>
-   <CheckBox fx:id="e_shut" layoutX="63.0" layoutY="274.0" mnemonicParsing="false" style="-fx-font-weight: bold;" text="Shuttlebot?">
+   <CheckBox fx:id="e_shuttle" layoutX="63.0" layoutY="274.0" mnemonicParsing="false" style="-fx-font-weight: bold;" text="Shuttlebot?">
       <font>
          <Font size="32.0" />
       </font>
@@ -51,17 +51,17 @@
          <Font size="32.0" />
       </font>
    </CheckBox>
-   <Button layoutX="69.0" layoutY="182.0" mnemonicParsing="false" onAction="#startTimer" prefHeight="57.0" prefWidth="110.0" text="Start">
+   <Button layoutX="56.0" layoutY="197.0" mnemonicParsing="false" onAction="#startTimer" prefHeight="57.0" prefWidth="110.0" text="Start">
       <font>
          <Font size="27.0" />
       </font>
    </Button>
-   <Button layoutX="224.0" layoutY="182.0" mnemonicParsing="false" onAction="#stopTimer" text="Pause">
+   <Button layoutX="212.0" layoutY="197.0" mnemonicParsing="false" onAction="#stopTimer" text="Pause">
       <font>
          <Font size="27.0" />
       </font>
    </Button>
-   <Button layoutX="378.0" layoutY="182.0" mnemonicParsing="false" onAction="#resetTimer" text="Reset">
+   <Button layoutX="366.0" layoutY="197.0" mnemonicParsing="false" onAction="#resetTimer" text="Reset">
       <font>
          <Font size="27.0" />
       </font>

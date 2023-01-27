@@ -1,10 +1,8 @@
-//TODO type of intake - ground/handoff
-//TODO cycle timer/docking timer
+//TODO fix docking timer
 //TODO CSS styling - do in SceneBuilder or external CSS sheet
 //TODO think about how to encapsulate data fields in more efficient way (e.g. maybe hashmap for each field, like [Object:fx_id]?)
 //TODO MIGHT: add required fields to each page, and only allow user to proceed if all required fields are filled
 //TODO WANT: TBA integration
-
 
 package com.fusionscoutingapp;
 
@@ -16,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -26,7 +25,6 @@ import org.controlsfx.control.Rating;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.TextArea;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.image.BufferedImage;
@@ -36,49 +34,50 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 
 public class FXMLController {
 
-    //scene0:
+    //scene0:title
     //scene1:pregame
     //scene2:auton
-    //scene3:teleop + endgame
-    //scene4:qualitative notes
-    //scene5:QR CODE
+    //scene3:teleop
+    //scene4:endgame
+    //scene5:qualitative notes
+    //scene6:QR CODE
 
 //data for each page, variables should be named the same as corresponding fx:ids for consistency
-
     //page 1 - pregame
 
     @FXML private LimitedTextField p_tnum; //team number
-//    @FXML private ComboBox<String> p_mlvl; //match level
     @FXML private LimitedTextField p_mnum; //match number
     @FXML private ToggleGroup p_ra; //robot alliance
     @FXML private ToggleGroup p_sloc; //starting location
-    private int p_raIndex, p_slocIndex; //index of selected radio button in each group
 
     //page 2 - auton
     @FXML private CheckBox a_mob; //mobility
     @FXML private ToggleGroup a_pre; // GP type preload
-    @FXML ArrayList<Integer> a_pickup; //GP intaked at community
-    private ArrayList<Integer> a_cones = new ArrayList<>(); //cones placed
-    private ArrayList<Integer> a_cubes = new ArrayList<>(); //cubes placed
+    @FXML private GridPane a_grid; //GP grid
+    @FXML private GridPane a_preGrid; //preload GP grid
+    private static ArrayList<Integer> a_pickup = new ArrayList<>(); //GP intaked at community
+    private static ArrayList<Integer> a_cones = new ArrayList<>(); //cones placed
+    private static ArrayList<Integer> a_cubes = new ArrayList<>(); //cubes placed
     @FXML private ToggleGroup a_balstat; //auton balance status
-    private int a_preIndex, a_balstatIndex; //index of selected radio button in each group
 
     //page 3 - teleop
-    @FXML private LimitedTextField t_neut; //neutral zone GP intaked
+    @FXML private LimitedTextField t_cmty; //community GP intaked
+    @FXML private LimitedTextField t_neutzone; //neutral zone GP intaked
     @FXML private LimitedTextField t_singlesub; //singlesub GP intaked
     @FXML private LimitedTextField t_doublesub; //doublesub GP intaked
-    @FXML private LimitedTextField t_cmty; //community GP intaked
-    @FXML private LimitedTextField t_cones; //cones intaked
-    @FXML private LimitedTextField t_cubes; //cubes intaked
+    @FXML private GridPane t_grid; //GP grid
+    private static ArrayList<Integer> t_cones = new ArrayList<>(); //cones intaked
+    private static ArrayList<Integer> t_cubes = new ArrayList<>(); //cubes intaked
 
 
     //page 4 - endgame
-    @FXML private CheckBox e_shut; //shuttlebot
+    @FXML private CheckBox e_shuttle; //shuttlebot
     @FXML private ToggleGroup e_balstat; //endgame balance status
-    @FXML private CheckBox e_budclmb; //buddy climb
+    @FXML private CheckBox e_budclimb; //buddy climb
     @FXML private Timer e_timer; //balance time
 
     //page5 - qualitative notes
@@ -90,20 +89,32 @@ public class FXMLController {
     @FXML private LimitedTextField n_sn; //scouter name`
     @FXML private TextArea n_co; //general comments
     @FXML private CheckBox n_everybot; //everybot
-    private  int n_dtraintypeIndex; //index of selected radio button in each group
 
     //page6 - QR code
     @FXML private ImageView imageBox; //QR code image display box
-    @FXML private Text reminderBox; //You scouted, "[insert team #, alliance #]"
+    @FXML private Text reminderBox; //You scouted, "[insert team #]"
 
+    private static Map<ToggleGroup, Integer> toggleMap = new HashMap(); //map of toggle groups to their indexes
+    //map of toggle groups to their indexes
+     {
+        toggleMap.put(p_ra, 0);
+        toggleMap.put(p_sloc, 0);
+        toggleMap.put(a_pre, 0);
+        toggleMap.put(a_balstat, 0);
+        toggleMap.put(e_balstat, 0);
+        toggleMap.put(n_dtraintype, 0);
+    }
 
     //used for changing pages
     private static int sceneIndex = 0;
-    private BufferedImage bufferedImage;
+    private static BufferedImage bufferedImage;
     //stores user input data
-    private HashMap<String, String> info = new HashMap<>();
-    private StringBuilder data = new StringBuilder();
-    private boolean isNextPageClicked = false;
+    private static HashMap<String, String> info = new HashMap<>();
+    private static StringBuilder data = new StringBuilder();
+    private static boolean isNextPageClicked = false;
+
+    public FXMLController() {
+    }
 
     //runs at start of every load of a scene, defaults null values and reloads previously entered data
     public void initialize() {
@@ -120,8 +131,8 @@ public class FXMLController {
 //                dp.setValue("N/A");
 //            }
 //        }
-//        //reload data for each page
-//       reloadData();
+       //reload data for each page
+       reloadData();
     }
 
     //implementations of setPage() for going to next and previous pages
@@ -199,44 +210,53 @@ public class FXMLController {
 //        System.out.println(Arrays.toString(info.entrySet().toArray()) + "info sent");
         }
 
+
+    private void collectDataToggleGroup(ToggleGroup toggleGroup, String key) {
+        int index = toggleGroup.getToggles().indexOf(toggleGroup.getSelectedToggle());
+        if (index >= 0) info.put(key, toggleGroup.getToggles().get(index).getUserData().toString());
+        toggleMap.put(toggleGroup, index);
+    }
+
     //sends data to info storage HashMap, needs to be edited with introduction of new data elements
     public void collectData() {
         switch (sceneIndex) {
             case 1:
-                info.put("p_tnum", p_tnum.getText());
-//                info.put("p_mlvl", p_mlvl.getValue());
-                info.put("p_mnum", p_mnum.getText());
-                //get index of selected radio button in p_ra.getToggles()
-                p_raIndex = p_ra.getToggles().indexOf(p_ra.getSelectedToggle());
-                info.put("p_ra", p_ra.getToggles().get(p_raIndex).getUserData().toString());
-                //get index of selected radio button in p_sloc.getToggles()
-                p_slocIndex = p_sloc.getToggles().indexOf(p_sloc.getSelectedToggle());
-                info.put("p_sloc", p_sloc.getToggles().get(p_slocIndex).getUserData().toString());
+                collectDataTextField(p_tnum, "p_tnum");
+                collectDataTextField(p_mnum, "p_mnum");
+                collectDataToggleGroup(p_ra, "p_ra");
+                collectDataToggleGroup(p_sloc, "p_sloc");
                 break;
             case 2:
-                info.put("a_mob", String.valueOf(a_mob.isSelected()));
-                a_preIndex = a_pre.getToggles().indexOf(a_pre.getSelectedToggle());
-                info.put("a_pre", a_pre.getToggles().get(a_preIndex).getUserData().toString());
-//                info.put("a_pickup", a_pickup.toString());
-                info.put("a_cones", a_cones.toString());
-                info.put("a_cubes", a_cubes.toString());
-                a_balstatIndex = a_balstat.getToggles().indexOf(a_balstat.getSelectedToggle());
-                info.put("a_balstat", a_balstat.getToggles().get(a_balstatIndex).getUserData().toString());
+                collectDataCheckBox(a_mob, "a_mob");
+                collectDataToggleGroup(a_pre, "a_pre");
+                collectDataArray(a_pickup, "a_pickup");
+                collectDataArray(a_cones, "a_cones");
+                collectDataArray(a_cubes, "a_cubes");
+                collectDataToggleGroup(a_balstat, "a_balstat");
                 break;
             case 3:
-                //TODO
+                collectDataTextField(t_cmty, "t_cmty");
+                collectDataTextField(t_neutzone, "t_neutzone");
+                collectDataTextField(t_singlesub, "t_singlesub");
+                collectDataTextField(t_doublesub, "t_doublesub");
+                collectDataArray(t_cones, "t_cones");
+                collectDataArray(t_cubes, "t_cubes");
                 break;
             case 4:
-                //TODO
+                collectDataCheckBox(e_shuttle, "e_shuttle");
+                collectDataToggleGroup(e_balstat, "e_balstat");
+                collectDataCheckBox(e_budclimb, "e_budclimb");
+                collectDataTextField(e_timer, "e_timer");
                 break;
             case 5:
-                info.put("n_dtrainrat", String.valueOf(n_dtrainrat.getRating()));
-                info.put("n_dtraintype", n_dtraintype.getSelectedToggle().toString());
-                info.put("n_intake", String.valueOf(n_intake.getRating()));
-                info.put("n_spd", String.valueOf(n_spd.getRating()));
-                info.put("n_drat", String.valueOf(n_drat.getRating()));
-                info.put("n_sn", n_sn.getText());
-                info.put("n_co", n_co.getText());
+                collectDataRating(n_dtrainrat, "n_dtrainrat");
+                collectDataRating(n_intake, "n_intake");
+                collectDataRating(n_spd, "n_spd");
+                collectDataRating(n_drat, "n_drat");
+                collectDataTextField(n_sn, "n_sn");
+                collectDataToggleGroup(n_dtraintype, "n_dtraintype");
+                collectDataTextArea(n_co, "n_co");
+                collectDataCheckBox(n_everybot, "n_everybot");
                 break;
             default:
                 System.out.println("collectData() default");
@@ -244,42 +264,53 @@ public class FXMLController {
         }
         System.out.println("stuff:" + Arrays.toString(info.entrySet().toArray()));
     }
+
     //reloads data for a scene, should be called when loading scene
     public void reloadData() {
-            if (sceneIndex == 1) {
-                if (info.get("p_tnum") != null) p_tnum.setText(info.get("p_tnum"));
-//                if (info.get("p_mlvl") != null) p_mlvl.setValue(info.get("p_mlvl"));
-                if (info.get("p_mnum") != null) p_mnum.setText(info.get("p_mnum"));
-                if(info.get("p_ra")!=null) p_ra.selectToggle(p_ra.getToggles().get(p_raIndex));
-                if (info.get("p_sloc") != null) p_sloc.selectToggle(p_sloc.getToggles().get(p_slocIndex));
-//            } else if (sceneIndex == 2) {
-//                if(info.get("cp")!=null)cp.setSelected(Boolean.parseBoolean(info.get("cp")));
-//                if(info.get("aca")!=null)aca.setText(info.get("aca"));
-//                if(info.get("ucsa")!=null)ucsa.setText(info.get("ucsa"));
-//                if(info.get("lcsa")!=null)lcsa.setText(info.get("lcsa"));
-//                if(info.get("cmda")!=null)cmda.setText(info.get("cmda"));
-//                if(info.get("ta")!=null)ta.setSelected(Boolean.parseBoolean(info.get("ta")));
-//            } else if (sceneIndex == 3) {
-//                if(info.get("ucst")!=null)ucst.setText(info.get("ucst"));
-//                if(info.get("lcst")!=null) lcst.setText(info.get("lcst"));
-//                if(info.get("cmdt")!=null)cmdt.setText(info.get("cmdt"));
-//            } else if (sceneIndex == 4) {
-//                if(info.get("cla")!=null)cla.setSelected(Boolean.parseBoolean(info.get("cla")));
-//                if(info.get("cl")!=null)cl.setValue(info.get("cl"));
-//            } else if (sceneIndex == 5) {
-//                if(info.get("dt")!=null)dt.setSelected(Boolean.parseBoolean(info.get("dt")));
-//                if(info.get("de")!=null)de.setValue(info.get("de"));
-//                if(info.get("dp")!=null)dp.setValue(info.get("dp"));
-//                if(info.get("co")!=null)co.setText(info.get("co"));
-//                if(info.get("f")!=null)f.setText(info.get("f"));
-//                if(info.get("tf")!=null)tf.setText(info.get("tf"));
-//            }
-//            else if (sceneIndex == 6) {
-//                if(info.get("tn")!=null)reminderBox.setText(info.get("sln") + " Scouted Team " + info.get("tn") + ".");
-//            }
-            } else {
-                System.out.println("default case");
+        switch (sceneIndex) {
+            case 1:
+                reloadDataTextField(p_tnum, "p_tnum");
+                reloadDataTextField(p_mnum, "p_mnum");
+                reloadDataToggleGroup(p_ra, "p_ra");
+                reloadDataToggleGroup(p_sloc, "p_sloc");
+                break;
+            case 2:
+                reloadDataCheckBox(a_mob, "a_mob");
+                reloadDataToggleGroup(a_pre, "a_pre");
+                reloadDataGridFieldGP(a_grid, a_cones, a_cubes);
+                reloadDataGridFieldPickup(a_preGrid, a_pickup);
+                break;
+            case 3:
+                reloadDataTextField(t_cmty, "t_cmty");
+                reloadDataTextField(t_neutzone, "t_neutzone");
+                reloadDataTextField(t_singlesub, "t_singlesub");
+                reloadDataTextField(t_doublesub, "t_doublesub");
+                reloadDataGridFieldGP(t_grid, t_cones, t_cubes);
+                break;
+            case 4:
+                reloadDataCheckBox(e_shuttle, "e_shuttle");
+                reloadDataToggleGroup(e_balstat, "e_balstat");
+                reloadDataCheckBox(e_budclimb, "e_budclimb");
+                reloadDataTextField(e_timer, "e_timer");
+                break;
+            case 5:
+                reloadDataRating(n_dtrainrat, "n_dtrainrat");
+                reloadDataRating(n_intake, "n_intake");
+                reloadDataRating(n_spd, "n_spd");
+                reloadDataRating(n_drat, "n_drat");
+                reloadDataTextField(n_sn, "n_sn");
+                reloadDataToggleGroup(n_dtraintype, "n_dtraintype");
+                reloadDataTextArea(n_co, "n_co");
+                reloadDataCheckBox(n_everybot, "n_everybot");
+                break;
+            case 6:
+                if(info.get("p_tnum")!=null)reminderBox.setText(info.get("n_sn") + " Scouted Team #" + info.get("p_tnum") + ".");
+                break;
+            default:
+                System.out.println("reloadData() default");
+                break;
             }
+
     }
 
     //copies either data text or QR code based on button source that was clicked
@@ -340,6 +371,18 @@ public class FXMLController {
         }
     }
 
+    public void manipGPStart(ActionEvent event) {
+        Button btn = (Button) event.getSource();
+        System.out.println(btn.getUserData().toString());
+        if (btn.getStyle().contains("-fx-background-color: white;")) {
+            btn.setStyle("-fx-background-color: green; -fx-border-color: black;");
+            a_pickup.add(Integer.valueOf(btn.getUserData().toString()));
+        } else if (btn.getStyle().contains("-fx-background-color: green;")) {
+            btn.setStyle("-fx-background-color: white; -fx-border-color: black;");
+            a_pickup.remove(Integer.valueOf(btn.getUserData().toString()));
+        }
+    }
+
     public void manipCones(ActionEvent event) {
         Button btn = (Button) event.getSource();
         System.out.println(btn.getUserData().toString());
@@ -381,8 +424,56 @@ public class FXMLController {
     }
 
     //timer functions
-    public void startTimer(ActionEvent event) {((Timer)event.getSource()).start();}
-    public void stopTimer(ActionEvent event) {((Timer)event.getSource()).stop();}
-    public void resetTimer(ActionEvent event) {((Timer)event.getSource()).reset();}
+    public void startTimer(ActionEvent event) {e_timer.start();}
+    public void stopTimer(ActionEvent event) {e_timer.stop();}
+    public void resetTimer(ActionEvent event) {e_timer.reset();}
 
+    //template incrementer functions
+    public void increment(LimitedTextField txtfield) {
+        txtfield.setText(String.valueOf(Integer.parseInt(txtfield.getText())+1));}
+    public void decrement(LimitedTextField txtfield) {
+        if(!txtfield.getText().equals("0")) txtfield.setText(String.valueOf(Integer.parseInt(txtfield.getText())-1));}
+
+    //general methods for +/- buttons affecting corr. txtfields
+    public void incrementT_cmty(ActionEvent event) {increment(t_cmty);}
+    public void decrementT_cmty(ActionEvent event) {decrement(t_cmty);}
+    public void incrementT_neutzone(ActionEvent event) {increment(t_neutzone);}
+    public void decrementT_neutzone(ActionEvent event) {decrement(t_neutzone);}
+    public void incrementT_singlesub(ActionEvent event) {increment(t_singlesub);}
+    public void decrementT_singlesub(ActionEvent event) {decrement(t_singlesub);}
+    public void incrementT_doublesub(ActionEvent event) {increment(t_doublesub);}
+    public void decrementT_doublesub(ActionEvent event) {decrement(t_doublesub);}
+
+    //used in collectData()
+    private void collectDataCheckBox(CheckBox checkBox, String key) {info.put(key, String.valueOf(checkBox.isSelected()));}
+    private void collectDataTextField(LimitedTextField textField, String key) {info.put(key, textField.getText());}
+    private void collectDataArray(ArrayList<Integer> array, String key) {info.put(key, array.toString());}
+    private void collectDataRating(Rating rating, String key) {info.put(key, String.valueOf(rating.getRating()));}
+    private void collectDataTextArea(TextArea textArea, String key) {info.put(key, textArea.getText());}
+
+    //used in reloadData()
+    private void reloadDataCheckBox(CheckBox checkBox, String key) {checkBox.setSelected(Boolean.parseBoolean(info.get(key)));}
+    private void reloadDataTextField(LimitedTextField textField, String key) {textField.setText(info.get(key));}
+    private void reloadDataGridFieldGP(GridPane grid, ArrayList<Integer> coneArray, ArrayList<Integer> cubeArray) {
+        int gridLength = grid.getChildren().size();
+        for (int i=0; i < gridLength; i++) {
+            Button btn = (Button) grid.getChildren().get(i);
+            if (coneArray.contains(Integer.valueOf(btn.getUserData().toString()))) btn.setStyle("-fx-background-color: yellow; -fx-border-color: black;");
+            else if (cubeArray.contains(Integer.valueOf(btn.getUserData().toString()))) btn.setStyle("-fx-background-color: purple; -fx-border-color: black;");
+        }
+    }
+    private void reloadDataGridFieldPickup(GridPane grid, ArrayList<Integer> pickupArray) {
+        int gridLength = grid.getChildren().size();
+        for (int i=0; i < gridLength; i++) {
+            Button btn = (Button) grid.getChildren().get(i);
+            if (pickupArray.contains(Integer.valueOf(btn.getUserData().toString()))) btn.setStyle("-fx-background-color: green; -fx-border-color: black;");
+        }
+    }
+    private void reloadDataRating(Rating rating, String key) {if (info.get(key) != null) rating.setRating(Integer.parseInt(info.get(key)));}
+    private void reloadDataTextArea(TextArea textArea, String key) {textArea.setText(info.get(key));}
+    private void reloadDataToggleGroup(ToggleGroup toggleGroup, String key) {
+        int index = toggleGroup.getToggles().indexOf(toggleGroup.getSelectedToggle());
+        if (index >= 0) toggleGroup.getToggles().get(index).setUserData(info.get(key));
+        toggleMap.put(toggleGroup, index);
+    }
 }

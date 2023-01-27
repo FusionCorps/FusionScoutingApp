@@ -25,9 +25,3 @@ public void incrementACA() {increment(aca);}
 
     public void incrementTF() {increment(tf);}
     public void decrementTF() {decrement(tf);}
-
-    //don't edit, general methods for +/- buttons affecting corr. txtfields
-    public void increment(LimitedTextField txtfield) {
-        txtfield.setText(String.valueOf(Integer.parseInt(txtfield.getText())+1));}
-    public void decrement(LimitedTextField txtfield) {
-        if(!txtfield.getText().equals("0")) txtfield.setText(String.valueOf(Integer.parseInt(txtfield.getText())-1));}

@@ -3,14 +3,13 @@ package com.fusionscoutingapp;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.scene.control.Label;
 import javafx.util.Duration;
 
 /**
  * Created from scratch with the help of the ChatGPT bot.
  */
 
-public class Timer extends Label {
+public class Timer extends LimitedTextField {
     private int seconds = 0;
     private final Timeline timeline;
 
