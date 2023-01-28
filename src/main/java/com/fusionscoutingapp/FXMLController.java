@@ -59,10 +59,10 @@ public class FXMLController {
     @FXML private ToggleGroup a_pre; // GP type preload
     @FXML private GridPane a_grid; //GP grid
     @FXML private GridPane a_preGrid; //preload GP grid
+    @FXML private ToggleGroup a_balstat; //auton balance status
     private static ArrayList<Integer> a_pickup = new ArrayList<>(); //GP intaked at community
     private static ArrayList<Integer> a_cones = new ArrayList<>(); //cones placed
     private static ArrayList<Integer> a_cubes = new ArrayList<>(); //cubes placed
-    @FXML private ToggleGroup a_balstat; //auton balance status
 
     //page 3 - teleop
     @FXML private LimitedTextField t_cmty; //community GP intaked
@@ -78,7 +78,7 @@ public class FXMLController {
     @FXML private CheckBox e_shuttle; //shuttlebot
     @FXML private ToggleGroup e_balstat; //endgame balance status
     @FXML private CheckBox e_budclimb; //buddy climb
-    @FXML private Timer e_timer; //balance time
+    @FXML private TimerText e_timer; //balance time
 
     //page5 - qualitative notes
     @FXML private Rating n_dtrainrat; //drivetrain rating
@@ -113,24 +113,17 @@ public class FXMLController {
     private static StringBuilder data = new StringBuilder();
     private static boolean isNextPageClicked = false;
 
-    public FXMLController() {
-    }
-
     //runs at start of every load of a scene, defaults null values and reloads previously entered data
     public void initialize() {
 //        //setting presets for nullable checkboxes, so they are not null by default
-//        if (isNextPageClicked) {
-//            if (sceneIndex == 1) {
-//                ml.setValue("Quals");
-//                ran.setValue("Red-1");
-//                rp.setValue("1");
-//            }
-//            else if (sceneIndex == 4) cl.setValue("N/A or Failed");
-//            else if (sceneIndex ==5) {
-//                de.setValue("N/A");
-//                dp.setValue("N/A");
-//            }
-//        }
+        if (isNextPageClicked) {
+            if (sceneIndex == 3) {
+                t_cmty.setText("0");
+                t_neutzone.setText("0");
+                t_singlesub.setText("0");
+                t_doublesub.setText("0");
+            }
+        }
        //reload data for each page
        reloadData();
     }
@@ -177,21 +170,12 @@ public class FXMLController {
     //sends data to QR code creator and displays it on screen
     public void sendInfo() throws Exception {
        data = new StringBuilder();
-       Integer tca = Integer.parseInt(info.get("lcst")) + Integer.parseInt(info.get("ucst"))+ Integer.parseInt(info.get("cmdt"));
-       info.put("tca", String.valueOf(tca));
        for (Object keyName : info.keySet()) {
            data.append(keyName).append("=");
            if (info.get(keyName) == null) continue;
            else if (info.get(keyName).equals("true"))  data.append("1");
            else if (info.get(keyName).equals("false")) data.append("0");
            else if (info.get(keyName).equals("N/A") || info.get(keyName).equals("N/A or Failed")) data.append("0");
-           else if (info.get(keyName).equals("Below Average")) data.append("1");
-           else if (info.get(keyName).equals("Average")) data.append("2");
-           else if (info.get(keyName).equals("Above Average")) data.append("3");
-           else if (info.get(keyName).equals("Low Rung")) data.append("1");
-           else if (info.get(keyName).equals("Middle Rung")) data.append("2");
-           else if (info.get(keyName).equals("High Rung")) data.append("3");
-           else if (info.get(keyName).equals("Traversal Rung")) data.append("4");
            else data.append(info.get(keyName));
            data.append(";");
         }
@@ -209,7 +193,6 @@ public class FXMLController {
         outputAll();
 //        System.out.println(Arrays.toString(info.entrySet().toArray()) + "info sent");
         }
-
 
     private void collectDataToggleGroup(ToggleGroup toggleGroup, String key) {
         int index = toggleGroup.getToggles().indexOf(toggleGroup.getSelectedToggle());
@@ -231,7 +214,9 @@ public class FXMLController {
                 collectDataToggleGroup(a_pre, "a_pre");
                 collectDataArray(a_pickup, "a_pickup");
                 collectDataArray(a_cones, "a_cones");
+                t_cones.addAll(a_cones);
                 collectDataArray(a_cubes, "a_cubes");
+                t_cubes.addAll(a_cubes);
                 collectDataToggleGroup(a_balstat, "a_balstat");
                 break;
             case 3:
@@ -425,7 +410,7 @@ public class FXMLController {
 
     //timer functions
     public void startTimer(ActionEvent event) {e_timer.start();}
-    public void stopTimer(ActionEvent event) {e_timer.stop();}
+    public void stopTimer(ActionEvent event) {e_timer.pause();}
     public void resetTimer(ActionEvent event) {e_timer.reset();}
 
     //template incrementer functions
@@ -453,7 +438,7 @@ public class FXMLController {
 
     //used in reloadData()
     private void reloadDataCheckBox(CheckBox checkBox, String key) {checkBox.setSelected(Boolean.parseBoolean(info.get(key)));}
-    private void reloadDataTextField(LimitedTextField textField, String key) {textField.setText(info.get(key));}
+    private void reloadDataTextField(LimitedTextField textField, String key) {if (info.get(key) != null) textField.setText(info.get(key));}
     private void reloadDataGridFieldGP(GridPane grid, ArrayList<Integer> coneArray, ArrayList<Integer> cubeArray) {
         int gridLength = grid.getChildren().size();
         for (int i=0; i < gridLength; i++) {
@@ -469,7 +454,7 @@ public class FXMLController {
             if (pickupArray.contains(Integer.valueOf(btn.getUserData().toString()))) btn.setStyle("-fx-background-color: green; -fx-border-color: black;");
         }
     }
-    private void reloadDataRating(Rating rating, String key) {if (info.get(key) != null) rating.setRating(Integer.parseInt(info.get(key)));}
+    private void reloadDataRating(Rating rating, String key) {if (info.get(key) != null) rating.setRating(Double.parseDouble(info.get(key)));}
     private void reloadDataTextArea(TextArea textArea, String key) {textArea.setText(info.get(key));}
     private void reloadDataToggleGroup(ToggleGroup toggleGroup, String key) {
         int index = toggleGroup.getToggles().indexOf(toggleGroup.getSelectedToggle());
