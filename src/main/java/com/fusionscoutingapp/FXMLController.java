@@ -91,17 +91,6 @@ public class FXMLController {
     @FXML private Text f_reminderBox; //You scouted, "[insert team #]"
     @FXML private Text f_dataStr; //data string for QR code
 
-    private static final Map<ToggleGroup, Integer> toggleMap = new HashMap<>(); //map of toggle groups to their indexes
-    //map of toggle groups to their indexes
-     {
-        toggleMap.put(p_ra, 0);
-        toggleMap.put(p_sloc, 0);
-        toggleMap.put(a_pre, 0);
-        toggleMap.put(a_balstat, 0);
-        toggleMap.put(e_balstat, 0);
-        toggleMap.put(n_dtraintype, 0);
-    }
-
     //used for changing pages
     private static int sceneIndex = 0;
     private static BufferedImage bufferedImage;
@@ -132,7 +121,6 @@ public class FXMLController {
         nextPage(event);
     }
     public void nextPage(ActionEvent event) throws IOException {
-//        System.out.println("prev page is " + sceneIndex);
         collectData();
         if (sceneIndex == 6) sceneIndex = 1;
         else sceneIndex++;
@@ -150,7 +138,6 @@ public class FXMLController {
 
     //changes page to the scene specified by sceneIndex
     public static void setPage(Stage stage, int page) throws IOException {
-        System.out.println("page" + page);
         Parent root = FXMLLoader.load(FXMLController.class.getResource("scenes/scene" + (sceneIndex) + ".fxml"));
         Scene scene = new Scene(root);
         stage.setTitle("Scouting App Page" + (page));
@@ -169,27 +156,23 @@ public class FXMLController {
        for (Object keyName : info.keySet()) {
            data.append(keyName).append("=");
            if (info.get(keyName) == null) continue;
-           else if (info.get(keyName).equals("true"))  data.append("1");
-           else if (info.get(keyName).equals("false")) data.append("0");
-           else if (info.get(keyName).equals("N/A") || info.get(keyName).equals("N/A or Failed")) data.append("0");
+           else if (info.get(keyName).equals("true"))  data.append("T");
+           else if (info.get(keyName).equals("false")) data.append("F");
+           else if (info.get(keyName).equals("N/A") || info.get(keyName).equals("N/A or Failed")) data.append("NA");
            else data.append(info.get(keyName));
            data.append(";");
         }
-
         data = data.delete(data.lastIndexOf(";"), data.length());
 
-//        two plausible ways to send QR Code
-//        bufferedImage = QRFuncs.generateQRCode(data, "src\\main\\codes\\qrcode" + info.get("mn") + "-" + info.get("tn") +".png");
-         bufferedImage = QRFuncs.generateQRCode(data.toString(), "qrcode.png");
-        File file = new File("qrcode.png");
-        Image img = new Image(file.getAbsolutePath());
-        f_imageBox.setImage(img);
-        f_dataStr.setText(data.toString());
+       bufferedImage = QRFuncs.generateQRCode(data.toString(), "qrcode.png");
+       File file = new File("qrcode.png");
+       Image img = new Image(file.getAbsolutePath());
+       f_imageBox.setImage(img);
+       f_dataStr.setText(data.toString());
 
-        //saves output to QR Code and file on computer
-        outputAll();
-//        System.out.println(Arrays.toString(info.entrySet().toArray()) + "info sent");
-        }
+       //saves output to QR Code and file on computer
+       outputAll();
+       }
 
     //sends data to info storage HashMap, needs to be edited with introduction of new data elements
     public void collectData() {
@@ -231,14 +214,10 @@ public class FXMLController {
                 collectDataRating(n_drat, "n_drat");
                 collectDataTextField(n_sn, "n_sn");
                 collectDataToggleGroup(n_dtraintype, "n_dtraintype");
-                collectDataTextArea(n_co, "n_co");
+                collectDataTextArea(n_co);
                 collectDataCheckBox(n_everybot, "n_everybot");
                 break;
-            default:
-                System.out.println("collectData() default");
-                break;
         }
-        System.out.println("stuff:" + Arrays.toString(info.entrySet().toArray()));
     }
 
     //reloads data for a scene, should be called when loading scene
@@ -254,7 +233,7 @@ public class FXMLController {
                 reloadDataCheckBox(a_mob, "a_mob");
                 reloadDataToggleGroup(a_pre, "a_pre");
                 reloadDataGridFieldGP(a_grid, a_cones, a_cubes);
-                reloadDataGridFieldPickup(a_preGrid, a_pickup);
+                reloadDataGridFieldPickup(a_preGrid);
                 break;
             case 3:
                 reloadDataTextField(t_cmty, "t_cmty");
@@ -276,14 +255,11 @@ public class FXMLController {
                 reloadDataRating(n_drat, "n_drat");
                 reloadDataTextField(n_sn, "n_sn");
                 reloadDataToggleGroup(n_dtraintype, "n_dtraintype");
-                reloadDataTextArea(n_co, "n_co");
+                reloadDataTextArea(n_co);
                 reloadDataCheckBox(n_everybot, "n_everybot");
                 break;
             case 6:
                 if(info.get("p_tnum")!=null) f_reminderBox.setText(info.get("n_sn") + " Scouted Team #" + info.get("p_tnum") + ".");
-                break;
-            default:
-                System.out.println("reloadData() default");
                 break;
             }
 
@@ -307,18 +283,18 @@ public class FXMLController {
     public void outputAll() {
         //text file
         try {
-            FileWriter writer = new FileWriter("C:\\Users\\imren\\Desktop\\" +
+            FileWriter writer = new FileWriter("C:\\Users\\robotics\\Desktop\\" +
                     info.get("p_mnum") + "-" +
                     info.get("p_tnum") + "-" +
                     info.get("p_ran") + ".txt");
             writer.write(data.toString());
             writer.close();
         } catch (IOException e) {
-            System.out.println("outputData text file failed");
+            System.out.println("outputData() text file failed");
         }
         //qr code
         try {
-            String filePath = "C:\\Users\\imren\\Desktop\\" +
+            String filePath = "C:\\Users\\robotics\\Desktop\\" +
                     info.get("p_mnum") + "-" +
                     info.get("p_tnum") + "-" +
                     info.get("p_ran") + ".png";
@@ -326,7 +302,7 @@ public class FXMLController {
             File qrFile = new File(filePath);
             ImageIO.write(bufferedImage, fileType, qrFile);
         } catch (IOException e) {
-            System.out.println("outputData qr code failed");
+            System.out.println("outputData() qr code failed");
         }
     }
 
@@ -448,12 +424,11 @@ public class FXMLController {
     private void collectDataTextField(LimitedTextField textField, String key) {info.put(key, textField.getText());}
     private void collectDataArray(ArrayList<Integer> array, String key) {info.put(key, array.toString());}
     private void collectDataRating(Rating rating, String key) {info.put(key, String.valueOf(rating.getRating()));}
-    private void collectDataTextArea(TextArea textArea, String key) {info.put(key, textArea.getText());}
+    private void collectDataTextArea(TextArea textArea) {info.put("n_co", textArea.getText());}
     private void collectDataToggleGroup(ToggleGroup toggleGroup, String key) {
         int index = toggleGroup.getToggles().indexOf(toggleGroup.getSelectedToggle());
         if (index >= 0) info.put(key, toggleGroup.getToggles().get(index).getUserData().toString());
         else info.put(key, "null");
-        toggleMap.put(toggleGroup, index);
     }
 
     //used in reloadData()
@@ -467,18 +442,17 @@ public class FXMLController {
             else if (cubeArray.contains(Integer.valueOf(btn.getUserData().toString()))) btn.setStyle("-fx-background-color: purple; -fx-border-color: black;");
         }
     }
-    private void reloadDataGridFieldPickup(GridPane grid, ArrayList<Integer> pickupArray) {
+    private void reloadDataGridFieldPickup(GridPane grid) {
         int gridLength = grid.getChildren().size();
         for (int i=0; i < gridLength; i++) {
             Button btn = (Button) grid.getChildren().get(i);
-            if (pickupArray.contains(Integer.valueOf(btn.getUserData().toString()))) btn.setStyle("-fx-background-color: green; -fx-border-color: black;");
+            if (FXMLController.a_pickup.contains(Integer.valueOf(btn.getUserData().toString()))) btn.setStyle("-fx-background-color: green; -fx-border-color: black;");
         }
     }
     private void reloadDataRating(Rating rating, String key) {if (info.get(key) != null) rating.setRating(Double.parseDouble(info.get(key)));}
-    private void reloadDataTextArea(TextArea textArea, String key) {textArea.setText(info.get(key));}
+    private void reloadDataTextArea(TextArea textArea) {textArea.setText(info.get("n_co"));}
     private void reloadDataToggleGroup(ToggleGroup toggleGroup, String key) {
         int index = toggleGroup.getToggles().indexOf(toggleGroup.getSelectedToggle());
         if (index >= 0) toggleGroup.getToggles().get(index).setUserData(info.get(key));
-        toggleMap.put(toggleGroup, index);
     }
 }
