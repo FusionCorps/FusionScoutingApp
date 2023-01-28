@@ -11,12 +11,12 @@
 <?import javafx.scene.text.Text?>
 
 <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1324.0" style="-fx-background-color: #e16767;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fusionscoutingapp.FXMLController">
-   <Button layoutX="20.0" layoutY="430.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="170.0" style="-fx-font-weight: bold;" text="Prev Page">
+   <Button layoutX="40.0" layoutY="800.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="170.0" text="Prev Page">
       <font>
          <Font size="27.0" />
       </font>
    </Button>
-   <Button layoutX="1140.0" layoutY="430.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="60.0" prefWidth="170.0" style="-fx-font-weight: bold;" text="Next Page">
+   <Button layoutX="1110.0" layoutY="800.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="60.0" prefWidth="170.0" text="Next Page">
       <font>
          <Font size="27.0" />
       </font>
@@ -31,22 +31,22 @@
          <Font size="72.0" />
       </font>
    </Label>
-   <Label layoutX="589.0" layoutY="145.0" style="-fx-font-weight: bold;" text="Charging Station" textAlignment="CENTER">
+   <Label layoutX="730.0" layoutY="144.0" style="-fx-font-weight: bold;" text="Charging Station" textAlignment="CENTER">
       <font>
          <Font size="32.0" />
       </font>
    </Label>
-   <TimerText fx:id="e_timer" editable="false" layoutX="435.0" layoutY="120.0" prefHeight="56.0" prefWidth="93.0" style="-fx-font-weight: bold;" text="0.00">
+   <TimerText fx:id="e_timer" editable="false" layoutX="435.0" layoutY="120.0" prefHeight="56.0" prefWidth="93.0" text="0.00">
       <font>
          <Font size="26.0" />
       </font>
    </TimerText>
-   <CheckBox fx:id="e_shuttle" layoutX="63.0" layoutY="274.0" mnemonicParsing="false" style="-fx-font-weight: bold;" text="Shuttlebot?">
+   <CheckBox fx:id="e_shuttle" layoutX="50.0" layoutY="351.0" mnemonicParsing="false" text="Shuttlebot?">
       <font>
          <Font size="32.0" />
       </font>
    </CheckBox>
-   <CheckBox fx:id="e_budclimb" layoutX="63.0" layoutY="321.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="404.0" style="-fx-font-weight: bold;" text="Buddy Climb? (helped other robot climb)" wrapText="true">
+   <CheckBox fx:id="e_budclimb" layoutX="50.0" layoutY="438.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="404.0" text="Buddy Climb? (helped other robot climb)" wrapText="true">
       <font>
          <Font size="32.0" />
       </font>
@@ -66,7 +66,7 @@
          <Font size="27.0" />
       </font>
    </Button>
-   <RadioButton layoutX="597.0" layoutY="202.0" mnemonicParsing="false" text="Engage">
+   <RadioButton layoutX="650.0" layoutY="207.0" mnemonicParsing="false" text="Engage">
       <font>
          <Font size="32.0" />
       </font>
@@ -74,22 +74,22 @@
          <ToggleGroup fx:id="e_balstat" />
       </toggleGroup>
    </RadioButton>
-   <RadioButton layoutX="783.0" layoutY="202.0" mnemonicParsing="false" text="Dock" toggleGroup="$e_balstat">
+   <RadioButton layoutX="900.0" layoutY="207.0" mnemonicParsing="false" text="Dock" toggleGroup="$e_balstat">
       <font>
          <Font size="32.0" />
       </font>
    </RadioButton>
-   <RadioButton layoutX="791.0" layoutY="263.0" mnemonicParsing="false" text="Fail" toggleGroup="$e_balstat">
+   <RadioButton layoutX="900.0" layoutY="351.0" mnemonicParsing="false" text="Fail" toggleGroup="$e_balstat">
       <font>
          <Font size="32.0" />
       </font>
    </RadioButton>
-   <RadioButton layoutX="597.0" layoutY="263.0" mnemonicParsing="false" text="Park" toggleGroup="$e_balstat">
+   <RadioButton layoutX="650.0" layoutY="277.0" mnemonicParsing="false" text="Park" toggleGroup="$e_balstat">
       <font>
          <Font size="32.0" />
       </font>
    </RadioButton>
-   <RadioButton layoutX="599.0" layoutY="327.0" mnemonicParsing="false" text="N/A" toggleGroup="$e_balstat">
+   <RadioButton layoutX="650.0" layoutY="351.0" mnemonicParsing="false" text="N/A" toggleGroup="$e_balstat">
       <font>
          <Font size="32.0" />
       </font>

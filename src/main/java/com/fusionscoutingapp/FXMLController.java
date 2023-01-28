@@ -57,9 +57,9 @@ public class FXMLController {
     @FXML private GridPane a_grid; //GP grid
     @FXML private GridPane a_preGrid; //preload GP grid
     @FXML private ToggleGroup a_balstat; //auton balance status
-    private static ArrayList<Integer> a_pickup = new ArrayList<>(); //GP intaked at community
-    private static ArrayList<Integer> a_cones = new ArrayList<>(); //cones placed
-    private static ArrayList<Integer> a_cubes = new ArrayList<>(); //cubes placed
+    private static final ArrayList<Integer> a_pickup = new ArrayList<>(); //GP intaked at community
+    private static final ArrayList<Integer> a_cones = new ArrayList<>(); //cones placed
+    private static final ArrayList<Integer> a_cubes = new ArrayList<>(); //cubes placed
 
     //page 3 - teleop
     @FXML private LimitedTextField t_cmty; //community GP intaked
@@ -67,8 +67,8 @@ public class FXMLController {
     @FXML private LimitedTextField t_singlesub; //singlesub GP intaked
     @FXML private LimitedTextField t_doublesub; //doublesub GP intaked
     @FXML private GridPane t_grid; //GP grid
-    private static ArrayList<Integer> t_cones = new ArrayList<>(); //cones intaked
-    private static ArrayList<Integer> t_cubes = new ArrayList<>(); //cubes intaked
+    private static final ArrayList<Integer> t_cones = new ArrayList<>(); //cones intaked
+    private static final ArrayList<Integer> t_cubes = new ArrayList<>(); //cubes intaked
 
 
     //page 4 - endgame
@@ -88,10 +88,11 @@ public class FXMLController {
     @FXML private CheckBox n_everybot; //everybot
 
     //page6 - QR code
-    @FXML private ImageView imageBox; //QR code image display box
-    @FXML private Text reminderBox; //You scouted, "[insert team #]"
+    @FXML private ImageView f_imageBox; //QR code image display box
+    @FXML private Text f_reminderBox; //You scouted, "[insert team #]"
+    @FXML private Text f_dataStr; //data string for QR code
 
-    private static Map<ToggleGroup, Integer> toggleMap = new HashMap(); //map of toggle groups to their indexes
+    private static final Map<ToggleGroup, Integer> toggleMap = new HashMap<>(); //map of toggle groups to their indexes
     //map of toggle groups to their indexes
      {
         toggleMap.put(p_ra, 0);
@@ -183,7 +184,8 @@ public class FXMLController {
          bufferedImage = QRFuncs.generateQRCode(data.toString(), "qrcode.png");
         File file = new File("qrcode.png");
         Image img = new Image(file.getAbsolutePath());
-        imageBox.setImage(img);
+        f_imageBox.setImage(img);
+        f_dataStr.setText(data.toString());
 
         //saves output to QR Code and file on computer
         outputAll();
@@ -279,7 +281,7 @@ public class FXMLController {
                 reloadDataCheckBox(n_everybot, "n_everybot");
                 break;
             case 6:
-                if(info.get("p_tnum")!=null)reminderBox.setText(info.get("n_sn") + " Scouted Team #" + info.get("p_tnum") + ".");
+                if(info.get("p_tnum")!=null) f_reminderBox.setText(info.get("n_sn") + " Scouted Team #" + info.get("p_tnum") + ".");
                 break;
             default:
                 System.out.println("reloadData() default");
@@ -360,49 +362,71 @@ public class FXMLController {
 
     public void manipCones(ActionEvent event) {
         Button btn = (Button) event.getSource();
+        int btnVal = Integer.parseInt(btn.getUserData().toString());
+        //if button is white, make it yellow; add to a_cones/t_cones
         if (btn.getStyle().contains("-fx-background-color: white;")) {
             btn.setStyle("-fx-background-color: yellow; -fx-border-color: black;");
-            if (sceneIndex == 2)  a_cones.add(Integer.valueOf(btn.getUserData().toString()));
-            else if (sceneIndex == 3) t_cones.add(Integer.parseInt(btn.getUserData().toString()));
-        } else if (btn.getStyle().contains("-fx-background-color: yellow;")) {
+            if (sceneIndex == 2)  a_cones.add(btnVal);
+            else if (sceneIndex == 3) t_cones.add(btnVal);
+        }
+        //if button is yellow, make it white; remove from a_cones/t_cones
+        else if (btn.getStyle().contains("-fx-background-color: yellow;")) {
             btn.setStyle("-fx-background-color: white; -fx-border-color: black;");
-            if (sceneIndex == 2)  a_cones.remove(Integer.valueOf(btn.getUserData().toString()));
-            else if (sceneIndex == 3) t_cones.remove(Integer.parseInt(btn.getUserData().toString()));
+            if (sceneIndex == 2)  a_cones.remove((Integer)btnVal);
+            else if (sceneIndex == 3) t_cones.remove((Integer)btnVal);
         }
     }
+
     public void manipCubes(ActionEvent event) {
-            Button btn = (Button) event.getSource();
-            if (btn.getStyle().contains("-fx-background-color: white;")) {
+        Button btn = (Button) event.getSource();
+        int btnVal = Integer.parseInt(btn.getUserData().toString());
+        //if button is white, make it purple; add to a_cubes/t_cubes
+        if (btn.getStyle().contains("-fx-background-color: white;")) {
                 btn.setStyle("-fx-background-color: purple; -fx-border-color: black;");
-                if (sceneIndex==2)  a_cubes.add(Integer.valueOf(btn.getUserData().toString()));
-                else if (sceneIndex == 3) t_cubes.add(Integer.parseInt(btn.getUserData().toString()));
-            } else if (btn.getStyle().contains("-fx-background-color: purple;")) {
+                if (sceneIndex==2)  a_cubes.add(btnVal);
+                else if (sceneIndex == 3) t_cubes.add(btnVal);
+            }
+        //if button is purple, make it white; remove from a_cubes/t_cubes
+        else if (btn.getStyle().contains("-fx-background-color: purple;")) {
                 btn.setStyle("-fx-background-color: white; -fx-border-color: black;");
-                if (sceneIndex==2)  a_cubes.remove(Integer.valueOf(btn.getUserData().toString()));
-                else if (sceneIndex==3) t_cubes.remove(Integer.parseInt(btn.getUserData().toString()));
+                if (sceneIndex==2)  a_cubes.remove((Integer)btnVal);
+                else if (sceneIndex==3) t_cubes.remove((Integer)btnVal);
             }
         }
+
     public void manipVar(ActionEvent event) {
         Button btn = (Button) event.getSource();
+        int btnVal = Integer.parseInt(btn.getUserData().toString());
+        //if button is white, make it yellow; add to a_cones/t_cones
         if (btn.getStyle().contains("-fx-background-color: white;")) {
             btn.setStyle("-fx-background-color: yellow; -fx-border-color: black;");
-            a_cones.add(Integer.valueOf(btn.getUserData().toString()));
-        } else if (btn.getStyle().contains("-fx-background-color: yellow;")) {
-            btn.setStyle("-fx-background-color: purple; -fx-border-color: black;");
-            a_cones.remove(Integer.valueOf(btn.getUserData().toString()));
-            a_cubes.add(Integer.valueOf(btn.getUserData().toString()));
-
+            if (sceneIndex == 2)  a_cones.add(btnVal);
+            else if (sceneIndex == 3) t_cones.add(btnVal);
         }
+        //if button is yellow, make it purple; remove from a_cones/t_cones, add to a_cubes/t_cubes
+        else if (btn.getStyle().contains("-fx-background-color: yellow;")) {
+            btn.setStyle("-fx-background-color: purple; -fx-border-color: black;");
+            if (sceneIndex == 2)  {
+                a_cones.remove((Integer)btnVal);
+                a_cubes.add(btnVal);
+            }
+            else if (sceneIndex == 3) {
+                t_cones.remove((Integer)btnVal);
+                t_cubes.add(btnVal);
+            }
+        }
+        //if button is purple, make it white; remove from a_cubes/t_cubes
         else if (btn.getStyle().contains("-fx-background-color: purple;")) {
             btn.setStyle("-fx-background-color: white; -fx-border-color: black;");
-            a_cubes.remove(Integer.valueOf(btn.getUserData().toString()));
+            if (sceneIndex == 2)  a_cubes.remove((Integer)btnVal);
+            else if (sceneIndex == 3) t_cubes.remove((Integer)btnVal);
         }
     }
 
     //timer functions
-    public void startTimer(ActionEvent event) {e_timer.start();}
-    public void stopTimer(ActionEvent event) {e_timer.pause();}
-    public void resetTimer(ActionEvent event) {e_timer.reset();}
+    public void startTimer(ActionEvent ignoredEvent) {e_timer.start();}
+    public void stopTimer(ActionEvent ignoredEvent) {e_timer.pause();}
+    public void resetTimer(ActionEvent ignoredEvent) {e_timer.reset();}
 
     //template incrementer functions
     public void increment(LimitedTextField txtfield) {
@@ -411,14 +435,14 @@ public class FXMLController {
         if(!txtfield.getText().equals("0")) txtfield.setText(String.valueOf(Integer.parseInt(txtfield.getText())-1));}
 
     //general methods for +/- buttons affecting corr. txtfields
-    public void incrementT_cmty(ActionEvent event) {increment(t_cmty);}
-    public void decrementT_cmty(ActionEvent event) {decrement(t_cmty);}
-    public void incrementT_neutzone(ActionEvent event) {increment(t_neutzone);}
-    public void decrementT_neutzone(ActionEvent event) {decrement(t_neutzone);}
-    public void incrementT_singlesub(ActionEvent event) {increment(t_singlesub);}
-    public void decrementT_singlesub(ActionEvent event) {decrement(t_singlesub);}
-    public void incrementT_doublesub(ActionEvent event) {increment(t_doublesub);}
-    public void decrementT_doublesub(ActionEvent event) {decrement(t_doublesub);}
+    public void incrementT_cmty(ActionEvent ignoredEvent) {increment(t_cmty);}
+    public void decrementT_cmty(ActionEvent ignoredEvent) {decrement(t_cmty);}
+    public void incrementT_neutzone(ActionEvent ignoredEvent) {increment(t_neutzone);}
+    public void decrementT_neutzone(ActionEvent ignoredEvent) {decrement(t_neutzone);}
+    public void incrementT_singlesub(ActionEvent ignoredEvent) {increment(t_singlesub);}
+    public void decrementT_singlesub(ActionEvent ignoredEvent) {decrement(t_singlesub);}
+    public void incrementT_doublesub(ActionEvent ignoredEvent) {increment(t_doublesub);}
+    public void decrementT_doublesub(ActionEvent ignoredEvent) {decrement(t_doublesub);}
 
     //used in collectData()
     private void collectDataCheckBox(CheckBox checkBox, String key) {info.put(key, String.valueOf(checkBox.isSelected()));}

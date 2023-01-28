@@ -13,18 +13,18 @@
          <Font size="72.0" />
       </font>
    </Button>
-   <Button alignment="CENTER" contentDisplay="CENTER" layoutX="1049.0" layoutY="546.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#resetAll" prefHeight="251.0" prefWidth="252.0" style="-fx-background-color: #ff0000;" text="Start Over" textFill="#00ff1e" wrapText="true">
+   <Button alignment="CENTER" contentDisplay="CENTER" layoutX="1061.0" layoutY="593.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#resetAll" prefHeight="251.0" prefWidth="242.0" style="-fx-background-color: #ff0000;" text="Start Over" textFill="#00ff1e" wrapText="true">
       <font>
          <Font size="68.0" />
       </font>
    </Button>
-   <Button layoutX="69.0" layoutY="554.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="224.0" prefWidth="206.0" text="Prev Page">
+   <Button layoutX="70.0" layoutY="606.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="224.0" prefWidth="206.0" text="Prev Page">
       <font>
          <Font size="36.0" />
       </font>
    </Button>
-   <ImageView fx:id="imageBox" fitHeight="510.0" fitWidth="510.0" layoutX="407.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true" />
-   <Button layoutX="69.0" layoutY="232.0" mnemonicParsing="false" onAction="#copyToClipboard" prefHeight="237.0" prefWidth="206.0" text="Copy Data (Text)" textAlignment="CENTER" wrapText="true">
+   <ImageView fx:id="f_imageBox" fitHeight="510.0" fitWidth="510.0" layoutX="407.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true" />
+   <Button layoutX="72.0" layoutY="256.0" mnemonicParsing="false" onAction="#copyToClipboard" prefHeight="237.0" prefWidth="206.0" text="Copy Data (Text)" textAlignment="CENTER" wrapText="true">
       <font>
          <Font size="34.0" />
       </font>
@@ -34,8 +34,13 @@
          <Font size="34.0" />
       </font>
    </Button>
-   <Text fx:id="reminderBox" fill="WHITE" layoutX="62.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You Scouted Team XXXX." wrappingWidth="200.0">
+   <Text fx:id="f_reminderBox" fill="WHITE" layoutX="62.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You Scouted Team XXXX." wrappingWidth="200.0">
       <font>
          <Font size="39.0" />
       </font></Text>
+   <Text fx:id="f_dataStr" fill="WHITE" layoutX="108.0" layoutY="913.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="1106.9367980957031">
+      <font>
+         <Font size="24.0" />
+      </font>
+   </Text>
 </Pane>

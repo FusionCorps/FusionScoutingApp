@@ -32,7 +32,7 @@
       <font>
          <Font size="23.0" />
       </font></TextArea>
-   <CheckBox fx:id="n_everybot" layoutX="474.0" layoutY="131.0" mnemonicParsing="false" style="-fx-font-weight: bold;" text="Everybot?">
+   <CheckBox fx:id="n_everybot" layoutX="474.0" layoutY="131.0" mnemonicParsing="false" text="Everybot?">
       <font>
          <Font size="32.0" />
       </font>
@@ -71,7 +71,7 @@
          <Font size="16.0" />
       </font>
    </LimitedTextField>
-   <RadioButton layoutX="52.0" layoutY="170.0" mnemonicParsing="false" style="-fx-font-weight: bold;" text="Swerve">
+   <RadioButton layoutX="52.0" layoutY="170.0" mnemonicParsing="false" text="Swerve">
       <font>
          <Font size="22.0" />
       </font>
@@ -79,7 +79,7 @@
          <ToggleGroup fx:id="n_dtraintype" />
       </toggleGroup>
    </RadioButton>
-   <RadioButton layoutX="198.0" layoutY="171.0" mnemonicParsing="false" style="-fx-font-weight: bold;" text="Tank" toggleGroup="$n_dtraintype">
+   <RadioButton layoutX="198.0" layoutY="171.0" mnemonicParsing="false" text="Tank" toggleGroup="$n_dtraintype">
       <font>
          <Font size="22.0" />
       </font>
