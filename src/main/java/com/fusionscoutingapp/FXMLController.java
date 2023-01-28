@@ -31,10 +31,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class FXMLController {
 
@@ -193,12 +190,6 @@ public class FXMLController {
 //        System.out.println(Arrays.toString(info.entrySet().toArray()) + "info sent");
         }
 
-    private void collectDataToggleGroup(ToggleGroup toggleGroup, String key) {
-        int index = toggleGroup.getToggles().indexOf(toggleGroup.getSelectedToggle());
-        if (index >= 0) info.put(key, toggleGroup.getToggles().get(index).getUserData().toString());
-        toggleMap.put(toggleGroup, index);
-    }
-
     //sends data to info storage HashMap, needs to be edited with introduction of new data elements
     public void collectData() {
         switch (sceneIndex) {
@@ -213,9 +204,9 @@ public class FXMLController {
                 collectDataToggleGroup(a_pre, "a_pre");
                 collectDataArray(a_pickup, "a_pickup");
                 collectDataArray(a_cones, "a_cones");
-                t_cones.addAll(a_cones);
+                for (Integer i: a_cones) {if (!t_cones.contains(i)) t_cones.add(i);}
                 collectDataArray(a_cubes, "a_cubes");
-                t_cubes.addAll(a_cubes);
+                for (Integer i: a_cubes) {if (!t_cubes.contains(i)) t_cubes.add(i);}
                 collectDataToggleGroup(a_balstat, "a_balstat");
                 break;
             case 3:
@@ -369,25 +360,26 @@ public class FXMLController {
 
     public void manipCones(ActionEvent event) {
         Button btn = (Button) event.getSource();
-        System.out.println(btn.getUserData().toString());
         if (btn.getStyle().contains("-fx-background-color: white;")) {
             btn.setStyle("-fx-background-color: yellow; -fx-border-color: black;");
-            a_cones.add(Integer.valueOf(btn.getUserData().toString()));
+            if (sceneIndex == 2)  a_cones.add(Integer.valueOf(btn.getUserData().toString()));
+            else if (sceneIndex == 3) t_cones.add(Integer.parseInt(btn.getUserData().toString()));
         } else if (btn.getStyle().contains("-fx-background-color: yellow;")) {
             btn.setStyle("-fx-background-color: white; -fx-border-color: black;");
-            a_cones.remove(Integer.valueOf(btn.getUserData().toString()));
+            if (sceneIndex == 2)  a_cones.remove(Integer.valueOf(btn.getUserData().toString()));
+            else if (sceneIndex == 3) t_cones.remove(Integer.parseInt(btn.getUserData().toString()));
         }
     }
     public void manipCubes(ActionEvent event) {
             Button btn = (Button) event.getSource();
-            System.out.println();
             if (btn.getStyle().contains("-fx-background-color: white;")) {
                 btn.setStyle("-fx-background-color: purple; -fx-border-color: black;");
-                a_cubes.add(Integer.valueOf(btn.getUserData().toString()));
+                if (sceneIndex==2)  a_cubes.add(Integer.valueOf(btn.getUserData().toString()));
+                else if (sceneIndex == 3) t_cubes.add(Integer.parseInt(btn.getUserData().toString()));
             } else if (btn.getStyle().contains("-fx-background-color: purple;")) {
                 btn.setStyle("-fx-background-color: white; -fx-border-color: black;");
-                a_cubes.remove(Integer.valueOf(btn.getUserData().toString()));
-
+                if (sceneIndex==2)  a_cubes.remove(Integer.valueOf(btn.getUserData().toString()));
+                else if (sceneIndex==3) t_cubes.remove(Integer.parseInt(btn.getUserData().toString()));
             }
         }
     public void manipVar(ActionEvent event) {
@@ -434,6 +426,11 @@ public class FXMLController {
     private void collectDataArray(ArrayList<Integer> array, String key) {info.put(key, array.toString());}
     private void collectDataRating(Rating rating, String key) {info.put(key, String.valueOf(rating.getRating()));}
     private void collectDataTextArea(TextArea textArea, String key) {info.put(key, textArea.getText());}
+    private void collectDataToggleGroup(ToggleGroup toggleGroup, String key) {
+        int index = toggleGroup.getToggles().indexOf(toggleGroup.getSelectedToggle());
+        if (index >= 0) info.put(key, toggleGroup.getToggles().get(index).getUserData().toString());
+        toggleMap.put(toggleGroup, index);
+    }
 
     //used in reloadData()
     private void reloadDataCheckBox(CheckBox checkBox, String key) {checkBox.setSelected(Boolean.parseBoolean(info.get(key)));}
