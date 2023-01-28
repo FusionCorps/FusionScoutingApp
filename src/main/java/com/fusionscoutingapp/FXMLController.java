@@ -134,7 +134,6 @@ public class FXMLController {
         info = new HashMap<>();
         nextPage(event);
     }
-
     public void nextPage(ActionEvent event) throws IOException {
 //        System.out.println("prev page is " + sceneIndex);
         collectData();
@@ -316,7 +315,7 @@ public class FXMLController {
     public void outputAll() {
         //text file
         try {
-            FileWriter writer = new FileWriter("C:\\Users\\robotics\\Desktop\\scoutingFiles\\" +
+            FileWriter writer = new FileWriter("C:\\Users\\imren\\Desktop\\" +
                     info.get("p_mnum") + "-" +
                     info.get("p_tnum") + "-" +
                     info.get("p_ran") + ".txt");
@@ -327,7 +326,7 @@ public class FXMLController {
         }
         //qr code
         try {
-            String filePath = "C:\\Users\\robotics\\Desktop\\scoutingQRCodes\\" +
+            String filePath = "C:\\Users\\imren\\Desktop\\" +
                     info.get("p_mnum") + "-" +
                     info.get("p_tnum") + "-" +
                     info.get("p_ran") + ".png";
