@@ -46,12 +46,12 @@
 <!--      <font>-->
 <!--         <Font size="18.0" />-->
 <!--      </font></Button>-->
-   <Button layoutX="40.0" layoutY="800.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="170.0" text="Prev Page">
+   <Button layoutX="40.0" layoutY="750.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="170.0" text="Prev Page">
       <font>
          <Font size="27.0" />
       </font>
    </Button>
-   <Button layoutX="1110.0" layoutY="800.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="60.0" prefWidth="170.0" text="Next Page">
+   <Button layoutX="1110.0" layoutY="750.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="60.0" prefWidth="170.0" text="Next Page">
       <font>
          <Font size="27.0" />
       </font>

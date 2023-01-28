@@ -70,7 +70,6 @@ public class FXMLController {
     private static final ArrayList<Integer> t_cones = new ArrayList<>(); //cones intaked
     private static final ArrayList<Integer> t_cubes = new ArrayList<>(); //cubes intaked
 
-
     //page 4 - endgame
     @FXML private CheckBox e_shuttle; //shuttlebot
     @FXML private ToggleGroup e_balstat; //endgame balance status
@@ -453,6 +452,7 @@ public class FXMLController {
     private void collectDataToggleGroup(ToggleGroup toggleGroup, String key) {
         int index = toggleGroup.getToggles().indexOf(toggleGroup.getSelectedToggle());
         if (index >= 0) info.put(key, toggleGroup.getToggles().get(index).getUserData().toString());
+        else info.put(key, "null");
         toggleMap.put(toggleGroup, index);
     }
 

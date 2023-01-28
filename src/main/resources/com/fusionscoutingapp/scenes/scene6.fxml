@@ -13,23 +13,23 @@
          <Font size="72.0" />
       </font>
    </Button>
-   <Button alignment="CENTER" contentDisplay="CENTER" layoutX="1061.0" layoutY="593.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#resetAll" prefHeight="251.0" prefWidth="242.0" style="-fx-background-color: #ff0000;" text="Start Over" textFill="#00ff1e" wrapText="true">
+   <Button alignment="CENTER" contentDisplay="CENTER" layoutX="1084.0" layoutY="448.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#resetAll" prefHeight="207.0" prefWidth="200.0" style="-fx-background-color: #ff0000;" text="Start Over" textAlignment="CENTER" textFill="#00ff1e" wrapText="true">
       <font>
-         <Font size="68.0" />
+         <Font size="56.0" />
       </font>
    </Button>
-   <Button layoutX="70.0" layoutY="606.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="224.0" prefWidth="206.0" text="Prev Page">
+   <Button layoutX="77.0" layoutY="473.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="100.0" prefWidth="215.0" text="Prev Page">
       <font>
          <Font size="36.0" />
       </font>
    </Button>
-   <ImageView fx:id="f_imageBox" fitHeight="510.0" fitWidth="510.0" layoutX="407.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true" />
-   <Button layoutX="72.0" layoutY="256.0" mnemonicParsing="false" onAction="#copyToClipboard" prefHeight="237.0" prefWidth="206.0" text="Copy Data (Text)" textAlignment="CENTER" wrapText="true">
+   <ImageView fx:id="f_imageBox" fitHeight="420.0" fitWidth="420.0" layoutX="466.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true" />
+   <Button layoutX="72.0" layoutY="256.0" mnemonicParsing="false" onAction="#copyToClipboard" prefHeight="150.0" prefWidth="215.0" text="Copy Data (Text)" textAlignment="CENTER" wrapText="true">
       <font>
          <Font size="34.0" />
       </font>
    </Button>
-   <Button layoutX="1082.0" layoutY="247.0" mnemonicParsing="false" onAction="#copyToClipboard" prefHeight="227.0" prefWidth="206.0" text="Copy Data (QR Code)" textAlignment="CENTER" wrapText="true">
+   <Button layoutX="1082.0" layoutY="247.0" mnemonicParsing="false" onAction="#copyToClipboard" prefHeight="150.0" prefWidth="215.0" text="Copy Data (QR Code)" textAlignment="CENTER" wrapText="true">
       <font>
          <Font size="34.0" />
       </font>
@@ -38,9 +38,9 @@
       <font>
          <Font size="39.0" />
       </font></Text>
-   <Text fx:id="f_dataStr" fill="WHITE" layoutX="108.0" layoutY="913.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="1106.9367980957031">
+   <Text fx:id="f_dataStr" fill="WHITE" layoutX="117.0" layoutY="710.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="1026.1368942260742">
       <font>
-         <Font size="24.0" />
+         <Font size="15.0" />
       </font>
    </Text>
 </Pane>
