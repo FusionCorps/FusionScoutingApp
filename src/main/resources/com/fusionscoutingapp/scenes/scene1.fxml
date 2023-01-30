@@ -29,7 +29,7 @@
          <Font size="32.0" />
       </font>
    </Text>
-   <LimitedTextField fx:id="p_mnum" layoutX="252.0" layoutY="186.0" onKeyPressed="#limit" prefHeight="40.0" prefWidth="170.0">
+   <LimitedTextField fx:id="p_mnum" layoutX="252.0" layoutY="186.0" onKeyPressed="#validateInput" prefHeight="40.0" prefWidth="170.0">
       <font>
          <Font size="18.0" />
       </font></LimitedTextField>
@@ -39,7 +39,7 @@
          <Font size="32.0" />
       </font>
    </Text>
-   <LimitedTextField fx:id="p_tnum" layoutX="238.0" layoutY="100.0" onKeyPressed="#limit" promptText="27/118/6672">
+   <LimitedTextField fx:id="p_tnum" layoutX="238.0" layoutY="100.0" onKeyPressed="#validateInput" promptText="27/118/6672">
       <font>
          <Font size="17.0" />
       </font></LimitedTextField>

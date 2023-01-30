@@ -60,18 +60,18 @@
          <Font size="32.0" />
       </font>
    </Label>
-   <Rating fx:id="n_dtrainrat" layoutX="230.0" layoutY="122.0" />
+   <Rating fx:id="n_dtrainrat" layoutX="230.0" layoutY="122.0" rating="3.0"/>
    <Text layoutX="480.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Scouter Name">
       <font>
          <Font size="32.0" />
       </font>
    </Text>
-   <LimitedTextField fx:id="n_sn" layoutX="470.0" layoutY="290.0" onKeyPressed="#limit" prefHeight="36.0" prefWidth="233.0" promptText="John D / John Doe">
+   <LimitedTextField fx:id="n_sn" layoutX="470.0" layoutY="290.0" onKeyPressed="#validateInput" prefHeight="36.0" prefWidth="233.0" promptText="John D / John Doe">
       <font>
          <Font size="16.0" />
       </font>
    </LimitedTextField>
-   <RadioButton layoutX="52.0" layoutY="170.0" mnemonicParsing="false" text="Swerve">
+   <RadioButton layoutX="52.0" layoutY="170.0" mnemonicParsing="false" text="Swerve" userData="Swerve">
       <font>
          <Font size="22.0" />
       </font>
@@ -79,7 +79,7 @@
          <ToggleGroup fx:id="n_dtraintype" />
       </toggleGroup>
    </RadioButton>
-   <RadioButton layoutX="198.0" layoutY="171.0" mnemonicParsing="false" text="Tank" toggleGroup="$n_dtraintype">
+   <RadioButton layoutX="198.0" layoutY="171.0" mnemonicParsing="false" text="Tank" toggleGroup="$n_dtraintype" userData="Tank">
       <font>
          <Font size="22.0" />
       </font>

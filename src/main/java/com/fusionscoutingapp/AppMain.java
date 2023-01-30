@@ -25,13 +25,12 @@ public class AppMain extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLController.setPage(primaryStage, 0);
+        FXMLController.setPage(primaryStage, 5);
     }
 
     public static void main(String[] args) {
         launch();
     }
-
 
 }
 

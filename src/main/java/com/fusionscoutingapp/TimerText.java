@@ -52,8 +52,8 @@ public class TimerText extends LimitedTextField {
     }
 
     private void update() {
-        double seconds = elapsedTime / 1000;
-        double milliseconds = elapsedTime % 100;
-        setText(String.format("%d.%d", (int) seconds, (int) milliseconds));
+        int seconds = (int) (elapsedTime / 1000);
+        int milliseconds = (int)elapsedTime/100 % 10;
+        setText(String.format("%d.%d", seconds, milliseconds));
     }
 }

@@ -8,7 +8,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-//pop up window for errors (i.e. required fields not filled out)
+//pop up window for errors (e.g. required fields not filled out)
 public class AlertBox {
     public static void display(String title, String message) {
         Stage window = new Stage();
@@ -18,11 +18,14 @@ public class AlertBox {
 
         Label label = new Label();
         label.setText(message);
+        label.setWrapText(true);
+        label.setStyle("-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: red; -fx-padding: 10px;");
 
         Button closeButton = new Button("Close the window");
+        closeButton.setPrefSize(200, 40);
         closeButton.setOnAction(e -> window.close());
 
-        VBox layout = new VBox(10);
+        VBox layout = new VBox(20);
         layout.getChildren().addAll(label, closeButton);
         layout.setAlignment(Pos.CENTER);
         Scene scene = new Scene(layout);

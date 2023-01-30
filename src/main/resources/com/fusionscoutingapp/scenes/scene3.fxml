@@ -10,42 +10,6 @@
 <?import javafx.scene.text.Font?>
 
 <Pane prefHeight="1000.0" prefWidth="1324.0" style="-fx-background-color: #c9b5d4;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fusionscoutingapp.FXMLController">
-<!--   <Button layoutX="373.0" layoutY="135.0" mnemonicParsing="false" onAction="#decrementUCST" prefHeight="39.0" prefWidth="37.0" text="-">-->
-<!--      <font>-->
-<!--         <Font size="18.0" />-->
-<!--      </font></Button>-->
-<!--   <Button layoutX="373.0" layoutY="220.0" mnemonicParsing="false" onAction="#decrementLCST" prefHeight="39.0" prefWidth="37.0" text="-">-->
-<!--      <font>-->
-<!--         <Font size="18.0" />-->
-<!--      </font></Button>-->
-<!--   <Button layoutX="373.0" layoutY="313.0" mnemonicParsing="false" onAction="#decrementCMDT" prefHeight="39.0" prefWidth="37.0" text="-">-->
-<!--      <font>-->
-<!--         <Font size="18.0" />-->
-<!--      </font></Button>-->
-<!--   <LimitedTextField fx:id="ucst" layoutX="459.0" layoutY="131.0" prefHeight="39.0" prefWidth="56.0" text="0">-->
-<!--      <font>-->
-<!--         <Font size="18.0" />-->
-<!--      </font></LimitedTextField>-->
-<!--   <LimitedTextField fx:id="lcst" layoutX="459.0" layoutY="220.0" prefHeight="39.0" prefWidth="56.0" text="0">-->
-<!--      <font>-->
-<!--         <Font size="18.0" />-->
-<!--      </font></LimitedTextField>-->
-<!--   <LimitedTextField fx:id="cmdt" layoutX="459.0" layoutY="313.0" prefHeight="39.0" prefWidth="56.0" text="0">-->
-<!--      <font>-->
-<!--         <Font size="18.0" />-->
-<!--      </font></LimitedTextField>-->
-<!--   <Button layoutX="563.0" layoutY="131.0" mnemonicParsing="false" onAction="#incrementUCST" prefHeight="39.0" prefWidth="37.0" text="+">-->
-<!--      <font>-->
-<!--         <Font size="18.0" />-->
-<!--      </font></Button>-->
-<!--   <Button layoutX="563.0" layoutY="220.0" mnemonicParsing="false" onAction="#incrementLCST" prefHeight="39.0" prefWidth="37.0" text="+">-->
-<!--      <font>-->
-<!--         <Font size="18.0" />-->
-<!--      </font></Button>-->
-<!--   <Button layoutX="572.0" layoutY="313.0" mnemonicParsing="false" onAction="#incrementCMDT" prefHeight="39.0" prefWidth="37.0" text="+">-->
-<!--      <font>-->
-<!--         <Font size="18.0" />-->
-<!--      </font></Button>-->
    <Button layoutX="40.0" layoutY="750.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="170.0" text="Prev Page">
       <font>
          <Font size="27.0" />
@@ -56,21 +20,6 @@
          <Font size="27.0" />
       </font>
    </Button>
-<!--   <Label layoutX="117.0" layoutY="127.0" style="-fx-font-weight: bold;" text="High Nodes" textAlignment="CENTER">-->
-<!--      <font>-->
-<!--         <Font size="32.0" />-->
-<!--      </font>-->
-<!--   </Label>-->
-<!--   <Label layoutX="110.0" layoutY="216.0" style="-fx-font-weight: bold;" text="Middle Nodes">-->
-<!--      <font>-->
-<!--         <Font size="32.0" />-->
-<!--      </font>-->
-<!--   </Label>-->
-<!--   <Label layoutX="101.0" layoutY="309.0" style="-fx-font-weight: bold;" text="Hybrid Nodes">-->
-<!--      <font>-->
-<!--         <Font size="32.0" />-->
-<!--      </font>-->
-<!--   </Label>-->
    <Label layoutX="590.0" layoutY="14.0" style="-fx-font-weight: bold;" text="Teleop">
       <font>
          <Font size="72.0" />
@@ -146,12 +95,12 @@
          <Font size="32.0" />
       </font>
    </Label>
-   <Button layoutX="270.0" layoutY="200.0" mnemonicParsing="false" onAction="#decrementT_cmty" prefHeight="0.0" prefWidth="51.0" style="-fx-font-weight: bold;" text="–">
+   <Button layoutX="270.0" layoutY="200.0" mnemonicParsing="false" onAction="#decrementT_cmty" prefHeight="0.0" prefWidth="51.0" text="–">
       <font>
          <Font size="24.0" />
       </font>
    </Button>
-   <Button layoutX="401.0" layoutY="200.0" mnemonicParsing="false" onAction="#incrementT_cmty" prefHeight="45.0" prefWidth="51.0" style="-fx-font-weight: bold;" text="+">
+   <Button layoutX="401.0" layoutY="200.0" mnemonicParsing="false" onAction="#incrementT_cmty" prefHeight="45.0" prefWidth="51.0" text="+">
       <font>
          <Font size="24.0" />
       </font>
@@ -176,32 +125,32 @@
          <Font size="24.0" />
       </font>
    </LimitedTextField>
-   <Button layoutX="270.0" layoutY="298.0" mnemonicParsing="false" onAction="#decrementT_neutzone" prefHeight="0.0" prefWidth="51.0" style="-fx-font-weight: bold;" text="–">
+   <Button layoutX="270.0" layoutY="298.0" mnemonicParsing="false" onAction="#decrementT_neutzone" prefHeight="0.0" prefWidth="51.0" text="–">
       <font>
          <Font size="24.0" />
       </font>
    </Button>
-   <Button layoutX="977.0" layoutY="200.0" mnemonicParsing="false" onAction="#decrementT_singlesub" prefHeight="0.0" prefWidth="51.0" style="-fx-font-weight: bold;" text="–">
+   <Button layoutX="977.0" layoutY="200.0" mnemonicParsing="false" onAction="#decrementT_singlesub" prefHeight="0.0" prefWidth="51.0" text="–">
       <font>
          <Font size="24.0" />
       </font>
    </Button>
-   <Button layoutX="974.0" layoutY="300.0" mnemonicParsing="false" onAction="#decrementT_doublesub" prefHeight="0.0" prefWidth="51.0" style="-fx-font-weight: bold;" text="–">
+   <Button layoutX="974.0" layoutY="300.0" mnemonicParsing="false" onAction="#decrementT_doublesub" prefHeight="0.0" prefWidth="51.0" text="–">
       <font>
          <Font size="24.0" />
       </font>
    </Button>
-   <Button layoutX="401.0" layoutY="298.0" mnemonicParsing="false" onAction="#incrementT_neutzone" prefHeight="0.0" prefWidth="51.0" style="-fx-font-weight: bold;" text="+">
+   <Button layoutX="401.0" layoutY="298.0" mnemonicParsing="false" onAction="#incrementT_neutzone" prefHeight="0.0" prefWidth="51.0" text="+">
       <font>
          <Font size="24.0" />
       </font>
    </Button>
-   <Button layoutX="1118.0" layoutY="298.0" mnemonicParsing="false" onAction="#incrementT_doublesub" prefHeight="0.0" prefWidth="51.0" style="-fx-font-weight: bold;" text="+">
+   <Button layoutX="1118.0" layoutY="298.0" mnemonicParsing="false" onAction="#incrementT_doublesub" prefHeight="0.0" prefWidth="51.0" text="+">
       <font>
          <Font size="24.0" />
       </font>
    </Button>
-   <Button layoutX="1118.0" layoutY="200.0" mnemonicParsing="false" onAction="#incrementT_singlesub" prefHeight="0.0" prefWidth="51.0" style="-fx-font-weight: bold;" text="+">
+   <Button layoutX="1118.0" layoutY="200.0" mnemonicParsing="false" onAction="#incrementT_singlesub" prefHeight="0.0" prefWidth="51.0" text="+">
       <font>
          <Font size="24.0" />
       </font>
