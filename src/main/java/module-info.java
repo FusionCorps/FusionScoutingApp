@@ -1,4 +1,4 @@
-module com.fusionscoutingapp {
+module com.scout {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.datatransfer;
@@ -7,7 +7,9 @@ module com.fusionscoutingapp {
     requires com.google.zxing.javase;
     requires org.controlsfx.controls;
 
+    opens com.scout to javafx.fxml;
+    exports com.scout;
+    exports com.scout.util;
+    exports com.scout.ui;
 
-    opens com.fusionscoutingapp to javafx.fxml;
-    exports com.fusionscoutingapp;
 }
