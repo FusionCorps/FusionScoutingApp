@@ -1,8 +1,8 @@
 target/
 
 ### IntelliJ IDEA ###
-.idea/
-.out/
+.idea*
+.out*
 MANIFEST.MF
 
 .mvn/
