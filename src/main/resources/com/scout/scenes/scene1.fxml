@@ -8,7 +8,10 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -43,17 +46,6 @@
       <font>
          <Font size="17.0" />
       </font></LimitedTextField>
-
-   <Button layoutX="40.0" layoutY="430.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="170.0" text="Prev Page">
-      <font>
-         <Font size="27.0" />
-      </font>
-   </Button>
-   <Button layoutX="1110.0" layoutY="430.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="60.0" prefWidth="170.0" text="Next Page">
-      <font>
-         <Font size="27.0" />
-      </font>
-   </Button>
    <ImageView fitHeight="243.0" fitWidth="523.0" layoutX="793.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../images/start_locs.png" />
    </ImageView>
@@ -126,4 +118,80 @@
          <Font size="32.0" />
       </font>
    </Label>
+   <GridPane alignment="CENTER" layoutX="38.0" layoutY="401.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="105.0" prefWidth="1249.0">
+     <columnConstraints>
+       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+     </columnConstraints>
+     <rowConstraints>
+         <RowConstraints maxHeight="50.0" minHeight="5.0" prefHeight="57.0" />
+         <RowConstraints maxHeight="115.0" minHeight="80.0" prefHeight="80.0" vgrow="SOMETIMES" />
+     </rowConstraints>
+      <children>
+         <Button mnemonicParsing="false" onAction="#page5" prefHeight="73.0" prefWidth="126.0" text="Qualitative" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Button>
+         <Button mnemonicParsing="false" onAction="#page6" prefHeight="73.0" prefWidth="126.0" text="Output" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Button>
+         <Button mnemonicParsing="false" onAction="#page3" prefHeight="73.0" prefWidth="126.0" text="Teleop" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Button>
+         <Button mnemonicParsing="false" onAction="#page4" prefHeight="73.0" prefWidth="126.0" text="Endgame" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Button>
+         <Button mnemonicParsing="false" onAction="#page2" prefHeight="73.0" prefWidth="126.0" text="Auton" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Button>
+         <Button mnemonicParsing="false" onAction="#page1" prefHeight="73.0" prefWidth="126.0" text="Pregame" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Button>
+         <Label style="-fx-font-weight: bold;" text="Page 1" GridPane.halignment="CENTER">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Label>
+         <Label style="-fx-font-weight: bold;" text="Page 2" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Label>
+         <Label style="-fx-font-weight: bold;" text="Page 3" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Label>
+         <Label style="-fx-font-weight: bold;" text="Page 4" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Label>
+         <Label style="-fx-font-weight: bold;" text="Page 5" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Label>
+         <Label style="-fx-font-weight: bold;" text="Page 6" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.halignment="CENTER">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Label>
+      </children>
+   </GridPane>
 </Pane>

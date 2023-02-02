@@ -18,16 +18,6 @@
       <font>
          <Font size="32.0" />
       </font></CheckBox>
-   <Button layoutX="1091.0" layoutY="750.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="60.0" prefWidth="170.0" text="Next Page">
-      <font>
-         <Font size="27.0" />
-      </font>
-   </Button>
-   <Button layoutX="58.0" layoutY="750.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="170.0" text="Prev Page">
-      <font>
-         <Font size="27.0" />
-      </font>
-   </Button>
    <Label layoutX="520.0" layoutY="14.0" style="-fx-font-weight: bold;" text="Auton">
       <font>
          <Font size="72.0" />
@@ -93,115 +83,68 @@
          <Font size="32.0" />
       </font>
    </RadioButton>
-    <GridPane fx:id="a_grid" layoutX="160.0" layoutY="402.0" prefHeight="333.0" prefWidth="999.0">
+    <GridPane fx:id="a_grid" layoutX="160.0" layoutY="395.0" prefHeight="333.0" prefWidth="999.0">
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
-        <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="1"/>
-        <Button mnemonicParsing="false" onAction="#manipCubes" prefHeight="67.0" prefWidth="127.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="2" GridPane.columnIndex="1"/>
-        <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="3" GridPane.columnIndex="2"/>
-        <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="4" GridPane.columnIndex="3"/>
-        <Button mnemonicParsing="false" onAction="#manipCubes" prefHeight="67.0" prefWidth="127.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="5" GridPane.columnIndex="4"/>
-        <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="6" GridPane.columnIndex="5"/>
-        <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="7" GridPane.columnIndex="6"/>
-        <Button mnemonicParsing="false" onAction="#manipCubes" prefHeight="67.0" prefWidth="127.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="8" GridPane.columnIndex="7"/>
-        <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="9" GridPane.columnIndex="8"/>
-        <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="10" GridPane.rowIndex="1"/>
-        <Button mnemonicParsing="false" onAction="#manipCubes" prefHeight="67.0" prefWidth="127.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="11" GridPane.columnIndex="1"
-                GridPane.rowIndex="1"/>
-        <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="12" GridPane.columnIndex="2"
-                GridPane.rowIndex="1"/>
-        <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="13" GridPane.columnIndex="3"
-                GridPane.rowIndex="1"/>
-        <Button mnemonicParsing="false" onAction="#manipCubes" prefHeight="67.0" prefWidth="127.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="14" GridPane.columnIndex="4"
-                GridPane.rowIndex="1"/>
-        <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="15" GridPane.columnIndex="5"
-                GridPane.rowIndex="1"/>
-        <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="16" GridPane.columnIndex="6"
-                GridPane.rowIndex="1"/>
-        <Button mnemonicParsing="false" onAction="#manipCubes" prefHeight="67.0" prefWidth="127.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="17" GridPane.columnIndex="7"
-                GridPane.rowIndex="1"/>
-        <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="18" GridPane.columnIndex="8"
-                GridPane.rowIndex="1"/>
-        <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="19" GridPane.rowIndex="2"/>
-        <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="20" GridPane.columnIndex="1"
-                GridPane.rowIndex="2"/>
-        <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="21" GridPane.columnIndex="2"
-                GridPane.rowIndex="2"/>
-        <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="22" GridPane.columnIndex="3"
-                GridPane.rowIndex="2"/>
-        <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="23" GridPane.columnIndex="4"
-                GridPane.rowIndex="2"/>
-        <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="24" GridPane.columnIndex="5"
-                GridPane.rowIndex="2"/>
-        <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="25" GridPane.columnIndex="6"
-                GridPane.rowIndex="2"/>
-        <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="26" GridPane.columnIndex="7"
-                GridPane.rowIndex="2"/>
-        <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="27" GridPane.columnIndex="8"
-                GridPane.rowIndex="2"/>
+        <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="1" />
+        <Button mnemonicParsing="false" onAction="#manipCubes" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="2" GridPane.columnIndex="1" />
+        <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="3" GridPane.columnIndex="2" />
+        <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="4" GridPane.columnIndex="3" />
+        <Button mnemonicParsing="false" onAction="#manipCubes" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="5" GridPane.columnIndex="4" />
+        <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="6" GridPane.columnIndex="5" />
+        <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="7" GridPane.columnIndex="6" />
+        <Button mnemonicParsing="false" onAction="#manipCubes" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="8" GridPane.columnIndex="7" />
+        <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="9" GridPane.columnIndex="8" />
+        <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="10" GridPane.rowIndex="1" />
+        <Button mnemonicParsing="false" onAction="#manipCubes" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="11" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="12" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+        <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="13" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+        <Button mnemonicParsing="false" onAction="#manipCubes" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="14" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+        <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="15" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+        <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="16" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+        <Button mnemonicParsing="false" onAction="#manipCubes" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="17" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+        <Button mnemonicParsing="false" onAction="#manipCones" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="18" GridPane.columnIndex="8" GridPane.rowIndex="1" />
+        <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="19" GridPane.rowIndex="2" />
+        <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="20" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="21" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+        <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="22" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+        <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="23" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+        <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="24" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+        <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="25" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+        <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="26" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+        <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="27" GridPane.columnIndex="8" GridPane.rowIndex="2" />
     </GridPane>
     <ImageView fx:id="gpAutonPNG" fitHeight="310.0" fitWidth="295.0" layoutX="864.0" layoutY="77.0" pickOnBounds="true">
-        <Image url="@../images/GPstart_red.png"/>
+        <Image url="@../images/GPstart_red.png" />
     </ImageView>
     <GridPane fx:id="a_preGrid" layoutX="870.0" layoutY="107.0" prefHeight="256.0" prefWidth="95.0">
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
-            <RowConstraints maxHeight="60.0" minHeight="0.0" prefHeight="15.200018310560468" vgrow="SOMETIMES"/>
-            <RowConstraints maxHeight="60.0" minHeight="0.0" prefHeight="65.6" vgrow="SOMETIMES"/>
-            <RowConstraints maxHeight="60.0" minHeight="0.0" prefHeight="17.599999999999994" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="60.0" minHeight="0.0" prefHeight="15.200018310560468" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="60.0" minHeight="0.0" prefHeight="65.6" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="60.0" minHeight="0.0" prefHeight="17.599999999999994" vgrow="SOMETIMES" />
         </rowConstraints>
-        <Button mnemonicParsing="false" onAction="#manipGPStart" prefHeight="53.0" prefWidth="100.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="1"/>
-        <Button mnemonicParsing="false" onAction="#manipGPStart" prefHeight="53.0" prefWidth="100.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="2" GridPane.rowIndex="1"/>
-        <Button mnemonicParsing="false" onAction="#manipGPStart" prefHeight="53.0" prefWidth="100.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="3" GridPane.rowIndex="2"/>
-        <Button mnemonicParsing="false" onAction="#manipGPStart" prefHeight="53.0" prefWidth="100.0"
-                style="-fx-background-color: white; -fx-border-color: black;" userData="4" GridPane.rowIndex="3"/>
+        <Button mnemonicParsing="false" onAction="#manipGPStart" prefHeight="53.0" prefWidth="100.0" style="-fx-background-color: white; -fx-border-color: black;" userData="1" />
+        <Button mnemonicParsing="false" onAction="#manipGPStart" prefHeight="53.0" prefWidth="100.0" style="-fx-background-color: white; -fx-border-color: black;" userData="2" GridPane.rowIndex="1" />
+        <Button mnemonicParsing="false" onAction="#manipGPStart" prefHeight="53.0" prefWidth="100.0" style="-fx-background-color: white; -fx-border-color: black;" userData="3" GridPane.rowIndex="2" />
+        <Button mnemonicParsing="false" onAction="#manipGPStart" prefHeight="53.0" prefWidth="100.0" style="-fx-background-color: white; -fx-border-color: black;" userData="4" GridPane.rowIndex="3" />
     </GridPane>
    <Label layoutX="816.0" layoutY="30.0" style="-fx-font-weight: bold;" text="Pickups from Neutral Zone">
       <font>
@@ -213,4 +156,80 @@
          <Font size="22.0" />
       </font>
    </Button>
+   <GridPane alignment="CENTER" layoutX="35.0" layoutY="728.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="105.0" prefWidth="1249.0">
+      <columnConstraints>
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints maxHeight="50.0" minHeight="5.0" prefHeight="57.0" />
+         <RowConstraints maxHeight="115.0" minHeight="80.0" prefHeight="80.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+      <children>
+         <Button mnemonicParsing="false" onAction="#page5" prefHeight="73.0" prefWidth="126.0" text="Qualitative" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Button>
+         <Button mnemonicParsing="false" onAction="#page6" prefHeight="73.0" prefWidth="126.0" text="Output" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Button>
+         <Button mnemonicParsing="false" onAction="#page3" prefHeight="73.0" prefWidth="126.0" text="Teleop" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Button>
+         <Button mnemonicParsing="false" onAction="#page4" prefHeight="73.0" prefWidth="126.0" text="Endgame" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Button>
+         <Button mnemonicParsing="false" onAction="#page2" prefHeight="73.0" prefWidth="126.0" text="Auton" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Button>
+         <Button mnemonicParsing="false" onAction="#page1" prefHeight="73.0" prefWidth="126.0" text="Pregame" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Button>
+         <Label style="-fx-font-weight: bold;" text="Page 1" GridPane.halignment="CENTER">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Label>
+         <Label style="-fx-font-weight: bold;" text="Page 2" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Label>
+         <Label style="-fx-font-weight: bold;" text="Page 3" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Label>
+         <Label style="-fx-font-weight: bold;" text="Page 4" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Label>
+         <Label style="-fx-font-weight: bold;" text="Page 5" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Label>
+         <Label style="-fx-font-weight: bold;" text="Page 6" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.halignment="CENTER">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Label>
+      </children>
+   </GridPane>
 </Pane>

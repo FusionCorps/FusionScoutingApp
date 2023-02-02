@@ -129,8 +129,9 @@ public class FXMLController {
         info = new HashMap<>();
         toggleMap = new HashMap<>();
         sceneIndex = 0;
-        nextPage(event);
+        setPage((Stage) ((Node) event.getSource()).getScene().getWindow(), sceneIndex);
     }
+
     @FXML private void nextPage(ActionEvent event) throws IOException {
         if (checkRequiredFields()) {
             collectData();
@@ -143,6 +144,66 @@ public class FXMLController {
     @FXML private void prevPage(ActionEvent event) throws IOException {
         collectData();
         if (sceneIndex > 0) sceneIndex--;
+        isNextPageClicked = false;
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        setPage(stage, sceneIndex);
+    }
+
+    @FXML private void page1(ActionEvent event) throws IOException {
+        if (sceneIndex < 1) {if (checkRequiredFields()) runSetPageProcedure(event);}
+        else runSetPageProcedure(event);
+    }
+
+    @FXML private void page2(ActionEvent event) throws IOException {
+        if (sceneIndex < 2) {if (checkRequiredFields()) runSetPageProcedure(event);}
+        else runSetPageProcedure(event);
+    }
+
+    @FXML private void page3(ActionEvent event) throws IOException {
+        if (sceneIndex < 3) {if (checkRequiredFields()) runSetPageProcedure(event);}
+        else runSetPageProcedure(event);
+    }
+
+    @FXML private void page4(ActionEvent event) throws IOException {
+        if (sceneIndex < 4) {if (checkRequiredFields()) runSetPageProcedure(event);}
+        else runSetPageProcedure(event);
+    }
+
+    @FXML private void page5(ActionEvent event) throws IOException {
+        if (sceneIndex < 5) {if (checkRequiredFields()) runSetPageProcedure(event);}
+        else runSetPageProcedure(event);
+    }
+
+    @FXML private void page6(ActionEvent event) throws IOException {
+        if (sceneIndex < 6) {if (checkRequiredFields()) runSetPageProcedure(event);}
+        else runSetPageProcedure(event);
+    }
+
+    private void runSetPageProcedure(ActionEvent event) throws IOException {
+        collectData();
+        switch (Thread.currentThread().getStackTrace()[2].getMethodName()) {
+            case "page1":
+                sceneIndex = 1;
+                break;
+            case "page2":
+                sceneIndex = 2;
+                break;
+            case "page3":
+                sceneIndex = 3;
+                break;
+            case "page4":
+                sceneIndex = 4;
+                break;
+            case "page5":
+                sceneIndex = 5;
+                break;
+            case "page6":
+                sceneIndex = 6;
+                break;
+            default:
+                sceneIndex = 0;
+                break;
+        }
         isNextPageClicked = false;
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         setPage(stage, sceneIndex);
