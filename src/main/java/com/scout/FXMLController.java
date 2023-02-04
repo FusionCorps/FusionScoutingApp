@@ -110,8 +110,8 @@ public class FXMLController {
         //setting defaults for certain nullable fields
         if (isNextPageClicked) {
             if (sceneIndex == 2) {
-                if (autonColor.equals("R")) gpAutonPNG.setImage(new Image(getClass().getResource("images/GPstart_red.png").toString()));
-                else gpAutonPNG.setImage(new Image(getClass().getResource("images/GPstart_blue.png").toString()));
+                if (autonColor.equals("R")) gpAutonPNG.setImage(new Image("file:src\\main\\resources\\com\\scout\\images\\GPstart_red.png"));
+                else gpAutonPNG.setImage(new Image("file:src\\main\\resources\\com\\scout\\images\\GPstart_blue.png"));
             }
             if (sceneIndex == 3) {
                 t_cmty.setText("0");
@@ -548,10 +548,10 @@ public class FXMLController {
     @FXML private void changeGPAutonPNG(ActionEvent ignoredEvent) {
         if (autonColor.equals("R")) {
             autonColor = "B";
-            gpAutonPNG.setImage(new Image(getClass().getResource("images/GPstart_blue.png").toString()));
+            gpAutonPNG.setImage(new Image("file:src\\main\\resources\\com\\scout\\images\\GPstart_blue.png"));
         } else if (autonColor.equals("B")) {
             autonColor = "R";
-            gpAutonPNG.setImage(new Image(getClass().getResource("images/GPstart_red.png").toString()));
+            gpAutonPNG.setImage(new Image("file:src\\main\\resources\\com\\scout\\images\\GPstart_red.png"));
         }
     }
 }
