@@ -36,17 +36,17 @@
          <Font size="32.0" />
       </font>
    </Label>
-   <TimerText fx:id="e_timer" editable="false" layoutX="435.0" layoutY="120.0" prefHeight="56.0" prefWidth="81.0" text="0.0">
+   <TimerText fx:id="balanceTime" editable="false" layoutX="435.0" layoutY="120.0" prefHeight="56.0" prefWidth="81.0" text="0.0">
       <font>
          <Font size="26.0" />
       </font>
    </TimerText>
-   <CheckBox fx:id="e_shuttle" layoutX="50.0" layoutY="351.0" mnemonicParsing="false" text="Shuttlebot?">
+   <CheckBox fx:id="shuttle" layoutX="50.0" layoutY="351.0" mnemonicParsing="false" text="Shuttlebot?">
       <font>
          <Font size="32.0" />
       </font>
    </CheckBox>
-   <CheckBox fx:id="e_budclimb" layoutX="50.0" layoutY="438.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="404.0" text="Buddy Climb? (helped other robot climb)" wrapText="true">
+   <CheckBox fx:id="buddyClimb" layoutX="50.0" layoutY="438.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="404.0" text="Buddy Climb? (helped other robot climb)" wrapText="true">
       <font>
          <Font size="32.0" />
       </font>
@@ -71,12 +71,12 @@
          <Font size="32.0" />
       </font>
       <toggleGroup>
-         <ToggleGroup fx:id="e_balstat" />
+         <ToggleGroup fx:id="teleopBalance" />
       </toggleGroup>
    </RadioButton>
    <RadioButton layoutX="900.0" layoutY="207.0" mnemonicParsing="false" text="Dock" userData="Dock">
       <toggleGroup>
-         <fx:reference source="e_balstat"/>
+         <fx:reference source="teleopBalance"/>
       </toggleGroup>
       <font>
          <Font size="32.0" />
@@ -84,7 +84,7 @@
    </RadioButton>
    <RadioButton layoutX="900.0" layoutY="351.0" mnemonicParsing="false" text="Fail" userData="Fail">
         <toggleGroup>
-             <fx:reference source="e_balstat"/>
+             <fx:reference source="teleopBalance"/>
         </toggleGroup>
       <font>
          <Font size="32.0" />
@@ -92,7 +92,7 @@
    </RadioButton>
    <RadioButton layoutX="650.0" layoutY="277.0" mnemonicParsing="false" text="Park" userData="Park">
         <toggleGroup>
-             <fx:reference source="e_balstat"/>
+             <fx:reference source="teleopBalance"/>
         </toggleGroup>
       <font>
          <Font size="32.0" />
@@ -100,7 +100,7 @@
    </RadioButton>
    <RadioButton layoutX="650.0" layoutY="351.0" mnemonicParsing="false" text="N/A" userData="N/A">
         <toggleGroup>
-             <fx:reference source="e_balstat"/>
+             <fx:reference source="teleopBalance"/>
         </toggleGroup>
       <font>
          <Font size="32.0" />

@@ -1,6 +1,7 @@
 //TODO CSS styling: do in SceneBuilder or external CSS sheet
 //TODO EFFICIENCY: how to encapsulate/declare data fields in more efficient way (e.g. maybe hashmap for each field, like [Object:fx_id]?)
 //TODO WANT: TBA integration, needs to be offline +  hardcoded
+//TODO flip image
 
 package com.scout;
 
@@ -33,8 +34,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
-
 public class FXMLController {
     //scene0:title
     //scene1:pregame
@@ -55,54 +54,56 @@ public class FXMLController {
 
     //data for each page, variables should be named the same as corresponding fx:ids for consistency
     //page 1 - pregame
-    @FXML private LimitedTextField p_tnum; //team number
-    @FXML private LimitedTextField p_mnum; //match number
-    @FXML private ToggleGroup p_ra; //robot alliance
-    @FXML private ToggleGroup p_sloc; //starting location
+    @FXML private LimitedTextField teamNum; //team number
+    @FXML private LimitedTextField matchNum; //match number
+    @FXML private ToggleGroup alliance; //robot alliance
+    @FXML private ToggleGroup startLocation; //starting location
     //page 2 - auton
-    @FXML private CheckBox a_mob; //mobility
-    @FXML private ToggleGroup a_pre; // GP type preload
+    @FXML private ToggleGroup preload; // GP type preload
+    @FXML private CheckBox mobility; //mobility
+    private static final ArrayList<Integer> autoPickups = new ArrayList<>(); //GP intaked at community
+    private static final ArrayList<Integer> autoCones = new ArrayList<>(); //cones placed
+    private static final ArrayList<Integer> autoCubes = new ArrayList<>(); //cubes placed
+    @FXML private ToggleGroup autoBalance; //auton balance status
+
     @FXML private GridPane a_grid; //GP grid
     @FXML private GridPane a_preGrid; //preload GP grid
-    @FXML private ToggleGroup a_balstat; //auton balance status
     @FXML private ImageView gpAutonPNG;
-    private static final ArrayList<Integer> a_pickup = new ArrayList<>(); //GP intaked at community
-    private static final ArrayList<Integer> a_cones = new ArrayList<>(); //cones placed
-    private static final ArrayList<Integer> a_cubes = new ArrayList<>(); //cubes placed
     //page 3 - teleop
-    @FXML private LimitedTextField t_cmty; //community GP intaked
-    @FXML private LimitedTextField t_neutzone; //neutral zone GP intaked
-    @FXML private LimitedTextField t_singlesub; //singlesub GP intaked
-    @FXML private LimitedTextField t_doublesub; //doublesub GP intaked
+    @FXML private LimitedTextField communityPickups; //community GP intaked
+    @FXML private LimitedTextField neutralPickups; //neutral zone GP intaked
+    @FXML private LimitedTextField singlePickups; //singlesub GP intaked
+    @FXML private LimitedTextField doublePickups; //doublesub GP intaked
+    private static final ArrayList<Integer> teleopCones = new ArrayList<>(); //cones intaked
+    private static final ArrayList<Integer> teleopCubes = new ArrayList<>(); //cubes intaked
+
     @FXML private GridPane t_grid; //GP grid
-    private static final ArrayList<Integer> t_cones = new ArrayList<>(); //cones intaked
-    private static final ArrayList<Integer> t_cubes = new ArrayList<>(); //cubes intaked
     //page 4 - endgame
-    @FXML private CheckBox e_shuttle; //shuttlebot
-    @FXML private ToggleGroup e_balstat; //endgame balance status
-    @FXML private CheckBox e_budclimb; //buddy climb
-    @FXML private TimerText e_timer; //balance time
+    @FXML private CheckBox shuttle; //shuttlebot
+    @FXML private ToggleGroup teleopBalance; //endgame balance status
+    @FXML private CheckBox buddyClimb; //buddy climb
+    @FXML private TimerText balanceTime; //balance time
     //page5 - qualitative notes
-    @FXML private Rating n_dtrainrat; //drivetrain rating
-    @FXML private ToggleGroup n_dtraintype; //drivetrain type
-    @FXML private Rating n_intake; //intake rating
-    @FXML private Rating n_spd; //robot speed (1 slow, 5 fast)
-    @FXML private Rating n_drat; //driver rating
-    @FXML private LimitedTextField n_sn; //scouter name`
-    @FXML private TextArea n_co; //general comments
-    @FXML private CheckBox n_everybot; //everybot
+    @FXML private CheckBox everybot; //everybot
+    @FXML private ToggleGroup drivetrainType; //drivetrain type
+    @FXML private Rating drivetrain; //drivetrain rating
+    @FXML private Rating intake; //intake rating
+    @FXML private Rating speed; //robot speed (1 slow, 5 fast)
+    @FXML private Rating driver; //driver rating
+    @FXML private LimitedTextField scoutName; //scouter name`
+    @FXML private TextArea comments; //general comments
     //page6 - data output
     @FXML private Text f_reminderBox; //You scouted, "[insert team #]"
     @FXML private Text f_dataStr; //data string for QR code
     @FXML private ImageView f_imageBox; //QR code image display box
 
     public FXMLController() {
-        toggleMap.putIfAbsent("p_ra", null);
-        toggleMap.putIfAbsent("p_sloc", null);
-        toggleMap.putIfAbsent("a_pre", null);
-        toggleMap.putIfAbsent("a_balstat", null);
-        toggleMap.putIfAbsent("e_balstat", null);
-        toggleMap.putIfAbsent("n_dtraintype", null);
+        toggleMap.putIfAbsent("alliance", null);
+        toggleMap.putIfAbsent("startLocation", null);
+        toggleMap.putIfAbsent("preload", null);
+        toggleMap.putIfAbsent("autoBalance", null);
+        toggleMap.putIfAbsent("teleopBalance", null);
+        toggleMap.putIfAbsent("drivetrainType", null);
     }
 
     //runs at loading of a scene, defaults null values and reloads previously entered data
@@ -114,10 +115,10 @@ public class FXMLController {
                 else gpAutonPNG.setImage(new Image(getClass().getResource("images/GPstart_blue.png").toString()));
             }
             if (sceneIndex == 3) {
-                t_cmty.setText("0");
-                t_neutzone.setText("0");
-                t_singlesub.setText("0");
-                t_doublesub.setText("0");
+                communityPickups.setText("0");
+                neutralPickups.setText("0");
+                singlePickups.setText("0");
+                doublePickups.setText("0");
             }
         }
         reloadData();
@@ -167,16 +168,47 @@ public class FXMLController {
     //sends data to QR code creator and displays it on screen
     @FXML private void sendInfo() throws Exception {
         data = new StringBuilder();
-        for (Object keyName : info.keySet()) {
-            data.append(keyName).append("=");
+
+        for (String keyName : info.keySet()) {
             if (info.get(keyName) == null) continue;
-            else if (info.get(keyName).equals("true")) data.append("T");
-            else if (info.get(keyName).equals("false")) data.append("F");
-            else if (info.get(keyName).equals("N/A") || info.get(keyName).equals("N/A or Failed")) data.append("NA");
-            else data.append(info.get(keyName));
-            data.append(";");
+            else if (info.get(keyName).equals("true")) info.put(keyName, "T");
+            else if (info.get(keyName).equals("false")) info.put(keyName, "F");
+            else if (info.get(keyName).equals("N/A") || info.get(keyName).equals("N/A or Failed")) info.put(keyName, "NA");
         }
+
+        data.append("teamNum=" + info.get("teamNum") + ";");
+        data.append("matchNum=" + info.get("matchNum") + ";");
+        data.append("alliance=" + info.get("alliance") + ";");
+        data.append("startLocation=" + info.get("startLocation") + ";");
+        data.append("preload=" + info.get("preload") + ";");
+        data.append("autoBalance=" + info.get("autoBalance") + ";");
+        data.append("mobility=" + info.get("mobility") + ";");
+        data.append("autoPickups=" + info.get("autoPickups") + ";");
+        data.append("autoCones=" + info.get("autoCones") + ";");
+        data.append("autoCubes=" + info.get("autoCubes") + ";");
+        data.append("autoBalance=" + info.get("autoBalance") + ";");
+        data.append("communityPickups=" + info.get("communityPickups") + ";");
+        data.append("neutralPickups=" + info.get("neutralPickups") + ";");
+        data.append("singlePickups=" + info.get("singlePickups") + ";");
+        data.append("doublePickups=" + info.get("doublePickups") + ";");
+        data.append("teleopCones=" + info.get("teleopCones") + ";");
+        data.append("teleopCubes=" + info.get("teleopCubes") + ";");
+        data.append("shuttle=" + info.get("shuttle") + ";");
+        data.append("teleopBalance=" + info.get("teleopBalance") + ";");
+        data.append("buddyClimb=" + info.get("buddyClimb") + ";");
+        data.append("balanceTime=" + info.get("balanceTime") + ";");
+        data.append("everybot=" + info.get("everybot") + ";");
+        data.append("drivetrainType=" + info.get("drivetrainType") + ";");
+        data.append("drivetrain=" + info.get("drivetrain") + ";");
+        data.append("intake=" + info.get("intake") + ";");
+        data.append("speed=" + info.get("speed") + ";");
+        data.append("driver=" + info.get("driver") + ";");
+        data.append("scoutName=" + info.get("scoutName") + ";");
+        data.append("comments=" + info.get("comments") + ";");
+
+
         data = data.delete(data.lastIndexOf(";"), data.length());
+
 
         bufferedImage = QRFuncs.generateQRCode(data.toString(), "qrcode.png");
         File file = new File("qrcode.png");
@@ -187,52 +219,53 @@ public class FXMLController {
         outputAll();
     }
 
+
     //sends data to info storage HashMap, needs to be edited with introduction of new data elements
     private void collectData() {
         switch (sceneIndex) {
             case 1:
-                collectDataTextField(p_tnum, "p_tnum");
-                collectDataTextField(p_mnum, "p_mnum");
-                collectDataToggleGroup(p_ra, "p_ra");
-                collectDataToggleGroup(p_sloc, "p_sloc");
+                collectDataTextField(teamNum, "teamNum");
+                collectDataTextField(matchNum, "matchNum");
+                collectDataToggleGroup(alliance, "alliance");
+                collectDataToggleGroup(startLocation, "startLocation");
                 break;
             case 2:
-                collectDataCheckBox(a_mob, "a_mob");
-                collectDataToggleGroup(a_pre, "a_pre");
-                collectDataArray(a_pickup, "a_pickup");
-                collectDataArray(a_cones, "a_cones");
-                for (Integer i : a_cones) {
-                    if (!t_cones.contains(i)) t_cones.add(i);
+                collectDataCheckBox(mobility, "mobility");
+                collectDataToggleGroup(preload, "preload");
+                collectDataArray(autoPickups, "autoPickups");
+                collectDataArray(autoCones, "autoCones");
+                for (Integer i : autoCones) {
+                    if (!teleopCones.contains(i)) teleopCones.add(i);
                 }
-                collectDataArray(a_cubes, "a_cubes");
-                for (Integer i : a_cubes) {
-                    if (!t_cubes.contains(i)) t_cubes.add(i);
+                collectDataArray(autoCubes, "autoCubes");
+                for (Integer i : autoCubes) {
+                    if (!teleopCubes.contains(i)) teleopCubes.add(i);
                 }
-                collectDataToggleGroup(a_balstat, "a_balstat");
+                collectDataToggleGroup(autoBalance, "autoBalance");
                 break;
             case 3:
-                collectDataTextField(t_cmty, "t_cmty");
-                collectDataTextField(t_neutzone, "t_neutzone");
-                collectDataTextField(t_singlesub, "t_singlesub");
-                collectDataTextField(t_doublesub, "t_doublesub");
-                collectDataArray(t_cones, "t_cones");
-                collectDataArray(t_cubes, "t_cubes");
+                collectDataTextField(communityPickups, "communityPickups");
+                collectDataTextField(neutralPickups, "neutralPickups");
+                collectDataTextField(singlePickups, "singlePickups");
+                collectDataTextField(doublePickups, "doublePickups");
+                collectDataArray(teleopCones, "teleopCones");
+                collectDataArray(teleopCubes, "teleopCubes");
                 break;
             case 4:
-                collectDataCheckBox(e_shuttle, "e_shuttle");
-                collectDataToggleGroup(e_balstat, "e_balstat");
-                collectDataCheckBox(e_budclimb, "e_budclimb");
-                collectDataTextField(e_timer, "e_timer");
+                collectDataCheckBox(shuttle, "shuttle");
+                collectDataToggleGroup(teleopBalance, "teleopBalance");
+                collectDataCheckBox(buddyClimb, "buddyClimb");
+                collectDataTextField(balanceTime, "balanceTime");
                 break;
             case 5:
-                collectDataRating(n_dtrainrat, "n_dtrainrat");
-                collectDataRating(n_intake, "n_intake");
-                collectDataRating(n_spd, "n_spd");
-                collectDataRating(n_drat, "n_drat");
-                collectDataTextField(n_sn, "n_sn");
-                collectDataToggleGroup(n_dtraintype, "n_dtraintype");
-                collectDataTextArea(n_co);
-                collectDataCheckBox(n_everybot, "n_everybot");
+                collectDataRating(drivetrain, "drivetrain");
+                collectDataRating(intake, "intake");
+                collectDataRating(speed, "speed");
+                collectDataRating(driver, "driver");
+                collectDataTextField(scoutName, "scoutName");
+                collectDataToggleGroup(drivetrainType, "drivetrainType");
+                collectDataTextArea(comments);
+                collectDataCheckBox(everybot, "everybot");
                 break;
         }
     }
@@ -241,44 +274,44 @@ public class FXMLController {
     private void reloadData() {
         switch (sceneIndex) {
             case 1:
-                reloadDataTextField(p_tnum, "p_tnum");
-                reloadDataTextField(p_mnum, "p_mnum");
-                reloadDataToggleGroup(p_ra, "p_ra");
-                reloadDataToggleGroup(p_sloc, "p_sloc");
+                reloadDataTextField(teamNum, "teamNum");
+                reloadDataTextField(matchNum, "matchNum");
+                reloadDataToggleGroup(alliance, "alliance");
+                reloadDataToggleGroup(startLocation, "startLocation");
                 break;
             case 2:
-                reloadDataCheckBox(a_mob, "a_mob");
-                reloadDataToggleGroup(a_pre, "a_pre");
-                reloadDataToggleGroup(a_balstat, "a_balstat");
-                reloadDataGridFieldGP(a_grid, a_cones, a_cubes);
+                reloadDataCheckBox(mobility, "mobility");
+                reloadDataToggleGroup(preload, "preload");
+                reloadDataToggleGroup(autoBalance, "autoBalance");
+                reloadDataGridFieldGP(a_grid, autoCones, autoCubes);
                 reloadDataGridFieldPickup(a_preGrid);
                 break;
             case 3:
-                reloadDataTextField(t_cmty, "t_cmty");
-                reloadDataTextField(t_neutzone, "t_neutzone");
-                reloadDataTextField(t_singlesub, "t_singlesub");
-                reloadDataTextField(t_doublesub, "t_doublesub");
-                reloadDataGridFieldGP(t_grid, t_cones, t_cubes);
+                reloadDataTextField(communityPickups, "communityPickups");
+                reloadDataTextField(neutralPickups, "neutralPickups");
+                reloadDataTextField(singlePickups, "singlePickups");
+                reloadDataTextField(doublePickups, "doublePickups");
+                reloadDataGridFieldGP(t_grid, teleopCones, teleopCubes);
                 break;
             case 4:
-                reloadDataCheckBox(e_shuttle, "e_shuttle");
-                reloadDataToggleGroup(e_balstat, "e_balstat");
-                reloadDataCheckBox(e_budclimb, "e_budclimb");
-                reloadDataTextField(e_timer, "e_timer");
+                reloadDataCheckBox(shuttle, "shuttle");
+                reloadDataToggleGroup(teleopBalance, "teleopBalance");
+                reloadDataCheckBox(buddyClimb, "buddyClimb");
+                reloadDataTextField(balanceTime, "balanceTime");
                 break;
             case 5:
-                reloadDataRating(n_dtrainrat, "n_dtrainrat");
-                reloadDataRating(n_intake, "n_intake");
-                reloadDataRating(n_spd, "n_spd");
-                reloadDataRating(n_drat, "n_drat");
-                reloadDataTextField(n_sn, "n_sn");
-                reloadDataToggleGroup(n_dtraintype, "n_dtraintype");
-                reloadDataTextArea(n_co);
-                reloadDataCheckBox(n_everybot, "n_everybot");
+                reloadDataRating(drivetrain, "drivetrain");
+                reloadDataRating(intake, "intake");
+                reloadDataRating(speed, "speed");
+                reloadDataRating(driver, "driver");
+                reloadDataTextField(scoutName, "scoutName");
+                reloadDataToggleGroup(drivetrainType, "drivetrainType");
+                reloadDataTextArea(comments);
+                reloadDataCheckBox(everybot, "everybot");
                 break;
             case 6:
-                if (info.get("p_tnum") != null)
-                    f_reminderBox.setText(info.get("n_sn") + " Scouted Team #" + info.get("p_tnum") + ".");
+                if (info.get("teamNum") != null)
+                    f_reminderBox.setText(info.get("scoutName") + " Scouted Team #" + info.get("teamNum") + ".");
                 break;
         }
 
@@ -302,8 +335,8 @@ public class FXMLController {
         //text file
         try {
             FileWriter writer = new FileWriter("C:\\Users\\robotics\\Desktop\\" +
-                    info.get("p_mnum") + "-" +
-                    info.get("p_tnum") + "-" +
+                    info.get("matchNum") + "-" +
+                    info.get("teamNum") + "-" +
                     info.get("p_ran") + ".txt");
             writer.write(data.toString());
             writer.close();
@@ -312,8 +345,8 @@ public class FXMLController {
         }
         //qr code
        String filePath = "C:\\Users\\robotics\\Desktop\\" +
-            info.get("p_mnum") + "-" +
-            info.get("p_tnum") + "-" +
+            info.get("matchNum") + "-" +
+            info.get("teamNum") + "-" +
             info.get("p_ran") + ".png";
         String fileType = "png";
         try{
@@ -327,13 +360,13 @@ public class FXMLController {
     //puts restrictions on certain data fields
     @FXML private void validateInput(KeyEvent keyEvent) {
         LimitedTextField src = (LimitedTextField) keyEvent.getSource();
-        if (src.equals(p_tnum)) { //team number
+        if (src.equals(teamNum)) { //team number
             src.setIntegerField();
             src.setMaxLength(4);
-        } else if (src.equals(p_mnum)) { //match number
+        } else if (src.equals(matchNum)) { //match number
             src.setIntegerField();
             src.setMaxLength(3);
-        } else if (src.equals(n_sn)) { //scouter name
+        } else if (src.equals(scoutName)) { //scouter name
             src.setRestrict("[A-Za-z ]"); //letters + spaces only
             src.setMaxLength(30);
         }
@@ -343,25 +376,25 @@ public class FXMLController {
     private boolean checkRequiredFields() {
         switch (sceneIndex) {
             case 1:
-                if (p_tnum.getText().isEmpty() || p_mnum.getText().isEmpty() || p_ra.getSelectedToggle() == null || p_sloc.getSelectedToggle() == null) {
+                if (teamNum.getText().isEmpty() || matchNum.getText().isEmpty() || alliance.getSelectedToggle() == null || startLocation.getSelectedToggle() == null) {
                     AlertBox.display("", "Before proceeding, please fill out ALL FIELDS.");
                     return false;
                 }
                 break;
             case 2:
-                if (a_pre.getSelectedToggle() == null || a_balstat.getSelectedToggle() == null) {
+                if (preload.getSelectedToggle() == null || autoBalance.getSelectedToggle() == null) {
                     AlertBox.display("", "Before proceeding, please select one of the GP preloads and balance status buttons.");
                     return false;
                 }
                 break;
             case 4:
-                if (e_balstat.getSelectedToggle() == null) {
+                if (teleopBalance.getSelectedToggle() == null) {
                     AlertBox.display("", "Before proceeding, please select a balance status button.");
                     return false;
                 }
                 break;
             case 5:
-                if (n_sn.getText().isEmpty() || n_dtraintype.getSelectedToggle() == null || n_co.getText()==null || n_co.getText().equals("")) {
+                if (scoutName.getText().isEmpty() || drivetrainType.getSelectedToggle() == null || comments.getText()==null || comments.getText().equals("")) {
                     AlertBox.display("", "Before proceeding, please fill out your name and the drivetrain type button. INCLUDE COMMENTS!!!");
                     return false;
                 }
@@ -376,81 +409,81 @@ public class FXMLController {
         System.out.println(btn.getUserData().toString());
         if (btn.getStyle().contains("-fx-background-color: white;")) {
             btn.setStyle("-fx-background-color: green; -fx-border-color: black;");
-            a_pickup.add(Integer.valueOf(btn.getUserData().toString()));
+            autoPickups.add(Integer.valueOf(btn.getUserData().toString()));
         } else if (btn.getStyle().contains("-fx-background-color: green;")) {
             btn.setStyle("-fx-background-color: white; -fx-border-color: black;");
-            a_pickup.remove(Integer.valueOf(btn.getUserData().toString()));
+            autoPickups.remove(Integer.valueOf(btn.getUserData().toString()));
         }
     }
     @FXML private void manipCones(ActionEvent event) {
         Button btn = (Button) event.getSource();
         int btnVal = Integer.parseInt(btn.getUserData().toString());
-        //if button is white, make it yellow; add to a_cones/t_cones
+        //if button is white, make it yellow; add to autoCones/teleopCones
         if (btn.getStyle().contains("-fx-background-color: white;")) {
             btn.setStyle("-fx-background-color: yellow; -fx-border-color: black;");
-            if (sceneIndex == 2) a_cones.add(btnVal);
-            else if (sceneIndex == 3) t_cones.add(btnVal);
+            if (sceneIndex == 2) autoCones.add(btnVal);
+            else if (sceneIndex == 3) teleopCones.add(btnVal);
         }
-        //if button is yellow, make it white; remove from a_cones/t_cones
+        //if button is yellow, make it white; remove from autoCones/teleopCones
         else if (btn.getStyle().contains("-fx-background-color: yellow;")) {
             btn.setStyle("-fx-background-color: white; -fx-border-color: black;");
-            if (sceneIndex == 2) a_cones.remove((Integer) btnVal);
-            else if (sceneIndex == 3) t_cones.remove((Integer) btnVal);
+            if (sceneIndex == 2) autoCones.remove((Integer) btnVal);
+            else if (sceneIndex == 3) teleopCones.remove((Integer) btnVal);
         }
     }
     @FXML private void manipCubes(ActionEvent event) {
         Button btn = (Button) event.getSource();
         int btnVal = Integer.parseInt(btn.getUserData().toString());
-        //if button is white, make it purple; add to a_cubes/t_cubes
+        //if button is white, make it purple; add to autoCubes/teleopCubes
         if (btn.getStyle().contains("-fx-background-color: white;")) {
             btn.setStyle("-fx-background-color: purple; -fx-border-color: black;");
-            if (sceneIndex == 2) a_cubes.add(btnVal);
-            else if (sceneIndex == 3) t_cubes.add(btnVal);
+            if (sceneIndex == 2) autoCubes.add(btnVal);
+            else if (sceneIndex == 3) teleopCubes.add(btnVal);
         }
-        //if button is purple, make it white; remove from a_cubes/t_cubes
+        //if button is purple, make it white; remove from autoCubes/teleopCubes
         else if (btn.getStyle().contains("-fx-background-color: purple;")) {
             btn.setStyle("-fx-background-color: white; -fx-border-color: black;");
-            if (sceneIndex == 2) a_cubes.remove((Integer) btnVal);
-            else if (sceneIndex == 3) t_cubes.remove((Integer) btnVal);
+            if (sceneIndex == 2) autoCubes.remove((Integer) btnVal);
+            else if (sceneIndex == 3) teleopCubes.remove((Integer) btnVal);
         }
     }
     @FXML private void manipVar(ActionEvent event) {
         Button btn = (Button) event.getSource();
         int btnVal = Integer.parseInt(btn.getUserData().toString());
-        //if button is white, make it yellow; add to a_cones/t_cones
+        //if button is white, make it yellow; add to autoCones/teleopCones
         if (btn.getStyle().contains("-fx-background-color: white;")) {
             btn.setStyle("-fx-background-color: yellow; -fx-border-color: black;");
-            if (sceneIndex == 2) a_cones.add(btnVal);
-            else if (sceneIndex == 3) t_cones.add(btnVal);
+            if (sceneIndex == 2) autoCones.add(btnVal);
+            else if (sceneIndex == 3) teleopCones.add(btnVal);
         }
-        //if button is yellow, make it purple; remove from a_cones/t_cones, add to a_cubes/t_cubes
+        //if button is yellow, make it purple; remove from autoCones/teleopCones, add to autoCubes/teleopCubes
         else if (btn.getStyle().contains("-fx-background-color: yellow;")) {
             btn.setStyle("-fx-background-color: purple; -fx-border-color: black;");
             if (sceneIndex == 2) {
-                a_cones.remove((Integer) btnVal);
-                a_cubes.add(btnVal);
+                autoCones.remove((Integer) btnVal);
+                autoCubes.add(btnVal);
             } else if (sceneIndex == 3) {
-                t_cones.remove((Integer) btnVal);
-                t_cubes.add(btnVal);
+                teleopCones.remove((Integer) btnVal);
+                teleopCubes.add(btnVal);
             }
         }
-        //if button is purple, make it white; remove from a_cubes/t_cubes
+        //if button is purple, make it white; remove from autoCubes/teleopCubes
         else if (btn.getStyle().contains("-fx-background-color: purple;")) {
             btn.setStyle("-fx-background-color: white; -fx-border-color: black;");
-            if (sceneIndex == 2) a_cubes.remove((Integer) btnVal);
-            else if (sceneIndex == 3) t_cubes.remove((Integer) btnVal);
+            if (sceneIndex == 2) autoCubes.remove((Integer) btnVal);
+            else if (sceneIndex == 3) teleopCubes.remove((Integer) btnVal);
         }
     }
 
     //timer functions
     @FXML private void startTimer(ActionEvent ignoredEvent) {
-        e_timer.start();
+        balanceTime.start();
     }
     @FXML private void stopTimer(ActionEvent ignoredEvent) {
-        e_timer.pause();
+        balanceTime.pause();
     }
     @FXML private void resetTimer(ActionEvent ignoredEvent) {
-        e_timer.reset();
+        balanceTime.reset();
     }
 
     //template incrementer functions
@@ -463,28 +496,28 @@ public class FXMLController {
 
     //general methods for +/- buttons affecting corr. txtfields
     @FXML private void incrementT_cmty(ActionEvent ignoredEvent) {
-        increment(t_cmty);
+        increment(communityPickups);
     }
     @FXML private void decrementT_cmty(ActionEvent ignoredEvent) {
-        decrement(t_cmty);
+        decrement(communityPickups);
     }
     @FXML private void incrementT_neutzone(ActionEvent ignoredEvent) {
-        increment(t_neutzone);
+        increment(neutralPickups);
     }
     @FXML private void decrementT_neutzone(ActionEvent ignoredEvent) {
-        decrement(t_neutzone);
+        decrement(neutralPickups);
     }
     @FXML private void incrementT_singlesub(ActionEvent ignoredEvent) {
-        increment(t_singlesub);
+        increment(singlePickups);
     }
     @FXML private void decrementT_singlesub(ActionEvent ignoredEvent) {
-        decrement(t_singlesub);
+        decrement(singlePickups);
     }
     @FXML private void incrementT_doublesub(ActionEvent ignoredEvent) {
-        increment(t_doublesub);
+        increment(doublePickups);
     }
     @FXML private void decrementT_doublesub(ActionEvent ignoredEvent) {
-        decrement(t_doublesub);
+        decrement(doublePickups);
     }
 
     //used in collectData()
@@ -499,7 +532,7 @@ public class FXMLController {
         info.put(key, String.valueOf((int) rating.getRating()));
     }
     private void collectDataTextArea(TextArea textArea) {
-        info.put("n_co", textArea.getText());
+        info.put("comments", textArea.getText());
     }
     private void collectDataToggleGroup(ToggleGroup toggleGroup, String key) {
         if (toggleGroup.getSelectedToggle() == null) return;
@@ -531,7 +564,7 @@ public class FXMLController {
         int gridLength = grid.getChildren().size();
         for (int i = 0; i < gridLength; i++) {
             Button btn = (Button) grid.getChildren().get(i);
-            if (FXMLController.a_pickup.contains(Integer.valueOf(btn.getUserData().toString())))
+            if (FXMLController.autoPickups.contains(Integer.valueOf(btn.getUserData().toString())))
                 btn.setStyle("-fx-background-color: green; -fx-border-color: black;");
         }
     }
@@ -539,7 +572,7 @@ public class FXMLController {
         if (info.get(key) != null) rating.setRating(Double.parseDouble(info.get(key)));
     }
     private void reloadDataTextArea(TextArea textArea) {
-        textArea.setText(info.get("n_co"));
+        textArea.setText(info.get("comments"));
     }
     private void reloadDataToggleGroup(ToggleGroup toggleGroup, String key) {
         if (toggleMap.get(key) != null) toggleGroup.selectToggle(toggleGroup.getToggles().get(toggleMap.get(key)));

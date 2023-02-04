@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1324.0" style="-fx-background-color: #fde2ca;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scout.FXMLController">
-   <CheckBox fx:id="a_mob" layoutX="228.0" layoutY="111.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Mobility?">
+   <CheckBox fx:id="mobility" layoutX="228.0" layoutY="111.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Mobility?">
       <font>
          <Font size="32.0" />
       </font></CheckBox>
@@ -48,12 +48,12 @@
          <Font size="32.0" />
       </font>
       <toggleGroup>
-         <ToggleGroup fx:id="a_balstat" />
+         <ToggleGroup fx:id="autoBalance" />
       </toggleGroup>
    </RadioButton>
    <RadioButton layoutX="640.0" layoutY="190.0" mnemonicParsing="false" text="Dock" userData="Dock">
        <toggleGroup>
-            <fx:reference source="a_balstat" />
+            <fx:reference source="autoBalance" />
        </toggleGroup>
       <font>
          <Font size="32.0" />
@@ -61,7 +61,7 @@
    </RadioButton>
    <RadioButton layoutX="640.0" layoutY="256.0" mnemonicParsing="false" text="N/A" userData="N/A">
        <toggleGroup>
-            <fx:reference source="a_balstat" />
+            <fx:reference source="autoBalance" />
        </toggleGroup>
       <font>
          <Font size="32.0" />
@@ -69,7 +69,7 @@
    </RadioButton>
    <RadioButton layoutX="440.0" layoutY="256.0" mnemonicParsing="false" text="Fail" userData="Fail">
       <toggleGroup>
-            <fx:reference source="a_balstat" />
+            <fx:reference source="autoBalance" />
       </toggleGroup>
       <font>
          <Font size="32.0" />
@@ -80,15 +80,15 @@
          <Font size="32.0" />
       </font>
       <toggleGroup>
-         <ToggleGroup fx:id="a_pre" />
+         <ToggleGroup fx:id="preload" />
       </toggleGroup>
    </RadioButton>
-   <RadioButton layoutX="40.0" layoutY="215.0" mnemonicParsing="false" text="Cube" toggleGroup="$a_pre" userData="cube">
+   <RadioButton layoutX="40.0" layoutY="215.0" mnemonicParsing="false" text="Cube" toggleGroup="$preload" userData="cube">
       <font>
          <Font size="32.0" />
       </font>
    </RadioButton>
-   <RadioButton layoutX="40.0" layoutY="270.0" mnemonicParsing="false" text="N/A" toggleGroup="$a_pre" userData="N/A">
+   <RadioButton layoutX="40.0" layoutY="270.0" mnemonicParsing="false" text="N/A" toggleGroup="$preload" userData="N/A">
       <font>
          <Font size="32.0" />
       </font>

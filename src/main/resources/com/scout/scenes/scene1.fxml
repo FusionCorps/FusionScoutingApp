@@ -29,7 +29,7 @@
          <Font size="32.0" />
       </font>
    </Text>
-   <LimitedTextField fx:id="p_mnum" layoutX="252.0" layoutY="186.0" onKeyPressed="#validateInput" prefHeight="40.0" prefWidth="170.0">
+   <LimitedTextField fx:id="matchNum" layoutX="252.0" layoutY="186.0" onKeyPressed="#validateInput" prefHeight="40.0" prefWidth="170.0">
       <font>
          <Font size="18.0" />
       </font></LimitedTextField>
@@ -39,7 +39,7 @@
          <Font size="32.0" />
       </font>
    </Text>
-   <LimitedTextField fx:id="p_tnum" layoutX="238.0" layoutY="100.0" onKeyPressed="#validateInput" promptText="27/118/6672">
+   <LimitedTextField fx:id="teamNum" layoutX="238.0" layoutY="100.0" onKeyPressed="#validateInput" promptText="27/118/6672">
       <font>
          <Font size="17.0" />
       </font></LimitedTextField>
@@ -74,7 +74,7 @@
    </Label>
    <RadioButton layoutX="268.0" layoutY="285.0" mnemonicParsing="false" text="R" textFill="RED" userData="R">
       <toggleGroup>
-         <ToggleGroup fx:id="p_ra" />
+         <ToggleGroup fx:id="alliance" />
       </toggleGroup>
       <font>
          <Font size="32.0" />
@@ -82,7 +82,7 @@
    </RadioButton>
    <RadioButton layoutX="267.0" layoutY="339.0" mnemonicParsing="false" text="B" textFill="BLUE" userData="B">
       <toggleGroup>
-         <fx:reference source="p_ra" />
+         <fx:reference source="alliance" />
       </toggleGroup>
       <font>
          <Font size="32.0" />
@@ -96,7 +96,7 @@
          <Font size="32.0" />
       </font>
       <toggleGroup>
-         <ToggleGroup fx:id="p_sloc" />
+         <ToggleGroup fx:id="startLocation" />
       </toggleGroup>
    </RadioButton>
    <RadioButton layoutX="662.0" layoutY="262.0" mnemonicParsing="false" text="2">
@@ -107,7 +107,7 @@
          <Font size="32.0" />
       </font>
       <toggleGroup>
-         <fx:reference source="p_sloc" />
+         <fx:reference source="startLocation" />
       </toggleGroup>
    </RadioButton>
    <RadioButton layoutX="662.0" layoutY="319.0" mnemonicParsing="false" text="3">
@@ -118,7 +118,7 @@
          <Font size="32.0" />
       </font>
       <toggleGroup>
-         <fx:reference source="p_sloc" />
+         <fx:reference source="startLocation" />
       </toggleGroup>
    </RadioButton>
    <Label layoutX="512.0" layoutY="233.0" prefHeight="105.0" prefWidth="134.0" style="-fx-font-weight: bold;" text="Starting Location" wrapText="true">

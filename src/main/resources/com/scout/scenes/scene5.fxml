@@ -28,11 +28,11 @@
          <Font size="27.0" />
       </font>
    </Button>
-   <TextArea fx:id="n_co" layoutX="740.0" layoutY="103.0" prefHeight="286.0" prefWidth="539.0" promptText="Comments (fouls, strategy, anything else notable)" wrapText="true">
+   <TextArea fx:id="comments" layoutX="740.0" layoutY="103.0" prefHeight="286.0" prefWidth="539.0" promptText="Comments (fouls, strategy, anything else notable)" wrapText="true">
       <font>
          <Font size="23.0" />
       </font></TextArea>
-   <CheckBox fx:id="n_everybot" layoutX="474.0" layoutY="131.0" mnemonicParsing="false" text="Everybot?">
+   <CheckBox fx:id="everybot" layoutX="474.0" layoutY="131.0" mnemonicParsing="false" text="Everybot?">
       <font>
          <Font size="32.0" />
       </font>
@@ -42,31 +42,31 @@
          <Font size="32.0" />
       </font>
    </Label>
-   <Rating fx:id="n_drat" layoutX="230.0" layoutY="355.0" prefHeight="35.0" prefWidth="164.0" rating="3.0" />
+   <Rating fx:id="driver" layoutX="230.0" layoutY="355.0" prefHeight="35.0" prefWidth="164.0" rating="3.0" />
    <Label layoutX="60.0" layoutY="218.0" style="-fx-font-weight: bold;" text="Intake">
       <font>
          <Font size="32.0" />
       </font>
    </Label>
-   <Rating fx:id="n_intake" layoutX="230.0" layoutY="227.0" rating="3.0" />
+   <Rating fx:id="intake" layoutX="230.0" layoutY="227.0" rating="3.0" />
    <Label layoutX="20.0" layoutY="284.0" style="-fx-font-weight: bold;" text="Drive Speed">
       <font>
          <Font size="32.0" />
       </font>
    </Label>
-   <Rating fx:id="n_spd" layoutX="230.0" layoutY="292.0" rating="3.0" />
+   <Rating fx:id="speed" layoutX="230.0" layoutY="292.0" rating="3.0" />
    <Label layoutX="35.0" layoutY="113.0" style="-fx-font-weight: bold;" text="Drivetrain">
       <font>
          <Font size="32.0" />
       </font>
    </Label>
-   <Rating fx:id="n_dtrainrat" layoutX="230.0" layoutY="122.0" rating="3.0"/>
+   <Rating fx:id="drivetrain" layoutX="230.0" layoutY="122.0" rating="3.0"/>
    <Text layoutX="480.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Scouter Name">
       <font>
          <Font size="32.0" />
       </font>
    </Text>
-   <LimitedTextField fx:id="n_sn" layoutX="470.0" layoutY="290.0" onKeyPressed="#validateInput" prefHeight="36.0" prefWidth="233.0" promptText="John D / John Doe">
+   <LimitedTextField fx:id="scoutName" layoutX="470.0" layoutY="290.0" onKeyPressed="#validateInput" prefHeight="36.0" prefWidth="233.0" promptText="John D / John Doe">
       <font>
          <Font size="16.0" />
       </font>
@@ -76,10 +76,10 @@
          <Font size="22.0" />
       </font>
       <toggleGroup>
-         <ToggleGroup fx:id="n_dtraintype" />
+         <ToggleGroup fx:id="drivetrainType" />
       </toggleGroup>
    </RadioButton>
-   <RadioButton layoutX="198.0" layoutY="171.0" mnemonicParsing="false" text="Tank" toggleGroup="$n_dtraintype" userData="Tank">
+   <RadioButton layoutX="198.0" layoutY="171.0" mnemonicParsing="false" text="Tank" toggleGroup="$drivetrainType" userData="Tank">
       <font>
          <Font size="22.0" />
       </font>

@@ -105,22 +105,22 @@
          <Font size="24.0" />
       </font>
    </Button>
-   <LimitedTextField fx:id="t_cmty" editable="false" layoutX="335.0" layoutY="200.0" prefHeight="45.0" prefWidth="55.0" text="0">
+   <LimitedTextField fx:id="communityPickups" editable="false" layoutX="335.0" layoutY="200.0" prefHeight="45.0" prefWidth="55.0" text="0">
       <font>
          <Font size="24.0" />
       </font>
    </LimitedTextField>
-   <LimitedTextField fx:id="t_neutzone" editable="false" layoutX="335.0" layoutY="300.0" prefHeight="45.0" prefWidth="55.0" text="0">
+   <LimitedTextField fx:id="neutralPickups" editable="false" layoutX="335.0" layoutY="300.0" prefHeight="45.0" prefWidth="55.0" text="0">
       <font>
          <Font size="24.0" />
       </font>
    </LimitedTextField>
-   <LimitedTextField fx:id="t_singlesub" editable="false" layoutX="1045.0" layoutY="200.0" prefHeight="45.0" prefWidth="55.0" text="0">
+   <LimitedTextField fx:id="singlePickups" editable="false" layoutX="1045.0" layoutY="200.0" prefHeight="45.0" prefWidth="55.0" text="0">
       <font>
          <Font size="24.0" />
       </font>
    </LimitedTextField>
-   <LimitedTextField fx:id="t_doublesub" editable="false" layoutX="1045.0" layoutY="300.0" prefHeight="45.0" prefWidth="55.0" text="0">
+   <LimitedTextField fx:id="doublePickups" editable="false" layoutX="1045.0" layoutY="300.0" prefHeight="45.0" prefWidth="55.0" text="0">
       <font>
          <Font size="24.0" />
       </font>
