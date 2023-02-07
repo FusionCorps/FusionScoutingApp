@@ -170,9 +170,8 @@ public class FXMLController {
         data = new StringBuilder();
 
         for (String keyName : info.keySet()) {
-            if (info.get(keyName) == null) continue;
-            else if (info.get(keyName).equals("true")) info.put(keyName, "T");
-            else if (info.get(keyName).equals("false")) info.put(keyName, "F");
+            if (info.get(keyName).equals("true")) info.put(keyName, "TRUE");
+            else if (info.get(keyName).equals("false")) info.put(keyName, "FALSE");
             else if (info.get(keyName).equals("N/A") || info.get(keyName).equals("N/A or Failed")) info.put(keyName, "NA");
         }
 
@@ -181,7 +180,6 @@ public class FXMLController {
         data.append("alliance=" + info.get("alliance") + ";");
         data.append("startLocation=" + info.get("startLocation") + ";");
         data.append("preload=" + info.get("preload") + ";");
-        data.append("autoBalance=" + info.get("autoBalance") + ";");
         data.append("mobility=" + info.get("mobility") + ";");
         data.append("autoPickups=" + info.get("autoPickups") + ";");
         data.append("autoCones=" + info.get("autoCones") + ";");
@@ -347,7 +345,7 @@ public class FXMLController {
        String filePath = "C:\\Users\\robotics\\Desktop\\" +
             info.get("matchNum") + "-" +
             info.get("teamNum") + "-" +
-            info.get("p_ran") + ".png";
+            info.get("alliance") + ".png";
         String fileType = "png";
         try{
         File qrFile = new File(filePath);
