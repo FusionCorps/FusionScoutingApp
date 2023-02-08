@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.scout.ui.TimerText?>
+<?import com.scout.ui.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<?import java.net.URL?>
-<Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1324.0" style="-fx-background-color: #3690c0;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scout.FXMLController" stylesheets="@../css/scene4.css">
-   <Button id="prevPageButton" layoutX="40.0" layoutY="750.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="170.0" text="Prev Page"/>
-   <Button id="nextPageButton" layoutX="1110.0" layoutY="750.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="60.0" prefWidth="170.0" text="Next Page"/>
 
-   <Text id="balanceTime" layoutX="22.0" layoutY="161.0" text="Balance Time (in seconds)" textAlignment="CENTER" wrappingWidth="404.203125"/>
+<Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1324.0" style="-fx-background-color: #3690c0;" stylesheets="@../css/scene4.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scout.FXMLController">
+   <Button id="prevPageButton" layoutX="40.0" layoutY="750.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="170.0" text="Prev Page" />
+   <Button id="nextPageButton" layoutX="1110.0" layoutY="750.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="60.0" prefWidth="170.0" text="Next Page" />
 
-   <Label id="endgame" layoutX="505.0" layoutY="14.0" text="Endgame"/>
+   <Text id="balanceTime" layoutX="22.0" layoutY="161.0" text="Balance Time (in seconds)" textAlignment="CENTER" wrappingWidth="404.203125" />
 
-   <Label id="chargeStation" layoutX="730.0" layoutY="144.0" text="Charging Station"/>
+   <Label id="endgame" layoutX="505.0" layoutY="14.0" text="Endgame" />
 
-   <TimerText id="time" fx:id="balanceTime" editable="false" layoutX="435.0" layoutY="120.0" prefHeight="56.0" prefWidth="81.0" text="0.0"/>
+   <Label id="chargeStation" layoutX="730.0" layoutY="144.0" text="Charging Station" />
 
-   <CheckBox id="shuttle" fx:id="shuttle" layoutX="50.0" layoutY="351.0" mnemonicParsing="false" text="Shuttlebot?"/>
+   <TimerText id="time" fx:id="balanceTime" editable="false" layoutX="435.0" layoutY="120.0" prefHeight="58.0" prefWidth="91.0" text="0.0" />
 
-   <CheckBox id="buddyClimb" fx:id="buddyClimb" layoutX="50.0" layoutY="438.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="404.0" text="Buddy Climb? (helped other robot climb)"/>
+   <CheckBox id="shuttle" fx:id="shuttle" layoutX="50.0" layoutY="351.0" mnemonicParsing="false" text="Shuttlebot?" />
 
-   <Button id="startTimerButton" layoutX="56.0" layoutY="197.0" mnemonicParsing="false" onAction="#startTimer" prefHeight="57.0" prefWidth="110.0" text="Start"/>
+   <CheckBox id="buddyClimb" fx:id="buddyClimb" layoutX="50.0" layoutY="438.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="404.0" text="Buddy Climb? (helped other robot climb)" />
 
-   <Button id="stopTimerButton" layoutX="212.0" layoutY="197.0" mnemonicParsing="false" onAction="#stopTimer" text="Pause"/>
+   <Button id="startTimerButton" layoutX="40.0" layoutY="191.0" mnemonicParsing="false" onAction="#startTimer" prefHeight="60.0" prefWidth="110.0" text="Start" />
 
-   <Button id="resetTimerButton" layoutX="366.0" layoutY="197.0" mnemonicParsing="false" onAction="#resetTimer" text="Reset"/>
+   <Button id="stopTimerButton" layoutX="180.0" layoutY="191.0" mnemonicParsing="false" onAction="#stopTimer" prefHeight="60.0" prefWidth="110.0" text="Pause" />
+
+   <Button id="resetTimerButton" layoutX="320.0" layoutY="191.0" mnemonicParsing="false" onAction="#resetTimer" prefHeight="60.0" prefWidth="110.0" text="Reset" />
 
    <RadioButton id="chargeStationEngage" layoutX="650.0" layoutY="207.0" mnemonicParsing="false" text="Engage" userData="engage">
       <toggleGroup>
@@ -34,22 +34,22 @@
    </RadioButton>
    <RadioButton id="chargeStationDock" layoutX="900.0" layoutY="207.0" mnemonicParsing="false" text="Dock" userData="dock">
       <toggleGroup>
-         <fx:reference source="teleopBalance"/>
+         <fx:reference source="teleopBalance" />
       </toggleGroup>
    </RadioButton>
    <RadioButton id="chargeStationFail" layoutX="900.0" layoutY="351.0" mnemonicParsing="false" text="Fail" userData="fail">
      <toggleGroup>
-          <fx:reference source="teleopBalance"/>
+          <fx:reference source="teleopBalance" />
      </toggleGroup>
    </RadioButton>
    <RadioButton id="chargeStationPark" layoutX="650.0" layoutY="277.0" mnemonicParsing="false" text="Park" userData="park">
         <toggleGroup>
-             <fx:reference source="teleopBalance"/>
+             <fx:reference source="teleopBalance" />
         </toggleGroup>
    </RadioButton>
    <RadioButton id="chargeStationNA" layoutX="650.0" layoutY="351.0" mnemonicParsing="false" text="N/A" userData="N/A">
         <toggleGroup>
-             <fx:reference source="teleopBalance"/>
+             <fx:reference source="teleopBalance" />
         </toggleGroup>
    </RadioButton>
 </Pane>

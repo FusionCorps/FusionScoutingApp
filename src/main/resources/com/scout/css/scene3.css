@@ -69,7 +69,7 @@
 }
 
 #communityPickupsText {
-    -fx-font-size: 32px;
+    -fx-font-size: 24px;
     -fx-font-weight: bold;
     -fx-text-fill: #ffffff;
     -fx-background-color: #000000;
@@ -97,7 +97,6 @@
     -fx-padding: 5px;
     -fx-alignment: center;
 }
-
 #doublePickupsText {
     -fx-font-size: 24px;
     -fx-font-weight: bold;

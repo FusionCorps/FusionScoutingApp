@@ -1,7 +1,7 @@
-//TODO CSS styling: do in SceneBuilder or external CSS sheet
-//TODO EFFICIENCY: how to encapsulate/declare data fields in more efficient way (e.g. maybe hashmap for each field, like [Object:fx_id]?)
+//TODO maybe EFFICIENCY: how to encapsulate/declare data fields in more efficient way (e.g. maybe hashmap for each field, like [Object:fx_id]?)
 //TODO WANT: TBA integration, needs to be offline +  hardcoded
-//TODO flip image
+//TODO confirmation popup for starting over
+//TODO flip starting location image
 
 package com.scout;
 
@@ -213,7 +213,6 @@ public class FXMLController {
         Image img = new Image(file.getAbsolutePath());
         f_imageBox.setImage(img);
         f_dataStr.setText(data.toString());
-
         outputAll();
     }
 
