@@ -1,0 +1,94 @@
+#auton {
+    -fx-font-size: 72px;
+    -fx-font-weight: bold;
+}
+
+#mobility {
+    -fx-font-size: 32px;
+}
+
+#prevPageButton {
+    -fx-font-size: 27px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #000000;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+    -fx-alignment: center;
+}
+
+#nextPageButton {
+    -fx-font-size: 27px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #000000;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+    -fx-alignment: center;
+}
+
+#chargeStation {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+}
+
+#preload {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+}
+
+#chargeStationEngage {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+}
+
+#chargeStationDock {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+}
+
+#chargeStationFail {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+}
+
+#chargeStationNA {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+}
+
+#preloadCone {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+}
+
+#preloadCube {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+}
+
+#preloadNA {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+}
+
+#pickupText {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+}
+
+#changePicture {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+}

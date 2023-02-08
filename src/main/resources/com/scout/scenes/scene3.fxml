@@ -1,30 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.scout.ui.LimitedTextField?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
-
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import java.net.URL?>
 <Pane prefHeight="1000.0" prefWidth="1324.0" style="-fx-background-color: #74a9cf;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scout.FXMLController">
-   <Button layoutX="40.0" layoutY="750.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="170.0" text="Prev Page">
-      <font>
-         <Font size="27.0" />
-      </font>
-   </Button>
-   <Button layoutX="1110.0" layoutY="750.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="60.0" prefWidth="170.0" text="Next Page">
-      <font>
-         <Font size="27.0" />
-      </font>
-   </Button>
-   <Label layoutX="590.0" layoutY="14.0" style="-fx-font-weight: bold;" text="Teleop">
-      <font>
-         <Font size="72.0" />
-      </font>
-   </Label>
+   <stylesheets>
+      <URL value="@../css/scene3.css" />
+   </stylesheets>
+
+   <Button id="prevPageButton" layoutX="40.0" layoutY="750.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="170.0" text="Prev Page"/>
+   <Button id="nextPageButton" layoutX="1110.0" layoutY="750.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="60.0" prefWidth="170.0" text="Next Page"/>
+
+   <Label id="teleop" layoutX="590.0" layoutY="14.0" text="Teleop"/>
+
    <GridPane fx:id="t_grid" layoutX="144.0" layoutY="410.0" prefHeight="333.0" prefWidth="999.0">
       <columnConstraints>
          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -70,89 +60,34 @@
       <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="26" GridPane.columnIndex="7" GridPane.rowIndex="2" />
       <Button mnemonicParsing="false" onAction="#manipVar" prefHeight="67.0" prefWidth="127.0" style="-fx-background-color: white; -fx-border-color: black;" userData="27" GridPane.columnIndex="8" GridPane.rowIndex="2" />
    </GridPane>
-   <Label layoutX="42.0" layoutY="102.0" style="-fx-font-weight: bold;" text="Pickups in...">
-      <font>
-         <Font size="50.0" />
-      </font>
-   </Label>
-   <Label layoutX="50.0" layoutY="202.0" text="Community">
-      <font>
-         <Font size="32.0" />
-      </font>
-   </Label>
-   <Label layoutX="39.0" layoutY="300.0" text="Neutral Zone">
-      <font>
-         <Font size="32.0" />
-      </font>
-   </Label>
-   <Label layoutX="549.0" layoutY="202.0" text="Single Substation (ground)">
-      <font>
-         <Font size="32.0" />
-      </font>
-   </Label>
-   <Label layoutX="560.0" layoutY="302.0" text="Double Substation (shelf)">
-      <font>
-         <Font size="32.0" />
-      </font>
-   </Label>
-   <Button layoutX="270.0" layoutY="200.0" mnemonicParsing="false" onAction="#decrementT_cmty" prefHeight="0.0" prefWidth="51.0" text="–">
-      <font>
-         <Font size="24.0" />
-      </font>
-   </Button>
-   <Button layoutX="401.0" layoutY="200.0" mnemonicParsing="false" onAction="#incrementT_cmty" prefHeight="45.0" prefWidth="51.0" text="+">
-      <font>
-         <Font size="24.0" />
-      </font>
-   </Button>
-   <LimitedTextField fx:id="communityPickups" editable="false" layoutX="335.0" layoutY="200.0" prefHeight="45.0" prefWidth="55.0" text="0">
-      <font>
-         <Font size="24.0" />
-      </font>
-   </LimitedTextField>
-   <LimitedTextField fx:id="neutralPickups" editable="false" layoutX="335.0" layoutY="300.0" prefHeight="45.0" prefWidth="55.0" text="0">
-      <font>
-         <Font size="24.0" />
-      </font>
-   </LimitedTextField>
-   <LimitedTextField fx:id="singlePickups" editable="false" layoutX="1045.0" layoutY="200.0" prefHeight="45.0" prefWidth="55.0" text="0">
-      <font>
-         <Font size="24.0" />
-      </font>
-   </LimitedTextField>
-   <LimitedTextField fx:id="doublePickups" editable="false" layoutX="1045.0" layoutY="300.0" prefHeight="45.0" prefWidth="55.0" text="0">
-      <font>
-         <Font size="24.0" />
-      </font>
-   </LimitedTextField>
-   <Button layoutX="270.0" layoutY="298.0" mnemonicParsing="false" onAction="#decrementT_neutzone" prefHeight="0.0" prefWidth="51.0" text="–">
-      <font>
-         <Font size="24.0" />
-      </font>
-   </Button>
-   <Button layoutX="977.0" layoutY="200.0" mnemonicParsing="false" onAction="#decrementT_singlesub" prefHeight="0.0" prefWidth="51.0" text="–">
-      <font>
-         <Font size="24.0" />
-      </font>
-   </Button>
-   <Button layoutX="974.0" layoutY="300.0" mnemonicParsing="false" onAction="#decrementT_doublesub" prefHeight="0.0" prefWidth="51.0" text="–">
-      <font>
-         <Font size="24.0" />
-      </font>
-   </Button>
-   <Button layoutX="401.0" layoutY="298.0" mnemonicParsing="false" onAction="#incrementT_neutzone" prefHeight="0.0" prefWidth="51.0" text="+">
-      <font>
-         <Font size="24.0" />
-      </font>
-   </Button>
-   <Button layoutX="1118.0" layoutY="298.0" mnemonicParsing="false" onAction="#incrementT_doublesub" prefHeight="0.0" prefWidth="51.0" text="+">
-      <font>
-         <Font size="24.0" />
-      </font>
-   </Button>
-   <Button layoutX="1118.0" layoutY="200.0" mnemonicParsing="false" onAction="#incrementT_singlesub" prefHeight="0.0" prefWidth="51.0" text="+">
-      <font>
-         <Font size="24.0" />
-      </font>
-   </Button>
+   <Label id="pickups" layoutX="42.0" layoutY="102.0"/>
+
+   <Label id="communityPickups" layoutX="50.0" layoutY="202.0" text="Community"/>
+   <Label id="neutralPickups" layoutX="39.0" layoutY="300.0" text="Neutral Zone"/>
+   <Label id="singlePickups" layoutX="549.0" layoutY="202.0" text="Single Substation (ground)"/>
+   <Label id="doublePickups" layoutX="560.0" layoutY="302.0" text="Double Substation (shelf)"/>
+
+   <Button id="communityMinusButton" layoutX="270.0" layoutY="200.0" mnemonicParsing="false" onAction="#decrementT_cmty" prefHeight="0.0" prefWidth="51.0" text="–"/>
+
+   <Button id="communityPlusButton" layoutX="401.0" layoutY="200.0" mnemonicParsing="false" onAction="#incrementT_cmty" prefHeight="45.0" prefWidth="51.0" text="+"/>
+
+   <LimitedTextField id="communityPickupsText" fx:id="communityPickups" editable="false" layoutX="335.0" layoutY="200.0" prefHeight="45.0" prefWidth="55.0" text="0"/>
+
+   <LimitedTextField id="neutralPickupsText" fx:id="neutralPickups" editable="false" layoutX="335.0" layoutY="300.0" prefHeight="45.0" prefWidth="55.0" text="0"/>
+
+   <LimitedTextField id="singlePickupsText" fx:id="singlePickups" editable="false" layoutX="1045.0" layoutY="200.0" prefHeight="45.0" prefWidth="55.0" text="0"/>
+
+   <LimitedTextField id="doublePickupsText" fx:id="doublePickups" editable="false" layoutX="1045.0" layoutY="300.0" prefHeight="45.0" prefWidth="55.0" text="0"/>
+
+   <Button id="neutralMinusButton" layoutX="270.0" layoutY="298.0" mnemonicParsing="false" onAction="#decrementT_neutzone" prefHeight="0.0" prefWidth="51.0" text="–"/>
+
+   <Button id="singleMinusButton" layoutX="977.0" layoutY="200.0" mnemonicParsing="false" onAction="#decrementT_singlesub" prefHeight="0.0" prefWidth="51.0" text="–"/>
+
+   <Button id="doubleMinusButton" layoutX="974.0" layoutY="300.0" mnemonicParsing="false" onAction="#decrementT_doublesub" prefHeight="0.0" prefWidth="51.0" text="–"/>
+
+   <Button id="neutralPlusButton" layoutX="401.0" layoutY="298.0" mnemonicParsing="false" onAction="#incrementT_neutzone" prefHeight="0.0" prefWidth="51.0" text="+"/>
+
+   <Button id="doublePlusButton" layoutX="1118.0" layoutY="298.0" mnemonicParsing="false" onAction="#incrementT_doublesub" prefHeight="0.0" prefWidth="51.0" text="+"/>
+
+   <Button id="singlePlusButton" layoutX="1118.0" layoutY="200.0" mnemonicParsing="false" onAction="#incrementT_singlesub" prefHeight="0.0" prefWidth="51.0" text="+"/>
 </Pane>

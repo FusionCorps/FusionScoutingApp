@@ -1,0 +1,110 @@
+#matchNumText {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #000000;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+    -fx-alignment: center;
+}
+
+#matchNumTextField {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #000000;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+    -fx-alignment: center;
+}
+
+#teamNumText {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #000000;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+    -fx-alignment: center;
+}
+
+#teamNumTextField {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #000000;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+    -fx-alignment: center;
+}
+
+#prevPageButton {
+    -fx-font-size: 27px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #000000;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+    -fx-alignment: center;
+}
+
+#nextPageButton {
+    -fx-font-size: 27px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #000000;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+    -fx-alignment: center;
+}
+
+#alliance {
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #000000;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+    -fx-alignment: center
+}
+
+#pregame {
+    -fx-font-size: 72px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #000000;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+    -fx-alignment: center
+}
+
+#allianceR {
+    -fx-font-size: 32px;
+    -fx-text-fill: red;
+    -fx-font-weight: bold;
+}
+
+#allianceB {
+    -fx-font-size: 32px;
+    -fx-text-fill: blue;
+    -fx-font-weight: bold;
+}
+
+#startLocation1 {
+    -fx-font-size: 32px;
+}
+
+#startLocation2 {
+    -fx-font-size: 32px;
+}
+
+#startLocation3 {
+    -fx-font-size: 32px;
+}
+
+#startLocation {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-wrap-text: true;
+}
+

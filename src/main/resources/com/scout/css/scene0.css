@@ -1,0 +1,16 @@
+#title {
+-fx-font-size: 100px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #238ebc;
+    -fx-font-family: "Arial";
+    -fx-padding: 10px;
+}
+
+#beginButton {
+-fx-background-color: #000000FF;
+    -fx-text-fill: white;
+    -fx-font-size: 200px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Arial";
+    -fx-padding: 10px;
+}
