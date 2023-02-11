@@ -92,14 +92,17 @@
 
 #startLocation1 {
     -fx-font-size: 32px;
+    -fx-font-weight: bold;
 }
 
 #startLocation2 {
     -fx-font-size: 32px;
+    -fx-font-weight: bold;
 }
 
 #startLocation3 {
     -fx-font-size: 32px;
+    -fx-font-weight: bold;
 }
 
 #startLocation {
@@ -108,3 +111,12 @@
     -fx-wrap-text: true;
 }
 
+#flipImageButton {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #000000;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+    -fx-alignment: center;
+}

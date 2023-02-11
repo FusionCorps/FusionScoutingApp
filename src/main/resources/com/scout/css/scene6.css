@@ -10,11 +10,13 @@
     -fx-content-display: center;
     -fx-text-overrun: clip;
     -fx-font-size: 72px;
-    -fx-background-color: #ff0000;
+    -fx-background-color: #004212FF;
     -fx-text-alignment: center;
-    -fx-text-fill: #00ff1e;
+    -fx-text-fill: white;
     -fx-wrap-text: true;
+    -fx-font-weight: bold;
     -fx-font-size: 50px;
+    -fx-border-color: red;
 }
 
 #prevPageButton {

@@ -6,24 +6,24 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1324.0" style="-fx-background-color: #d0d1e6;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scout.FXMLController" stylesheets="@../css/scene1.css">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1324.0" style="-fx-background-color: #d0d1e6;" stylesheets="@../css/scene1.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scout.FXMLController">
 
-   <Label id="pregame" layoutX="556.0" layoutY="14.0" text="Pregame"/>
+   <Label id="pregame" layoutX="556.0" layoutY="14.0" text="Pregame" />
 
-   <Text id="matchNumText" layoutX="53.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Match Num"/>
-   <LimitedTextField id="matchNumTextField" fx:id="matchNum" layoutX="252.0" layoutY="186.0" onKeyPressed="#validateInput" prefHeight="40.0" prefWidth="170.0"/>
+   <Text id="matchNumText" layoutX="53.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Match Num" />
+   <LimitedTextField id="matchNumTextField" fx:id="matchNum" layoutX="252.0" layoutY="186.0" onKeyPressed="#validateInput" prefHeight="40.0" prefWidth="170.0" />
 
-   <Text id="teamNumText" layoutX="59.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Team Num"/>
-   <LimitedTextField id="teamNumTextField" fx:id="teamNum" layoutX="238.0" layoutY="100.0" onKeyPressed="#validateInput" promptText="27/118/6672"/>
+   <Text id="teamNumText" layoutX="59.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Team Num" />
+   <LimitedTextField id="teamNumTextField" fx:id="teamNum" layoutX="238.0" layoutY="100.0" onKeyPressed="#validateInput" promptText="27/118/6672" />
 
-   <Button id="prevPageButton" layoutX="40.0" layoutY="430.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="170.0" text="Prev Page"/>
-   <Button id="nextPageButton" layoutX="1110.0" layoutY="430.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="60.0" prefWidth="170.0" text="Next Page"/>
+   <Button id="prevPageButton" layoutX="40.0" layoutY="430.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="170.0" text="Prev Page" />
+   <Button id="nextPageButton" layoutX="1110.0" layoutY="430.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="60.0" prefWidth="170.0" text="Next Page" />
 
-   <ImageView fitHeight="243.0" fitWidth="523.0" layoutX="793.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fx:id="startLocationPNG" fitHeight="243.0" fitWidth="523.0" layoutX="793.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../images/start_locs.png" />
    </ImageView>
 
-   <Text id="alliance" layoutX="34.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Robot Alliance" wrappingWidth="233.5999999999999"/>
+   <Text id="alliance" layoutX="34.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Robot Alliance" wrappingWidth="233.5999999999999" />
    <RadioButton id="allianceR" layoutX="268.0" layoutY="285.0" mnemonicParsing="false" text="R" userData="R">
       <toggleGroup>
          <ToggleGroup fx:id="alliance" />
@@ -35,7 +35,7 @@
       </toggleGroup>
    </RadioButton>
 
-   <Label id="startLocation" layoutX="512.0" layoutY="233.0" prefHeight="105.0" prefWidth="134.0" text="Starting Location"/>
+   <Label id="startLocation" layoutX="512.0" layoutY="233.0" prefHeight="105.0" prefWidth="134.0" text="Starting Location" />
 
    <RadioButton id="startLocation1" layoutX="662.0" layoutY="206.0" mnemonicParsing="false" text="1" userData="1">
       <toggleGroup>
@@ -52,4 +52,5 @@
          <fx:reference source="startLocation" />
       </toggleGroup>
    </RadioButton>
+   <Button id="flipImageButton" layoutX="956.0" layoutY="72.0" mnemonicParsing="false" onAction="#flipImage" text="Flip Image" />
 </Pane>

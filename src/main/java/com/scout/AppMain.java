@@ -9,7 +9,7 @@ package com.scout;
  * LimitedTextField.java - restrictive text field
  * QRFuncs.java - specific implementations of the ZXing library
  * AlertBox.java -  pop-up box for error messages
- * @CopyImageToClipboard.java - copies output QR code/raw text data to clipboard for debugging
+ * CopyImageToClipboard.java - copies output QR code/raw text data to clipboard for debugging
  *
  AppMain.java - main class, launches app
  AppRun.java - main class for running app as an executable JAR
@@ -31,6 +31,5 @@ public class AppMain extends Application {
     public static void main(String[] args) {
         launch();
     }
-
 }
 

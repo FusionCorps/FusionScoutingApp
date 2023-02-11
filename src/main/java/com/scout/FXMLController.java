@@ -1,22 +1,22 @@
 //TODO maybe EFFICIENCY: how to encapsulate/declare data fields in more efficient way (e.g. maybe hashmap for each field, like [Object:fx_id]?)
 //TODO WANT: TBA integration, needs to be offline +  hardcoded
-//TODO confirmation popup for starting over
-//TODO flip starting location image
 
 package com.scout;
 
-import com.scout.ui.*;
-import com.scout.util.*;
+import com.scout.ui.AlertBox;
+import com.scout.ui.LimitedTextField;
+import com.scout.ui.TimerText;
+import com.scout.util.CopyImageToClipBoard;
+import com.scout.util.QRFuncs;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -30,9 +30,12 @@ import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Optional;
 
 public class FXMLController {
     //scene0:title
@@ -51,13 +54,18 @@ public class FXMLController {
     private static StringBuilder data = new StringBuilder(); //used to build data output string in sendInfo()
     private static boolean isNextPageClicked = false;
     private static String autonColor = "R"; //for changing color in auton pickup grid
+    private static boolean PNGflipped = false; //for flipping starting location image
+
 
     //data for each page, variables should be named the same as corresponding fx:ids for consistency
+
     //page 1 - pregame
     @FXML private LimitedTextField teamNum; //team number
     @FXML private LimitedTextField matchNum; //match number
     @FXML private ToggleGroup alliance; //robot alliance
     @FXML private ToggleGroup startLocation; //starting location
+
+    @FXML private ImageView startLocationPNG; //starting location image
     //page 2 - auton
     @FXML private ToggleGroup preload; // GP type preload
     @FXML private CheckBox mobility; //mobility
@@ -216,7 +224,6 @@ public class FXMLController {
         outputAll();
     }
 
-
     //sends data to info storage HashMap, needs to be edited with introduction of new data elements
     private void collectData() {
         switch (sceneIndex) {
@@ -334,7 +341,7 @@ public class FXMLController {
             FileWriter writer = new FileWriter("C:\\Users\\robotics\\Desktop\\" +
                     info.get("matchNum") + "-" +
                     info.get("teamNum") + "-" +
-                    info.get("p_ran") + ".txt");
+                    info.get("alliance") + ".txt");
             writer.write(data.toString());
             writer.close();
         } catch (IOException e) {
@@ -582,6 +589,25 @@ public class FXMLController {
         } else if (autonColor.equals("B")) {
             autonColor = "R";
             gpAutonPNG.setImage(new Image(getClass().getResource("images/GPstart_red.png").toString()));
+        }
+    }
+
+    @FXML private void confirmReset(ActionEvent event) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Reset");
+        alert.setHeaderText("Are you sure you want to reset the app?");
+        alert.setContentText("This will clear all data and return to the start page. This cannot be undone.");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) resetAll(event);
+    }
+
+    @FXML private void flipImage(ActionEvent ignoredEvent) {
+        if (PNGflipped) {
+            PNGflipped = false;
+            startLocationPNG.setImage(new Image(getClass().getResource("images/start_locs.png").toString()));
+        } else {
+            PNGflipped = true;
+            startLocationPNG.setImage(new Image(getClass().getResource("images/start_locs_reversed.png").toString()));
         }
     }
 }
