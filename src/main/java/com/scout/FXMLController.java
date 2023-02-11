@@ -338,7 +338,7 @@ public class FXMLController {
     @FXML private void outputAll() {
         //text file
         try {
-            FileWriter writer = new FileWriter("C:\\Users\\robotics\\Desktop\\" +
+            FileWriter writer = new FileWriter("C:\\Users\\robotics\\Desktop\\texts\\" +
                     info.get("matchNum") + "-" +
                     info.get("teamNum") + "-" +
                     info.get("alliance") + ".txt");
@@ -348,7 +348,7 @@ public class FXMLController {
             System.out.println("outputData() text file failed");
         }
         //qr code
-       String filePath = "C:\\Users\\robotics\\Desktop\\" +
+       String filePath = "C:\\Users\\robotics\\Desktop\\qrcodes\\" +
             info.get("matchNum") + "-" +
             info.get("teamNum") + "-" +
             info.get("alliance") + ".png";
