@@ -47,7 +47,58 @@ public class FXMLController {
     //scene6:QR CODE
 
     private static HashMap<String, String> info = new HashMap<>(); //stores user input data
-    private static HashMap<String, Integer> toggleMap = new HashMap<>(); //stores toggle group values
+    private static HashMap<String, Integer> toggleMap = new HashMap<>() {{
+        putIfAbsent("alliance", null);
+        putIfAbsent("startLocation", null);
+        putIfAbsent("preload", null);
+        putIfAbsent("autoBalance", null);
+        putIfAbsent("teleopBalance", null);
+        putIfAbsent("drivetrainType", null);
+    }}; //stores toggle group values
+    private static HashMap<String, String> wacoMap = new HashMap<>() {{
+        put("1164","Project NEO");
+        put("1477","Texas Torque");
+        put("2158","ausTIN CANs");
+        put("2714","BBQ");
+        put("2789","TEXPLOSION");
+        put("2848","Rangers");
+        put("2881","Lady Cans");
+        put("2950","Devastators");
+        put("3029","Mecha Titans");
+        put("3035","Droid Rage");
+        put("3545","Bots in Blue");
+        put("3676","Redshift Robotics");
+        put("3735","VorTX");
+        put("3847","Spectrum");
+        put("4295","Hudson Stingers");
+        put("4328","Furious Falcons");
+        put("4610","BearTecs");
+        put("4717","Westerner Robotics");
+        put("4734","The Iron Plainsmen");
+        put("5052","The RoboLobos");
+        put("5503","Smithville Tiger Trons");
+        put("5866","Fe [Iron] Tigers");
+        put("6180","Mechanical Lions");
+        put("624", "CRyptonite");
+        put("6377","Howdy Bots");
+        put("6488","RoboRams");
+        put("6672","Fusion Corps");
+        put("6800","Valor");
+        put("7088","Robodogs");
+        put("7091","Atlas Orbis");
+        put("7119","Sunset RoboBison");
+        put("7125","Tigerbotics");
+        put("7540","Timberwolf Robotics");
+        put("8088","Bionic Panthers");
+        put("8408","Kiss Kats");
+        put("8556","Lion Robotics");
+        put("8769","G.O.R.T.s");
+        put("9054","Johnson City Joules");
+        put("9128","ITKAN Robotics");
+        put("9289","Vikings");
+        put("9307","Spicy Chihuahuas");
+        put("9311","Warhorse Robotics");
+    }};
 
     private static int sceneIndex = 0;  //used for changing pages
     private static BufferedImage bufferedImage; //QR code image
@@ -66,6 +117,7 @@ public class FXMLController {
     @FXML private ToggleGroup startLocation; //starting location
 
     @FXML private ImageView startLocationPNG; //starting location image
+    @FXML private Text teamNameText;
     //page 2 - auton
     @FXML private ToggleGroup preload; // GP type preload
     @FXML private CheckBox mobility; //mobility
@@ -105,19 +157,16 @@ public class FXMLController {
     @FXML private Text f_dataStr; //data string for QR code
     @FXML private ImageView f_imageBox; //QR code image display box
 
-    public FXMLController() {
-        toggleMap.putIfAbsent("alliance", null);
-        toggleMap.putIfAbsent("startLocation", null);
-        toggleMap.putIfAbsent("preload", null);
-        toggleMap.putIfAbsent("autoBalance", null);
-        toggleMap.putIfAbsent("teleopBalance", null);
-        toggleMap.putIfAbsent("drivetrainType", null);
-    }
-
-    //runs at loading of a scene, defaults null values and reloads previously entered data
+     //runs at loading of a scene, defaults null values and reloads previously entered data
     public void initialize() {
         //setting defaults for certain nullable fields
         if (isNextPageClicked) {
+            if (sceneIndex == 1) {
+                teamNum.setOnKeyTyped(event -> {
+                    if (wacoMap.containsKey(teamNum.getText()))
+                        teamNameText.setText(wacoMap.get(teamNum.getText()));
+                });
+            }
             if (sceneIndex == 2) {
                 if (autonColor.equals("R")) gpAutonPNG.setImage(new Image(getClass().getResource("images/GPstart_red.png").toString()));
                 else gpAutonPNG.setImage(new Image(getClass().getResource("images/GPstart_blue.png").toString()));
@@ -130,6 +179,8 @@ public class FXMLController {
             }
         }
         reloadData();
+
+
     }
 
     //implementations of setPage() for going to next and previous pages
@@ -137,6 +188,11 @@ public class FXMLController {
         data = new StringBuilder();
         info = new HashMap<>();
         toggleMap = new HashMap<>();
+        autoPickups.clear();
+        autoCones.clear();
+        autoCubes.clear();
+        teleopCones.clear();
+        teleopCubes.clear();
         sceneIndex = 0;
         nextPage(event);
     }
@@ -611,3 +667,4 @@ public class FXMLController {
         }
     }
 }
+
