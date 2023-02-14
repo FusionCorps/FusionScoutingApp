@@ -213,9 +213,18 @@ public class FXMLController {
                     }});
             }
             if (sceneIndex == 2) {
-                if (autonColor.equals("R")) gpAutonPNG.setImage(new Image(getClass().getResource("images/GPstart_red.png").toString()));
-                else gpAutonPNG.setImage(new Image(getClass().getResource("images/GPstart_blue.png").toString()));
+                autonColor = info.get("alliance");
+                Image fieldRed = new Image(getClass().getResource("images/GPstart_red.png").toString());
+                Image fieldBlue = new Image(getClass().getResource("images/GPstart_blue.png").toString());
+                if (info.get("alliance").equals("R"))
+                    gpAutonPNG.setImage(fieldRed);
+                else gpAutonPNG.setImage(fieldBlue);
+
+                if (autonColor.equals("R"))
+                    gpAutonPNG.setImage(fieldRed);
+                else gpAutonPNG.setImage(fieldBlue);
             }
+
             if (sceneIndex == 3) {
                 communityPickups.setText("0");
                 neutralPickups.setText("0");
