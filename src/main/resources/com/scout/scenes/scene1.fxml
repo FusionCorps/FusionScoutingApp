@@ -10,11 +10,11 @@
 
    <Label id="pregame" layoutX="556.0" layoutY="14.0" text="Pregame" />
 
-   <Text id="matchNumText" layoutX="53.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Match Num" />
-   <LimitedTextField id="matchNumTextField" fx:id="matchNum" layoutX="252.0" layoutY="186.0" onKeyPressed="#validateInput" prefHeight="40.0" prefWidth="170.0" />
+   <Text id="matchNumText" layoutX="60.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Match Num" />
+   <LimitedTextField id="matchNumTextField" fx:id="matchNum" layoutX="251.0" layoutY="209.0" onKeyPressed="#validateInput" prefHeight="40.0" prefWidth="170.0" />
 
-   <Text id="teamNumText" layoutX="59.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Team Num" />
-   <LimitedTextField id="teamNumTextField" fx:id="teamNum" layoutX="238.0" layoutY="100.0" onKeyPressed="#validateInput" promptText="27/118/6672" />
+   <Text id="teamNumText" layoutX="60.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Team Num" />
+   <LimitedTextField id="teamNumTextField" fx:id="teamNum" layoutX="251.0" layoutY="99.0" onKeyPressed="#validateInput" prefHeight="40.0" prefWidth="170.0" promptText="27/118/6672" />
 
    <Button id="prevPageButton" layoutX="40.0" layoutY="430.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="170.0" text="Prev Page" />
    <Button id="nextPageButton" layoutX="1110.0" layoutY="430.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="60.0" prefWidth="170.0" text="Next Page" />
@@ -23,13 +23,13 @@
       <Image url="@../images/start_locs.png" />
    </ImageView>
 
-   <Text id="alliance" layoutX="34.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Robot Alliance" wrappingWidth="233.5999999999999" />
-   <RadioButton id="allianceR" layoutX="268.0" layoutY="285.0" mnemonicParsing="false" text="R" userData="R">
+   <Text id="alliance" layoutX="60.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Robot Alliance" wrappingWidth="233.5999999999999" />
+   <RadioButton id="allianceR" layoutX="277.0" layoutY="286.0" mnemonicParsing="false" text="R" userData="R">
       <toggleGroup>
          <ToggleGroup fx:id="alliance" />
       </toggleGroup>
    </RadioButton>
-   <RadioButton id="allianceB" layoutX="267.0" layoutY="339.0" mnemonicParsing="false" text="B" userData="B">
+   <RadioButton id="allianceB" layoutX="277.0" layoutY="343.0" mnemonicParsing="false" text="B" userData="B">
       <toggleGroup>
          <fx:reference source="alliance" />
       </toggleGroup>
@@ -53,5 +53,5 @@
       </toggleGroup>
    </RadioButton>
    <Button id="flipImageButton" layoutX="956.0" layoutY="72.0" mnemonicParsing="false" onAction="#flipImage" text="Flip Image" />
-   <Text id="teamNameText" fx:id="teamNameText" layoutX="99.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="277.64068603515625" />
+   <Text id="teamNameText" fx:id="teamNameText" layoutX="60.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You are scouting:" wrappingWidth="512.05859375" />
 </Pane>

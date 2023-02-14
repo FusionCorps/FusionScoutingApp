@@ -55,58 +55,96 @@ public class FXMLController {
         putIfAbsent("teleopBalance", null);
         putIfAbsent("drivetrainType", null);
     }}; //stores toggle group values
-    private static HashMap<String, String> wacoMap = new HashMap<>() {{
-        put("1164","Project NEO");
-        put("1477","Texas Torque");
-        put("2158","ausTIN CANs");
-        put("2714","BBQ");
-        put("2789","TEXPLOSION");
-        put("2848","Rangers");
-        put("2881","Lady Cans");
-        put("2950","Devastators");
-        put("3029","Mecha Titans");
-        put("3035","Droid Rage");
-        put("3545","Bots in Blue");
-        put("3676","Redshift Robotics");
-        put("3735","VorTX");
-        put("3847","Spectrum");
-        put("4295","Hudson Stingers");
-        put("4328","Furious Falcons");
-        put("4610","BearTecs");
-        put("4717","Westerner Robotics");
-        put("4734","The Iron Plainsmen");
-        put("5052","The RoboLobos");
-        put("5503","Smithville Tiger Trons");
-        put("5866","Fe [Iron] Tigers");
-        put("6180","Mechanical Lions");
-        put("624", "CRyptonite");
-        put("6377","Howdy Bots");
-        put("6488","RoboRams");
-        put("6672","Fusion Corps");
-        put("6800","Valor");
-        put("7088","Robodogs");
-        put("7091","Atlas Orbis");
-        put("7119","Sunset RoboBison");
-        put("7125","Tigerbotics");
-        put("7540","Timberwolf Robotics");
-        put("8088","Bionic Panthers");
-        put("8408","Kiss Kats");
-        put("8556","Lion Robotics");
-        put("8769","G.O.R.T.s");
-        put("9054","Johnson City Joules");
-        put("9128","ITKAN Robotics");
-        put("9289","Vikings");
-        put("9307","Spicy Chihuahuas");
-        put("9311","Warhorse Robotics");
+    private static final HashMap<String, String> wacoMap = new HashMap<>() {{
+        put("1164", "Project NEO");
+        put("1477", "Texas Torque");
+        put("2158", "ausTIN CANs");
+        put("2714", "♨BBQ♨");
+        put("2789", "TEXPLOSION");
+        put("2848", "Rangers");
+        put("2881", "Lady Cans");
+        put("2950", "Devastators");
+        put("3029", "Mecha Titans");
+        put("3035", "Droid Rage");
+        put("3545", "Bots in Blue");
+        put("3676", "Redshift Robotics");
+        put("3735", "VorTX");
+        put("3847", "Spectrum");
+        put("4295", "Hudson Stingers");
+        put("4328", "Furious Falcons");
+        put("4610", "BearTecs");
+        put("4717", "Westerner Robotics");
+        put("4734", "The Iron Plainsmen");
+        put("5052", "The RoboLobos");
+        put("5503", "Smithville Tiger Trons");
+        put("5866", "Fe [Iron] Tigers");
+        put("6180", "Mechanical Lions");
+        put("624",  "CRyptonite");
+        put("6377", "Howdy Bots");
+        put("6488", "RoboRams");
+        put("6672", "Fusion Corps");
+        put("6800", "Valor");
+        put("7088", "Robodogs");
+        put("7091", "Atlas Orbis");
+        put("7119", "Sunset RoboBison");
+        put("7125", "Tigerbotics");
+        put("7540", "Timberwolf Robotics");
+        put("8088", "Bionic Panthers");
+        put("8408", "Kiss Kats");
+        put("8556", "Lion Robotics");
+        put("8769", "G.O.R.T.s");
+        put("9054", "Johnson City Joules");
+        put("9128", "ITKAN Robotics");
+        put("9289", "Vikings");
+        put("9307", "Spicy Chihuahuas");
+        put("9311", "Warhorse Robotics");
+    }};
+    private static final HashMap<String, String> fwMap = new HashMap<>() {{
+        put("148", "Robowranglers");
+        put("2714", "♨BBQ♨");
+        put("3005", "RoboChargers");
+        put("3310", "Black Hawk Robotics");
+        put("4153", "Project Y");
+        put("4192", "Flower Mound Jaguar Robotics");
+        put("4206", "Robo Vikes");
+        put("4251", "The Gallup GearHeads");
+        put("4641", "TALON inc.");
+        put("5411", "RoboTalons");
+        put("5431", "Titan Robotics");
+        put("5613", "ThunderDogs");
+        put("6369", "Mercenary Robotics");
+        put("6526", "Cyber Rangers");
+        put("6672", "Fusion Corps");
+        put("6974", "Zia Robotics");
+        put("7119", "Sunset RoboBison");
+        put("7271", "Hanger 84 Robotics");
+        put("7319", "1UP");
+        put("7321", "Águila Robótica");
+        put("7503", "Radicubs");
+        put("7506", "WILDCARDS");
+        put("7534", "Dragonflies");
+        put("7535", "Purple Poison");
+        put("7540", "Timberwolf Robotics");
+        put("8528", "AstroChimps");
+        put("8749", "Farmersville  Robotics");
+        put("8816", "Coyotronics");
+        put("8858", "Beast from the East");
+        put("9069", "WARGAM3S");
+        put("9080", "ENIGMA");
+        put("9088", "NASA's Mark Infinity");
+        put("9105", "TechnoTalons");
+        put("9128", "ITKAN Robotics");
+        put("9156", "Trojan Robotics");
+        put("9299", "R0b0t B0bcats");
     }};
 
+    private static final String eventCode = "2023txwac"; //or 2023txfor, CHANGE FOR SPECIFIC EVENT
     private static int sceneIndex = 0;  //used for changing pages
     private static BufferedImage bufferedImage; //QR code image
     private static StringBuilder data = new StringBuilder(); //used to build data output string in sendInfo()
     private static boolean isNextPageClicked = false;
     private static String autonColor = "R"; //for changing color in auton pickup grid
     private static boolean PNGflipped = false; //for flipping starting location image
-
 
     //data for each page, variables should be named the same as corresponding fx:ids for consistency
 
@@ -157,15 +195,22 @@ public class FXMLController {
     @FXML private Text f_dataStr; //data string for QR code
     @FXML private ImageView f_imageBox; //QR code image display box
 
-     //runs at loading of a scene, defaults null values and reloads previously entered data
+    //runs at loading of a scene, defaults null values and reloads previously entered data
     public void initialize() {
         //setting defaults for certain nullable fields
         if (isNextPageClicked) {
             if (sceneIndex == 1) {
                 teamNum.setOnKeyTyped(event -> {
-                    if (wacoMap.containsKey(teamNum.getText()))
-                        teamNameText.setText(wacoMap.get(teamNum.getText()));
-                });
+                    if (eventCode.equals("2023txwac")) {
+                        if (wacoMap.containsKey(teamNum.getText()))
+                            teamNameText.setText("You are scouting: " + wacoMap.get(teamNum.getText()));
+                        else teamNameText.setText("You are scouting: ");
+                    }
+                    else if (eventCode.equals("2023txfor")) {
+                        if (fwMap.containsKey(teamNum.getText()))
+                            teamNameText.setText("You are scouting " + fwMap.get(teamNum.getText()));
+                        else teamNameText.setText("You are scouting: ");
+                    }});
             }
             if (sceneIndex == 2) {
                 if (autonColor.equals("R")) gpAutonPNG.setImage(new Image(getClass().getResource("images/GPstart_red.png").toString()));
@@ -179,8 +224,6 @@ public class FXMLController {
             }
         }
         reloadData();
-
-
     }
 
     //implementations of setPage() for going to next and previous pages
@@ -232,7 +275,6 @@ public class FXMLController {
     //sends data to QR code creator and displays it on screen
     @FXML private void sendInfo() throws Exception {
         data = new StringBuilder();
-
         for (String keyName : info.keySet()) {
             if (info.get(keyName).equals("true")) info.put(keyName, "TRUE");
             else if (info.get(keyName).equals("false")) info.put(keyName, "FALSE");
@@ -268,9 +310,7 @@ public class FXMLController {
         data.append("scoutName=" + info.get("scoutName") + ";");
         data.append("comments=" + info.get("comments") + ";");
 
-
         data = data.delete(data.lastIndexOf(";"), data.length());
-
 
         bufferedImage = QRFuncs.generateQRCode(data.toString(), "qrcode.png");
         File file = new File("qrcode.png");
@@ -283,13 +323,13 @@ public class FXMLController {
     //sends data to info storage HashMap, needs to be edited with introduction of new data elements
     private void collectData() {
         switch (sceneIndex) {
-            case 1:
+            case 1 -> {
                 collectDataTextField(teamNum, "teamNum");
                 collectDataTextField(matchNum, "matchNum");
                 collectDataToggleGroup(alliance, "alliance");
                 collectDataToggleGroup(startLocation, "startLocation");
-                break;
-            case 2:
+            }
+            case 2 -> {
                 collectDataCheckBox(mobility, "mobility");
                 collectDataToggleGroup(preload, "preload");
                 collectDataArray(autoPickups, "autoPickups");
@@ -302,22 +342,22 @@ public class FXMLController {
                     if (!teleopCubes.contains(i)) teleopCubes.add(i);
                 }
                 collectDataToggleGroup(autoBalance, "autoBalance");
-                break;
-            case 3:
+            }
+            case 3 -> {
                 collectDataTextField(communityPickups, "communityPickups");
                 collectDataTextField(neutralPickups, "neutralPickups");
                 collectDataTextField(singlePickups, "singlePickups");
                 collectDataTextField(doublePickups, "doublePickups");
                 collectDataArray(teleopCones, "teleopCones");
                 collectDataArray(teleopCubes, "teleopCubes");
-                break;
-            case 4:
+            }
+            case 4 -> {
                 collectDataCheckBox(shuttle, "shuttle");
                 collectDataToggleGroup(teleopBalance, "teleopBalance");
                 collectDataCheckBox(buddyClimb, "buddyClimb");
                 collectDataTextField(balanceTime, "balanceTime");
-                break;
-            case 5:
+            }
+            case 5 -> {
                 collectDataRating(drivetrain, "drivetrain");
                 collectDataRating(intake, "intake");
                 collectDataRating(speed, "speed");
@@ -326,40 +366,40 @@ public class FXMLController {
                 collectDataToggleGroup(drivetrainType, "drivetrainType");
                 collectDataTextArea(comments);
                 collectDataCheckBox(everybot, "everybot");
-                break;
+            }
         }
     }
 
     //reloads data for a scene, should be called when loading scene
     private void reloadData() {
         switch (sceneIndex) {
-            case 1:
+            case 1 -> {
                 reloadDataTextField(teamNum, "teamNum");
                 reloadDataTextField(matchNum, "matchNum");
                 reloadDataToggleGroup(alliance, "alliance");
                 reloadDataToggleGroup(startLocation, "startLocation");
-                break;
-            case 2:
+            }
+            case 2 -> {
                 reloadDataCheckBox(mobility, "mobility");
                 reloadDataToggleGroup(preload, "preload");
                 reloadDataToggleGroup(autoBalance, "autoBalance");
                 reloadDataGridFieldGP(a_grid, autoCones, autoCubes);
                 reloadDataGridFieldPickup(a_preGrid);
-                break;
-            case 3:
+            }
+            case 3 -> {
                 reloadDataTextField(communityPickups, "communityPickups");
                 reloadDataTextField(neutralPickups, "neutralPickups");
                 reloadDataTextField(singlePickups, "singlePickups");
                 reloadDataTextField(doublePickups, "doublePickups");
                 reloadDataGridFieldGP(t_grid, teleopCones, teleopCubes);
-                break;
-            case 4:
+            }
+            case 4 -> {
                 reloadDataCheckBox(shuttle, "shuttle");
                 reloadDataToggleGroup(teleopBalance, "teleopBalance");
                 reloadDataCheckBox(buddyClimb, "buddyClimb");
                 reloadDataTextField(balanceTime, "balanceTime");
-                break;
-            case 5:
+            }
+            case 5 -> {
                 reloadDataRating(drivetrain, "drivetrain");
                 reloadDataRating(intake, "intake");
                 reloadDataRating(speed, "speed");
@@ -368,11 +408,11 @@ public class FXMLController {
                 reloadDataToggleGroup(drivetrainType, "drivetrainType");
                 reloadDataTextArea(comments);
                 reloadDataCheckBox(everybot, "everybot");
-                break;
-            case 6:
+            }
+            case 6 -> {
                 if (info.get("teamNum") != null)
                     f_reminderBox.setText(info.get("scoutName") + " Scouted Team #" + info.get("teamNum") + ".");
-                break;
+            }
         }
 
     }
@@ -391,30 +431,22 @@ public class FXMLController {
     }
 
     //saves output to QR Code and text file on computer
-    @FXML private void outputAll() {
-        //text file
+    @FXML private void outputAll() throws IOException {
+        String dataName = "m"  + info.get("matchNum") + "-" + "#" + info.get("teamNum") + "-" + "a" + info.get("alliance");
+
+        FileWriter backupWriter = new FileWriter("texts\\" + dataName + ".txt");
+        backupWriter.write(data.toString()); //backup text
+        backupWriter.close();
+
+        ImageIO.write(bufferedImage, "png", new File("qrcodes\\" + dataName + ".png")); //backup qrcode
         try {
-            FileWriter writer = new FileWriter("C:\\Users\\robotics\\Desktop\\texts\\" +
-                    info.get("matchNum") + "-" +
-                    info.get("teamNum") + "-" +
-                    info.get("alliance") + ".txt");
+            //text file
+            FileWriter writer = new FileWriter("C:\\Users\\robotics\\Desktop\\texts\\" + dataName + ".txt");
             writer.write(data.toString());
             writer.close();
-        } catch (IOException e) {
-            System.out.println("outputData() text file failed");
-        }
-        //qr code
-       String filePath = "C:\\Users\\robotics\\Desktop\\qrcodes\\" +
-            info.get("matchNum") + "-" +
-            info.get("teamNum") + "-" +
-            info.get("alliance") + ".png";
-        String fileType = "png";
-        try{
-        File qrFile = new File(filePath);
-        ImageIO.write(bufferedImage, fileType, qrFile);
-        } catch (IOException e) {
-            System.out.println("outputData() qr code failed");
-        }
+            //qr code
+            ImageIO.write(bufferedImage, "png", new File("C:\\Users\\Robotics\\Desktop\\qrcodes\\" + dataName + ".png"));
+        } catch (Exception e) {System.out.println("output fail");}
     }
 
     //puts restrictions on certain data fields
@@ -435,30 +467,30 @@ public class FXMLController {
     //validation for required fields
     private boolean checkRequiredFields() {
         switch (sceneIndex) {
-            case 1:
+            case 1 -> {
                 if (teamNum.getText().isEmpty() || matchNum.getText().isEmpty() || alliance.getSelectedToggle() == null || startLocation.getSelectedToggle() == null) {
                     AlertBox.display("", "Before proceeding, please fill out ALL FIELDS.");
                     return false;
                 }
-                break;
-            case 2:
+            }
+            case 2 -> {
                 if (preload.getSelectedToggle() == null || autoBalance.getSelectedToggle() == null) {
                     AlertBox.display("", "Before proceeding, please select one of the GP preloads and balance status buttons.");
                     return false;
                 }
-                break;
-            case 4:
+            }
+            case 4 -> {
                 if (teleopBalance.getSelectedToggle() == null) {
                     AlertBox.display("", "Before proceeding, please select a balance status button.");
                     return false;
                 }
-                break;
-            case 5:
-                if (scoutName.getText().isEmpty() || drivetrainType.getSelectedToggle() == null || comments.getText()==null || comments.getText().equals("")) {
+            }
+            case 5 -> {
+                if (scoutName.getText().isEmpty() || drivetrainType.getSelectedToggle() == null || comments.getText() == null || comments.getText().equals("")) {
                     AlertBox.display("", "Before proceeding, please fill out your name and the drivetrain type button. INCLUDE COMMENTS!!!");
                     return false;
                 }
-                break;
+            }
         }
         return true;
     }
@@ -654,9 +686,10 @@ public class FXMLController {
         alert.setHeaderText("Are you sure you want to reset the app?");
         alert.setContentText("This will clear all data and return to the start page. This cannot be undone.");
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK) resetAll(event);
+        if (result.isPresent() && result.get() == ButtonType.OK) resetAll(event);
     }
 
+    //flips pregame start location image
     @FXML private void flipImage(ActionEvent ignoredEvent) {
         if (PNGflipped) {
             PNGflipped = false;
