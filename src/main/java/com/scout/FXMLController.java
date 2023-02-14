@@ -432,20 +432,27 @@ public class FXMLController {
 
     //saves output to QR Code and text file on computer
     @FXML private void outputAll() throws IOException {
+        //creates backup and desktop directories (if they don't exist) to store text and QR code files
+        new File("qrcodes").mkdirs();
+        new File("texts").mkdirs();
+        new File("C:\\Users\\robotics\\Desktop\\texts").mkdirs();
+        new File("C:\\Users\\Robotics\\Desktop\\qrcodes").mkdirs();
+
         String dataName = "m"  + info.get("matchNum") + "-" + "#" + info.get("teamNum") + "-" + "a" + info.get("alliance");
 
-        FileWriter backupWriter = new FileWriter("texts\\" + dataName + ".txt");
-        backupWriter.write(data.toString()); //backup text
-        backupWriter.close();
-
-        ImageIO.write(bufferedImage, "png", new File("qrcodes\\" + dataName + ".png")); //backup qrcode
         try {
-            //text file
+            //backups
+            FileWriter backupWriter = new FileWriter("texts\\" + dataName + ".txt");
+            backupWriter.write(data.toString()); //backup text
+            backupWriter.close();
+            ImageIO.write(bufferedImage, "png", new File("qrcodes\\" + dataName + ".png")); //backup qrcode
+
+            //directory
             FileWriter writer = new FileWriter("C:\\Users\\robotics\\Desktop\\texts\\" + dataName + ".txt");
-            writer.write(data.toString());
+            writer.write(data.toString()); //text
             writer.close();
-            //qr code
-            ImageIO.write(bufferedImage, "png", new File("C:\\Users\\Robotics\\Desktop\\qrcodes\\" + dataName + ".png"));
+
+            ImageIO.write(bufferedImage, "png", new File("C:\\Users\\Robotics\\Desktop\\qrcodes\\" + dataName + ".png")); //qr code
         } catch (Exception e) {System.out.println("output fail");}
     }
 
