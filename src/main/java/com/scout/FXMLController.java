@@ -202,12 +202,12 @@ public class FXMLController {
             if (sceneIndex == 1) {
                 teamNum.setOnKeyTyped(event -> {
                     if (eventCode.equals("2023txwac")) {
-                        if (wacoMap.containsKey(teamNum.getText()))
+                        if (wacoMap.containsKey(String.valueOf(Integer.parseInt(teamNum.getText()))))
                             teamNameText.setText("You are scouting: " + wacoMap.get(teamNum.getText()));
                         else teamNameText.setText("You are scouting: ");
                     }
                     else if (eventCode.equals("2023txfor")) {
-                        if (fwMap.containsKey(teamNum.getText()))
+                        if (fwMap.containsKey(String.valueOf(Integer.parseInt(teamNum.getText()))))
                             teamNameText.setText("You are scouting " + fwMap.get(teamNum.getText()));
                         else teamNameText.setText("You are scouting: ");
                     }});
@@ -224,7 +224,6 @@ public class FXMLController {
                     gpAutonPNG.setImage(fieldRed);
                 else gpAutonPNG.setImage(fieldBlue);
             }
-
             if (sceneIndex == 3) {
                 communityPickups.setText("0");
                 neutralPickups.setText("0");
@@ -447,7 +446,7 @@ public class FXMLController {
         new File("C:\\Users\\robotics\\Desktop\\texts").mkdirs();
         new File("C:\\Users\\Robotics\\Desktop\\qrcodes").mkdirs();
 
-        String dataName = "m"  + info.get("matchNum") + "-" + "#" + info.get("teamNum") + "-" + "a" + info.get("alliance");
+        String dataName = "m"  + info.get("matchNum") + "-" + "#" + info.get("teamNum") + "-" + "name" + info.get("scoutName");
 
         try {
             //backups
@@ -488,12 +487,34 @@ public class FXMLController {
                     AlertBox.display("", "Before proceeding, please fill out ALL FIELDS.");
                     return false;
                 }
+                if (teamNum.getText() == "0000" || matchNum.getText() == "000") {
+                    AlertBox.display("", "Please enter a valid team number and match number.");
+                    return false;
+                }
             }
             case 2 -> {
                 if (preload.getSelectedToggle() == null || autoBalance.getSelectedToggle() == null) {
                     AlertBox.display("", "Before proceeding, please select one of the GP preloads and balance status buttons.");
                     return false;
                 }
+            }
+            case 3 ->  {
+                if (Integer.parseInt(communityPickups.getText()) > 99) {
+                    AlertBox.display("", "Community Pickups cannot be greater than 99.");
+                    return false;
+                }
+                if (Integer.parseInt(neutralPickups.getText()) > 99) {
+                    AlertBox.display("", "Neutral Zone Pickups cannot be greater than 99.");
+                    return false;
+                }
+                if (Integer.parseInt(singlePickups.getText()) > 99) {
+                    AlertBox.display("", "Single Pickups cannot be greater than 99.");
+                    return false;
+                }
+                if (Integer.parseInt(doublePickups.getText()) > 99) {
+                    AlertBox.display("", "Double Pickups cannot be greater than 99.");
+                }
+
             }
             case 4 -> {
                 if (teleopBalance.getSelectedToggle() == null) {

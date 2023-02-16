@@ -68,11 +68,11 @@
 
    <Button id="communityPlusButton" layoutX="400.0" layoutY="200.0" mnemonicParsing="false" onAction="#incrementT_cmty" prefHeight="45.0" prefWidth="51.0" text="+" />
 
-   <LimitedTextField id="neutralPickupsText" fx:id="neutralPickups" editable="false" layoutX="335.0" layoutY="300.0" maxHeight="45.0" prefHeight="45.0" prefWidth="55.0" text="0" />
+   <LimitedTextField id="neutralPickupsText" fx:id="neutralPickups" editable="false" layoutX="335.0" layoutY="300.0" maxHeight="45.0" onAction="#validateInput" prefHeight="45.0" prefWidth="55.0" text="0" />
 
-   <LimitedTextField id="singlePickupsText" fx:id="singlePickups" editable="false" layoutX="1045.0" layoutY="200.0" maxHeight="45.0" prefHeight="45.0" prefWidth="55.0" text="0" />
+   <LimitedTextField id="singlePickupsText" fx:id="singlePickups" editable="false" layoutX="1045.0" layoutY="200.0" maxHeight="45.0" onAction="#validateInput" prefHeight="45.0" prefWidth="55.0" text="0" />
 
-   <LimitedTextField id="doublePickupsText" fx:id="doublePickups" editable="false" layoutX="1045.0" layoutY="300.0" maxHeight="45.0" prefHeight="45.0" prefWidth="55.0" text="0" />
+   <LimitedTextField id="doublePickupsText" fx:id="doublePickups" editable="false" layoutX="1045.0" layoutY="300.0" maxHeight="45.0" onAction="#validateInput" prefHeight="45.0" prefWidth="55.0" text="0" />
 
    <Button id="neutralMinusButton" layoutX="270.0" layoutY="300.0" mnemonicParsing="false" onAction="#decrementT_neutzone" prefHeight="0.0" prefWidth="51.0" text="–" />
 
@@ -85,7 +85,7 @@
    <Button id="doublePlusButton" layoutX="1118.0" layoutY="300.0" mnemonicParsing="false" onAction="#incrementT_doublesub" prefHeight="0.0" prefWidth="51.0" text="+" />
 
    <Button id="singlePlusButton" layoutX="1118.0" layoutY="200.0" mnemonicParsing="false" onAction="#incrementT_singlesub" prefHeight="0.0" prefWidth="51.0" text="+" />
-   <LimitedTextField id="communityPickupsText" fx:id="communityPickups" editable="false" layoutX="335.0" layoutY="200.0" maxHeight="45.0" prefHeight="45.0" prefWidth="55.0" text="0" />
+   <LimitedTextField id="communityPickupsText" fx:id="communityPickups" editable="false" layoutX="335.0" layoutY="200.0" maxHeight="45.0" onAction="#validateInput" prefHeight="45.0" prefWidth="55.0" text="0" />
    <Label layoutX="13.0" layoutY="555.0" style="-fx-font-weight: bold;" text="MID NODES">
       <font>
          <Font size="24.0" />

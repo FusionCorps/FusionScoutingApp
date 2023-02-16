@@ -48,6 +48,7 @@
     -fx-font-size: 32px;
     -fx-font-weight: bold;
     -fx-text-alignment: center;
+    -fx-wrap-text: true;
 }
 
 #buddyClimb {
