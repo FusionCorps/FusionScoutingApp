@@ -53,5 +53,5 @@
       </toggleGroup>
    </RadioButton>
    <Button id="flipImageButton" layoutX="956.0" layoutY="72.0" mnemonicParsing="false" onAction="#flipImage" text="Flip Image" />
-   <Text id="teamNameText" fx:id="teamNameText" layoutX="60.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You are scouting:" wrappingWidth="512.05859375" />
+   <Text id="teamNameText" fx:id="teamNameText" layoutX="60.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You are scouting:" wrappingWidth="716.05859375" />
 </Pane>

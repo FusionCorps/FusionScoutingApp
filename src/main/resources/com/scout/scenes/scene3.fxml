@@ -3,9 +3,65 @@
 <?import com.scout.ui.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <Pane prefHeight="1000.0" prefWidth="1324.0" style="-fx-background-color: #74a9cf;" stylesheets="@../css/scene3.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scout.FXMLController">
+   <Rectangle arcHeight="5.0" arcWidth="5.0" height="333.0" layoutX="160.0" layoutY="410.0" stroke="BLACK" strokeType="INSIDE" width="335.0">
+      <fill>
+         <RadialGradient centerX="0.5" centerY="0.5" radius="1.0">
+            <stops>
+               <Stop>
+                  <color>
+                     <Color red="0.8688271641731262" green="1.0" blue="0.21296297013759613" />
+                  </color>
+               </Stop>
+               <Stop offset="1.0">
+                  <color>
+                     <Color red="0.1277209222316742" green="0.1315789520740509" blue="0.10843080282211304" />
+                  </color>
+               </Stop>
+            </stops>
+         </RadialGradient>
+      </fill>
+   </Rectangle>
+   <Rectangle arcHeight="5.0" arcWidth="5.0" height="333.0" layoutX="824.0" layoutY="410.0" stroke="BLACK" strokeType="INSIDE" width="335.0">
+      <fill>
+         <RadialGradient centerX="0.5" centerY="0.5" radius="1.0">
+            <stops>
+               <Stop>
+                  <color>
+                     <Color red="0.8688271641731262" green="1.0" blue="0.21296297013759613" />
+                  </color>
+               </Stop>
+               <Stop offset="1.0">
+                  <color>
+                     <Color red="0.1277209222316742" green="0.1315789520740509" blue="0.10843080282211304" />
+                  </color>
+               </Stop>
+            </stops>
+         </RadialGradient>
+      </fill>
+   </Rectangle>
+   <Rectangle arcHeight="5.0" arcWidth="5.0" height="333.0" layoutX="494.0" layoutY="410.0" stroke="BLACK" strokeType="INSIDE" width="335.0">
+      <fill>
+         <RadialGradient centerX="0.5" centerY="0.5" radius="1.0">
+            <stops>
+               <Stop>
+                  <color>
+                     <Color red="0.2631579041481018" green="0.2631579041481018" blue="0.2631579041481018" />
+                  </color>
+               </Stop>
+               <Stop offset="1.0">
+                  <color>
+                     <Color red="1.0" green="1.0" blue="1.0" />
+                  </color>
+               </Stop>
+            </stops>
+         </RadialGradient>
+      </fill>
+   </Rectangle>
 
    <Button id="prevPageButton" layoutX="40.0" layoutY="750.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="170.0" text="Prev Page" />
    <Button id="nextPageButton" layoutX="1110.0" layoutY="750.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="60.0" prefWidth="170.0" text="Next Page" />
