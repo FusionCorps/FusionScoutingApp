@@ -1,3 +1,10 @@
+@font-face {
+    font-family: "Mandatory Plaything";
+    src: url(MandatoryPlaything.otf);
+}
+* {
+    -fx-font-family: "Mandatory Plaything"; }
+
 #prevPageButton {
     -fx-font-size: 27px;
     -fx-font-weight: bold;

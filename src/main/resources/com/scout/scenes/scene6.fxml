@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<?import java.net.URL?>
-<Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1000.0" prefWidth="1324.0" style="-fx-background-color: #034e7b;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scout.FXMLController" stylesheets="@../css/scene6.css">
 
-   <Button id="sendInfoButton" layoutX="363.0" layoutY="14.0" onAction="#sendInfo" prefHeight="168.0" prefWidth="697.0" text="Generate QR Code" />
+<Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1000.0" prefWidth="1324.0" style="-fx-background-color: #034e7b;" stylesheets="@../css/scene6.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scout.FXMLController">
 
-   <Button id="resetButton" layoutX="1084.0" layoutY="448.0" onAction="#confirmReset" prefHeight="207.0" prefWidth="200.0" text="Start Over"/>
+   <Button id="sendInfoButton" layoutX="363.0" layoutY="14.0" onAction="#sendInfo" prefHeight="168.0" prefWidth="697.0" text="Generate QR" />
 
-   <Button id="prevPageButton" layoutX="77.0" layoutY="473.0" onAction="#prevPage" prefHeight="100.0" prefWidth="215.0" text="Prev Page"/>
+   <Button id="resetButton" layoutX="995.0" layoutY="461.0" onAction="#confirmReset" prefHeight="207.0" prefWidth="302.0" text="Start Over" />
+
+   <Button id="prevPageButton" layoutX="77.0" layoutY="473.0" onAction="#prevPage" prefHeight="100.0" prefWidth="215.0" text="Prev Page" />
 
    <ImageView fx:id="f_imageBox" fitHeight="420.0" fitWidth="420.0" layoutX="466.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true" />
 
-   <Button id="clipboardButton" layoutX="72.0" layoutY="256.0" onAction="#copyToClipboard" prefHeight="150.0" prefWidth="215.0" text="Copy Data (Text)"/>
+   <Button id="clipboardButton" layoutX="72.0" layoutY="256.0" onAction="#copyToClipboard" prefHeight="150.0" prefWidth="215.0" text="Copy Data (Text)" />
 
-   <Button id="clipboardButton" layoutX="1082.0" layoutY="247.0"  onAction="#copyToClipboard" prefHeight="150.0" prefWidth="215.0" text="Copy Data (QR Code)"/>
+   <Button id="clipboardButton" layoutX="1082.0" layoutY="247.0" onAction="#copyToClipboard" prefHeight="150.0" prefWidth="215.0" text="Copy Data (QR Code)" />
 
-   <Text id="reminderBox" fx:id="f_reminderBox" layoutX="62.0" layoutY="64.0" text="You Scouted Team XXXX." wrappingWidth="200.0"/>
+   <Text id="reminderBox" fx:id="f_reminderBox" layoutX="59.0" layoutY="52.0" text="You Scouted Team XXXX." wrappingWidth="264.79998779296875" />
 
-   <Text id="outputString" fx:id="f_dataStr" layoutX="117.0" layoutY="710.0" wrappingWidth="1026.1368942260742"/>
+   <Text id="outputString" fx:id="f_dataStr" layoutX="117.0" layoutY="710.0" wrappingWidth="1026.1368942260742" />
 </Pane>

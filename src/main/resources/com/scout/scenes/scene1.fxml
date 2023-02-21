@@ -11,13 +11,13 @@
    <Label id="pregame" layoutX="556.0" layoutY="14.0" text="Pregame" />
 
    <Text id="matchNumText" layoutX="60.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Match Num" />
-   <LimitedTextField id="matchNumTextField" fx:id="matchNum" layoutX="251.0" layoutY="209.0" onKeyPressed="#validateInput" prefHeight="40.0" prefWidth="170.0" />
+   <LimitedTextField id="matchNumTextField" fx:id="matchNum" layoutX="271.0" layoutY="207.0" onKeyPressed="#validateInput" prefHeight="40.0" prefWidth="170.0" />
 
    <Text id="teamNumText" layoutX="60.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Team Num" />
    <LimitedTextField id="teamNumTextField" fx:id="teamNum" layoutX="251.0" layoutY="99.0" onKeyPressed="#validateInput" prefHeight="40.0" prefWidth="170.0" promptText="27/118/6672" />
 
-   <Button id="prevPageButton" layoutX="40.0" layoutY="430.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="170.0" text="Prev Page" />
-   <Button id="nextPageButton" layoutX="1110.0" layoutY="430.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="60.0" prefWidth="170.0" text="Next Page" />
+   <Button id="prevPageButton" layoutX="40.0" layoutY="430.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="175.0" text="Prev Page" />
+   <Button id="nextPageButton" layoutX="1105.0" layoutY="430.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="60.0" prefWidth="175.0" text="Next Page" />
 
    <ImageView fx:id="startLocationPNG" fitHeight="243.0" fitWidth="523.0" layoutX="793.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../images/start_locs.png" />
@@ -35,7 +35,7 @@
       </toggleGroup>
    </RadioButton>
 
-   <Label id="startLocation" layoutX="512.0" layoutY="233.0" prefHeight="105.0" prefWidth="134.0" text="Starting Location" />
+   <Label id="startLocation" layoutX="489.0" layoutY="232.0" prefHeight="105.0" prefWidth="170.0" text="Starting Location" />
 
    <RadioButton id="startLocation1" layoutX="662.0" layoutY="206.0" mnemonicParsing="false" text="1" userData="1">
       <toggleGroup>
@@ -53,5 +53,5 @@
       </toggleGroup>
    </RadioButton>
    <Button id="flipImageButton" layoutX="956.0" layoutY="72.0" mnemonicParsing="false" onAction="#flipImage" text="Flip Image" />
-   <Text id="teamNameText" fx:id="teamNameText" layoutX="60.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You are scouting:" wrappingWidth="716.05859375" />
+   <Text id="teamNameText" fx:id="teamNameText" layoutX="31.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You are scouting:" wrappingWidth="744.8585796356201" />
 </Pane>

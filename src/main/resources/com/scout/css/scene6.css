@@ -1,3 +1,10 @@
+@font-face {
+    font-family: "Mandatory Plaything";
+    src: url(MandatoryPlaything.otf);
+}
+* {
+    -fx-font-family: "Mandatory Plaything";
+}
 #sendInfoButton {
     -fx-alignment: center;
     -fx-content-display: center;
@@ -15,7 +22,6 @@
     -fx-text-fill: white;
     -fx-wrap-text: true;
     -fx-font-weight: bold;
-    -fx-font-size: 50px;
     -fx-border-color: red;
 }
 
@@ -67,6 +73,7 @@
     -fx-stroke-type: outside;
     -fx-wrap-text: true;
     -fx-text-fill: white;
+    -fx-font-family : "Arial";
     -fx-background-color: black;
     -fx-background-radius: 5px;
     -fx-padding: 5px;

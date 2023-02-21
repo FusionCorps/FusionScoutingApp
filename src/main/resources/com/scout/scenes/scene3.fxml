@@ -63,8 +63,8 @@
       </fill>
    </Rectangle>
 
-   <Button id="prevPageButton" layoutX="40.0" layoutY="750.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="170.0" text="Prev Page" />
-   <Button id="nextPageButton" layoutX="1110.0" layoutY="750.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="60.0" prefWidth="170.0" text="Next Page" />
+   <Button id="prevPageButton" layoutX="40.0" layoutY="750.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="175.0" text="Prev Page" />
+   <Button id="nextPageButton" layoutX="1105.0" layoutY="750.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="60.0" prefWidth="175.0" text="Next Page" />
 
    <Label id="teleop" layoutX="590.0" layoutY="14.0" text="Teleop" />
 
@@ -116,9 +116,9 @@
    <Label id="pickups" layoutX="42.0" layoutY="102.0" />
 
    <Label id="communityPickups" layoutX="50.0" layoutY="202.0" text="Community" />
-   <Label id="neutralPickups" layoutX="39.0" layoutY="300.0" text="Neutral Zone" />
-   <Label id="singlePickups" layoutX="549.0" layoutY="202.0" text="Single Substation (ground)" />
-   <Label id="doublePickups" layoutX="560.0" layoutY="302.0" text="Double Substation (shelf)" />
+   <Label id="neutralPickups" layoutX="47.0" layoutY="275.0" prefHeight="96.0" prefWidth="229.0" text="Neutral Zone" textAlignment="CENTER" wrapText="true" />
+   <Label id="singlePickups" layoutX="607.0" layoutY="181.0" prefHeight="79.0" prefWidth="359.0" text="Single Substation (ground)" textAlignment="CENTER" wrapText="true" />
+   <Label id="doublePickups" layoutX="590.0" layoutY="279.0" prefHeight="116.0" prefWidth="377.0" text="Double Substation (shelf)" textAlignment="CENTER" wrapText="true" />
 
    <Button id="communityMinusButton" layoutX="270.0" layoutY="200.0" mnemonicParsing="false" onAction="#decrementT_cmty" prefHeight="0.0" prefWidth="51.0" text="–" />
 
@@ -147,7 +147,7 @@
          <Font size="24.0" />
       </font>
    </Label>
-   <Label layoutX="14.0" layoutY="449.0" prefHeight="35.0" prefWidth="136.0" style="-fx-font-weight: bold;" text="TOP NODES" textAlignment="CENTER" wrapText="true">
+   <Label layoutX="13.0" layoutY="438.0" prefHeight="58.0" prefWidth="146.0" style="-fx-font-weight: bold;" text="TOP NODES" textAlignment="CENTER" wrapText="true">
       <font>
          <Font size="24.0" />
       </font>
