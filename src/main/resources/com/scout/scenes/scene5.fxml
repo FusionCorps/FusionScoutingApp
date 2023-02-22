@@ -29,14 +29,19 @@
    <Label id="drivetrain" layoutX="35.0" layoutY="113.0" text="Drivetrain" />
    <Rating fx:id="drivetrain" layoutX="260.0" layoutY="113.0" rating="3.0" />
 
-   <Text id="scoutNameText" layoutX="465.0" layoutY="295.0" text="Scouter Name" />
-   <LimitedTextField id="scoutNameTextField" fx:id="scoutName" layoutX="448.0" layoutY="316.0" onKeyPressed="#validateInput" prefHeight="37.0" prefWidth="299.0" promptText="John D / John Doe" />
+   <Text id="scoutNameText" layoutX="465.0" layoutY="302.0" text="Scouter Name" />
+   <LimitedTextField id="scoutNameTextField" fx:id="scoutName" layoutX="448.0" layoutY="316.0" onKeyPressed="#validateInput" prefHeight="37.0" prefWidth="299.0" />
 
    <RadioButton id="drivetrainSwerve" layoutX="33.0" layoutY="170.0" mnemonicParsing="false" text="Swerve" userData="swerve">
       <toggleGroup>
          <ToggleGroup fx:id="drivetrainType" />
       </toggleGroup>
    </RadioButton>
-   <RadioButton id="drivetrainTank" layoutX="210.0" layoutY="170.0" mnemonicParsing="false" text="Tank" toggleGroup="$drivetrainType" userData="tank">
+   <RadioButton id="drivetrainTank" layoutX="213.0" layoutY="169.0" mnemonicParsing="false" text="Tank" toggleGroup="$drivetrainType" userData="tank">
    </RadioButton>
+   <Text layoutX="6.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(Structural Stability)">
+      <font>
+         <Font size="20.0" />
+      </font>
+   </Text>
 </Pane>

@@ -14,7 +14,7 @@
    <LimitedTextField id="matchNumTextField" fx:id="matchNum" layoutX="271.0" layoutY="207.0" onKeyPressed="#validateInput" prefHeight="40.0" prefWidth="170.0" />
 
    <Text id="teamNumText" layoutX="60.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Team Num" />
-   <LimitedTextField id="teamNumTextField" fx:id="teamNum" layoutX="251.0" layoutY="99.0" onKeyPressed="#validateInput" prefHeight="40.0" prefWidth="170.0" promptText="27/118/6672" />
+   <LimitedTextField id="teamNumTextField" fx:id="teamNum" layoutX="251.0" layoutY="99.0" onKeyPressed="#validateInput" prefHeight="40.0" prefWidth="170.0" />
 
    <Button id="prevPageButton" layoutX="40.0" layoutY="430.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="175.0" text="Prev Page" />
    <Button id="nextPageButton" layoutX="1105.0" layoutY="430.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="60.0" prefWidth="175.0" text="Next Page" />
@@ -35,7 +35,7 @@
       </toggleGroup>
    </RadioButton>
 
-   <Label id="startLocation" layoutX="489.0" layoutY="232.0" prefHeight="105.0" prefWidth="170.0" text="Starting Location" />
+   <Label id="startLocation" layoutX="477.0" layoutY="232.0" prefHeight="105.0" prefWidth="181.0" text="Starting Location" />
 
    <RadioButton id="startLocation1" layoutX="662.0" layoutY="206.0" mnemonicParsing="false" text="1" userData="1">
       <toggleGroup>

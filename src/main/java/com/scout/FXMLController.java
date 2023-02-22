@@ -201,6 +201,7 @@ public class FXMLController {
         if (isNextPageClicked) {
             if (sceneIndex == 1) {
                 teamNum.setOnKeyTyped(event -> {
+                    if (!teamNum.getText().isBlank()){
                     if (eventCode.equals("2023txwac")) {
                         if (wacoMap.containsKey(String.valueOf(Integer.parseInt(teamNum.getText()))))
                             teamNameText.setText("You are scouting: " + wacoMap.get(teamNum.getText()));
@@ -210,7 +211,7 @@ public class FXMLController {
                         if (fwMap.containsKey(String.valueOf(Integer.parseInt(teamNum.getText()))))
                             teamNameText.setText("You are scouting " + fwMap.get(teamNum.getText()));
                         else teamNameText.setText("You are scouting: ");
-                    }});
+                    }}});
             }
             if (sceneIndex == 2) {
                 autonColor = info.get("alliance");
