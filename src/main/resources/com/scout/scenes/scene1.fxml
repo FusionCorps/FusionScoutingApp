@@ -8,7 +8,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1324.0" style="-fx-background-color: #d0d1e6;" stylesheets="@../css/scene1.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scout.FXMLController">
 
-   <Label id="pregame" layoutX="556.0" layoutY="14.0" text="Pregame" />
+   <Label id="pregame" layoutX="474.0" layoutY="28.0" text="Pregame" />
 
    <Text id="matchNumText" layoutX="60.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Match Num" />
    <LimitedTextField id="matchNumTextField" fx:id="matchNum" layoutX="271.0" layoutY="207.0" onKeyPressed="#validateInput" prefHeight="40.0" prefWidth="170.0" />

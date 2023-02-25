@@ -185,6 +185,7 @@
          <Font size="24.0" />
       </font>
    </Label>
-   <Label layoutX="51.0" layoutY="395.0" prefHeight="14.0" prefWidth="95.0" text="&lt;= Audience" />
+   <Label layoutX="51.0" layoutY="395.0" prefHeight="14.0" prefWidth="95.0" text="&lt;= Head Ref" />
    <Label layoutX="1174.0" layoutY="395.0" prefHeight="14.0" prefWidth="146.0" text="Loading Station =&gt;" />
+   <Label layoutX="604.0" layoutY="380.0" text="↑ Driver Stations" />
 </Pane>

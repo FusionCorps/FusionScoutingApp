@@ -79,11 +79,6 @@
 #pregame {
     -fx-font-size: 72px;
     -fx-font-weight: bold;
-    -fx-text-fill: #ffffff;
-    -fx-background-color: #000000;
-    -fx-background-radius: 5px;
-    -fx-padding: 5px;
-    -fx-alignment: center
 }
 
 #allianceR {

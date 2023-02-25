@@ -157,11 +157,12 @@
          <Font size="24.0" />
       </font>
    </Label>
-   <Label layoutX="57.0" layoutY="112.0" prefHeight="86.0" prefWidth="251.0" style="-fx-font-weight: bold; -fx-font-style: italic;" text="Pickups in..." textAlignment="CENTER" underline="true" wrapText="true">
+   <Label layoutX="57.0" layoutY="112.0" prefHeight="86.0" prefWidth="301.0" style="-fx-font-weight: bold; -fx-font-style: italic;" text="Pickups in..." textAlignment="CENTER" underline="true" wrapText="true">
       <font>
          <Font size="40.0" />
       </font>
    </Label>
    <Label layoutX="1170.0" layoutY="409.0" prefHeight="14.0" prefWidth="146.0" text="Loading Station =&gt;" />
-   <Label layoutX="39.0" layoutY="409.0" prefHeight="14.0" prefWidth="95.0" text="&lt;= Audience" />
+   <Label layoutX="39.0" layoutY="409.0" prefHeight="14.0" prefWidth="95.0" text="&lt;= Head Ref" />
+   <Label layoutX="600.0" layoutY="378.0" prefHeight="37.0" prefWidth="121.0" text="↑ Driver Stations" wrapText="true" />
 </Pane>

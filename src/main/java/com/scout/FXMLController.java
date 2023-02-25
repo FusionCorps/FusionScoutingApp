@@ -98,7 +98,7 @@ public class FXMLController {
         put("9289", "Vikings");
         put("9307", "Spicy Chihuahuas");
         put("9311", "Warhorse Robotics");
-    }};
+    }}; //team names for Waco, used in pregame page
     private static final HashMap<String, String> fwMap = new HashMap<>() {{
         put("148", "Robowranglers");
         put("2714", "♨BBQ♨");
@@ -136,17 +136,16 @@ public class FXMLController {
         put("9128", "ITKAN Robotics");
         put("9156", "Trojan Robotics");
         put("9299", "R0b0t B0bcats");
-    }};
+    }}; //team names for Fort Worth, used in pregame page
 
-    private static final String eventCode = "2023txwac"; //or 2023txfor, CHANGE FOR SPECIFIC EVENT
+    private static final String eventCode = "2023txwac"; //CHANGE FOR SPECIFIC EVENT
     private static int sceneIndex = 0;  //used for changing pages
-    private static BufferedImage bufferedImage; //QR code image
     private static StringBuilder data = new StringBuilder(); //used to build data output string in sendInfo()
-    private static boolean isNextPageClicked = false;
+    private static boolean isNextPageClicked = false; //used in initialize() to prevent data from being sent to info HashMap before user clicks next page
     private static String autonColor = "R"; //for changing color in auton pickup grid
     private static boolean PNGflipped = false; //for flipping starting location image
 
-    //data for each page, variables should be named the same as corresponding fx:ids for consistency
+    //data for each page, variables are named the same as corresponding fx:ids in fxml files for consistency
 
     //page 1 - pregame
     @FXML private LimitedTextField teamNum; //team number
@@ -194,6 +193,8 @@ public class FXMLController {
     @FXML private Text f_reminderBox; //You scouted, "[insert team #]"
     @FXML private Text f_dataStr; //data string for QR code
     @FXML private ImageView f_imageBox; //QR code image display box
+    private static BufferedImage bufferedImage; //QR code image
+
 
     //runs at loading of a scene, defaults null values and reloads previously entered data
     public void initialize() {
@@ -650,7 +651,7 @@ public class FXMLController {
         decrement(doublePickups);
     }
 
-    //used in collectData()
+    //used in collectData() for specific types of data
     private void collectDataCheckBox(CheckBox checkBox, String key) {
         info.put(key, String.valueOf(checkBox.isSelected()));
     }
@@ -673,7 +674,7 @@ public class FXMLController {
         toggleMap.put(key, index);
     }
 
-    //used in reloadData()
+    //used in reloadData() for specific types of data
     private void reloadDataCheckBox(CheckBox checkBox, String key) {
         checkBox.setSelected(Boolean.parseBoolean(info.get(key)));
     }
@@ -708,6 +709,7 @@ public class FXMLController {
         if (toggleMap.get(key) != null) toggleGroup.selectToggle(toggleGroup.getToggles().get(toggleMap.get(key)));
     }
 
+    //used to change auton pickup image to red/blue
     @FXML private void changeGPAutonPNG(ActionEvent ignoredEvent) {
         if (autonColor.equals("R")) {
             autonColor = "B";
@@ -718,6 +720,7 @@ public class FXMLController {
         }
     }
 
+    //displays confirmation popup before resetting app
     @FXML private void confirmReset(ActionEvent event) throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Reset");
