@@ -11,7 +11,6 @@ public class TimerText extends LimitedTextField {
 
     public TimerText() {
         super();
-        setEditable(false);
         update();
         startTime = 0.0;
     }
