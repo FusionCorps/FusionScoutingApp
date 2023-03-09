@@ -1,31 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.scout.ui.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
 <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1324.0" style="-fx-background-color: #3690c0;" stylesheets="@../css/scene4.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scout.FXMLController">
    <Button id="prevPageButton" layoutX="40.0" layoutY="750.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="175.0" text="Prev Page" />
    <Button id="nextPageButton" layoutX="1110.0" layoutY="750.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="60.0" prefWidth="175.0" text="Next Page" />
 
-   <Text id="balanceTime" layoutX="24.0" layoutY="144.0" text="Balance Time (in seconds)" textAlignment="CENTER" wrappingWidth="404.203125" />
-
    <Label id="endgame" layoutX="505.0" layoutY="14.0" text="Endgame" />
 
    <Label id="chargeStation" layoutX="730.0" layoutY="144.0" text="Charging Station" />
 
-   <TimerText id="time" fx:id="balanceTime" layoutX="397.0" layoutY="116.0" prefHeight="58.0" prefWidth="146.0" text="0.0" />
-
    <CheckBox id="shuttle" fx:id="shuttle" layoutX="40.0" layoutY="393.0" mnemonicParsing="false" prefHeight="154.0" prefWidth="545.0" text="Shuttlebot? (moves game pieces for other robots to score)" wrapText="true" />
 
    <CheckBox id="buddyClimb" fx:id="buddyClimb" layoutX="40.0" layoutY="558.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="467.0" text="Buddy Climb? (helped other robot climb)" />
-
-   <Button id="startTimerButton" layoutX="40.0" layoutY="191.0" mnemonicParsing="false" onAction="#startTimer" prefHeight="60.0" prefWidth="110.0" text="Start" />
-
-   <Button id="stopTimerButton" layoutX="180.0" layoutY="191.0" mnemonicParsing="false" onAction="#stopTimer" prefHeight="60.0" prefWidth="110.0" text="Pause" />
-
-   <Button id="resetTimerButton" layoutX="320.0" layoutY="191.0" mnemonicParsing="false" onAction="#resetTimer" prefHeight="60.0" prefWidth="110.0" text="Reset" />
 
    <RadioButton id="chargeStationEngage" layoutX="650.0" layoutY="207.0" mnemonicParsing="false" text="Engage" userData="engage">
       <toggleGroup>

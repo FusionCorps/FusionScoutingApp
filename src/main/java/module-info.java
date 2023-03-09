@@ -5,6 +5,7 @@ module com.scout {
     requires java.desktop;
     requires com.google.zxing;
     requires com.google.zxing.javase;
+    requires com.opencsv;
     requires org.controlsfx.controls;
     requires java.net.http;
 

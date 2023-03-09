@@ -38,6 +38,7 @@
     -fx-text-alignment: center;
     -fx-stroke-type: outside;
     -fx-wrap-text: true;
+    -fx-font-family: Bahnschrift;
 }
 
 #everybot {
@@ -90,6 +91,7 @@
     -fx-background-radius: 5px;
     -fx-padding: 5px;
     -fx-alignment: center;
+    -fx-font-family: Bahnschrift;
 }
 
 #drivetrainSwerve {

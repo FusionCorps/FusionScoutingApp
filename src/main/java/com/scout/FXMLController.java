@@ -1,12 +1,18 @@
-//TODO maybe EFFICIENCY: how to encapsulate/declare data fields in more efficient way (e.g. maybe hashmap for each field, like [Object:fx_id]?)
+//TODO (long-term restructuring) EFFICIENCY: how to encapsulate/declare data fields in more efficient way (e.g. maybe hashmap for each field, like [Object:fx_id]?)
+//TODO csv output, merge new data to it
 package com.scout;
 
-import com.scout.ui.*;
-import com.scout.util.*;
+import com.scout.ui.AlertBox;
+import com.scout.ui.LimitedTextField;
+import com.scout.ui.TimerText;
+import com.scout.util.CopyImageToClipBoard;
+import com.scout.util.QRFuncs;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.*;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.*;
@@ -23,12 +29,8 @@ import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Optional;
+import java.io.*;
+import java.util.*;
 
 public class FXMLController {
     //scene0:begin
@@ -39,7 +41,7 @@ public class FXMLController {
     //scene5:qualitative notes
     //scene6:QR CODE
 
-    private static HashMap<String, String> info = new HashMap<>(); //stores user input data
+    private static LinkedHashMap<String, String> info = new LinkedHashMap<>(); //stores user input data
     private static HashMap<String, Integer> toggleMap = new HashMap<>() {{
         putIfAbsent("alliance", null);
         putIfAbsent("startLocation", null);
@@ -48,7 +50,30 @@ public class FXMLController {
         putIfAbsent("teleopBalance", null);
         putIfAbsent("drivetrainType", null);
     }}; //stores toggle group values
-    private static final HashMap<String, String> teamNameMap = new HashMap<>() {{
+    private static HashMap<String,String> teamNameMap = new HashMap<>() {{put("1","The Juggernauts");
+        put("4","Team 4 ELEMENT");
+        put("8","Paly Robotics");
+        put("11","MORT");
+        put("16","Bomb Squad");
+        put("20","The Rocketeers");
+        put("21","ComBBAT");
+        put("25","Raider Robotix");
+        put("27","Team RUSH");
+        put("28","Pierson Whalers");
+        put("31","Prime Movers");
+        put("33","Killer Bees");
+        put("34","Rockets");
+        put("41","RoboWarriors");
+        put("45","TechnoKats Robotics Team");
+        put("48","Team E.L.I.T.E.");
+        put("51","The Wings of Fire");
+        put("56","R.O.B.B.E.");
+        put("58","The Riot Crew");
+        put("59","RamTech");
+        put("60","Kingman FIRST Robotics Team 60 (The Bionic Bulldogs)");
+        put("61","The Intimidators");
+        put("63","McDowell Robotics Team 63");
+        put("66","Grizzly Robotics");
         put("67","The HOT Team");
         put("68","Truck Town Thunder");
         put("69","HYPER");
@@ -578,7 +603,7 @@ public class FXMLController {
         put("1810","CATATRONICS");
         put("1811","FRESH");
         put("1812","Blackbird Robotics");
-        put("1816","\"The Green Machine\"");
+        put("1816","The Green Machine");
         put("1818","Team Talos");
         put("1825","The Cyborgs");
         put("1827","THE HIVE");
@@ -1228,7 +1253,7 @@ public class FXMLController {
         put("3821","Pirabots");
         put("3822","Neon Krakens");
         put("3824","HVA RoHAWKtics");
-        put("3826","Sequim Robotics Federation \"SRF\"");
+        put("3826","Sequim Robotics Federation SRF");
         put("3834","Crab-bots");
         put("3835","Vulcan");
         put("3838","Roc City Robotix");
@@ -2734,7 +2759,7 @@ public class FXMLController {
         put("7906","Underdogs");
         put("7907","Spartan Robotics");
         put("7911","Belding Scrapcat Robotics");
-        put("7913","\"Bear\"ly Functioning");
+        put("7913","Bearly Functioning");
         put("7915","Ripon Robotics");
         put("8005","Mega MeadowBots");
         put("8006","The Phantoms");
@@ -3366,8 +3391,7 @@ public class FXMLController {
         put("9313","ROBOhana");
         put("9314","Middleton Highschool Robotics Team");
         put("9315","Coding Comets");
-        put("9316","CUB-ATRONICS");
-    }}; //team names, used in pregame page
+    }}; //stores team names
 
     private static int sceneIndex = 0;  //used for changing pages
     private static StringBuilder data = new StringBuilder(); //used to build data output string in sendInfo()
@@ -3409,7 +3433,7 @@ public class FXMLController {
     @FXML private CheckBox shuttle; //shuttlebot
     @FXML private ToggleGroup teleopBalance; //endgame balance status
     @FXML private CheckBox buddyClimb; //buddy climb
-    @FXML private TimerText balanceTime; //balance time
+//    @FXML private TimerText balanceTime; //balance time
     //page5 - qualitative notes
     @FXML private CheckBox everybot; //everybot
     @FXML private ToggleGroup drivetrainType; //drivetrain type
@@ -3430,7 +3454,10 @@ public class FXMLController {
         //setting defaults for certain nullable fields
         if (isNextPageClicked) {
             if (sceneIndex == 1) {
-                teamNum.setOnKeyTyped(event -> teamNameText.setText("You are scouting: " + teamNameMap.getOrDefault(teamNum.getText(), "")));
+                //handles team name display
+                teamNum.setOnKeyTyped(event -> {
+                    teamNameText.setText("You are scouting: " + teamNameMap.get(teamNum.getText()));
+                    });
             }
             if (sceneIndex == 2) {
                 autonColor = info.get("alliance");
@@ -3457,7 +3484,7 @@ public class FXMLController {
     //implementations of setPage() for going to next and previous pages
     @FXML private void resetAll(ActionEvent event) throws IOException {
         data = new StringBuilder();
-        info = new HashMap<>();
+        info = new LinkedHashMap<>();
         toggleMap = new HashMap<>();
         autoPickups.clear();
         autoCones.clear();
@@ -3503,42 +3530,29 @@ public class FXMLController {
     //sends data to QR code creator and displays it on screen
     @FXML private void sendInfo() throws Exception {
         data = new StringBuilder();
+
+        //run certain checks to correctly format data; boolean checks, and remove pieces scored in auton from being recorded in teleop
         for (String keyName : info.keySet()) {
             if (info.get(keyName).equals("true")) info.put(keyName, "TRUE");
             else if (info.get(keyName).equals("false")) info.put(keyName, "FALSE");
             else if (info.get(keyName).equals("N/A") || info.get(keyName).equals("N/A or Failed")) info.put(keyName, "NA");
         }
 
-        data.append("teamNum=" + info.get("teamNum") + ";");
-        data.append("matchNum=" + info.get("matchNum") + ";");
-        data.append("alliance=" + info.get("alliance") + ";");
-        data.append("startLocation=" + info.get("startLocation") + ";");
-        data.append("preload=" + info.get("preload") + ";");
-        data.append("mobility=" + info.get("mobility") + ";");
-        data.append("autoPickups=" + info.get("autoPickups") + ";");
-        data.append("autoCones=" + info.get("autoCones") + ";");
-        data.append("autoCubes=" + info.get("autoCubes") + ";");
-        data.append("autoBalance=" + info.get("autoBalance") + ";");
-        data.append("communityPickups=" + info.get("communityPickups") + ";");
-        data.append("neutralPickups=" + info.get("neutralPickups") + ";");
-        data.append("singlePickups=" + info.get("singlePickups") + ";");
-        data.append("doublePickups=" + info.get("doublePickups") + ";");
-        data.append("teleopCones=" + info.get("teleopCones") + ";");
-        data.append("teleopCubes=" + info.get("teleopCubes") + ";");
-        data.append("shuttle=" + info.get("shuttle") + ";");
-        data.append("teleopBalance=" + info.get("teleopBalance") + ";");
-        data.append("buddyClimb=" + info.get("buddyClimb") + ";");
-        data.append("balanceTime=" + info.get("balanceTime") + ";");
-        data.append("everybot=" + info.get("everybot") + ";");
-        data.append("drivetrainType=" + info.get("drivetrainType") + ";");
-        data.append("drivetrain=" + info.get("drivetrain") + ";");
-        data.append("intake=" + info.get("intake") + ";");
-        data.append("speed=" + info.get("speed") + ";");
-        data.append("driver=" + info.get("driver") + ";");
-        data.append("scoutName=" + info.get("scoutName") + ";");
-        data.append("comments=" + info.get("comments") + ";");
+        for (int i = 0; i < teleopCones.size(); i++)
+            if (autoCones.contains(teleopCones.get(i)))
+                teleopCones.remove(i);
+        for (int i = 0; i < teleopCubes.size(); i++)
+            if (autoCubes.contains(teleopCubes.get(i)))
+                teleopCubes.remove(i);
 
-        data = data.delete(data.lastIndexOf(";"), data.length());
+        collectDataArray(teleopCones, "teleopCones");
+        collectDataArray(teleopCubes, "teleopCubes");
+
+        //specifically ordered (for Kraken parser) output string appended to data StringBuilder
+        for (String keyName : info.keySet())
+            data.append(keyName + "=" + info.get(keyName) + "|");
+
+        data = data.delete(data.lastIndexOf("|"), data.length());
 
         bufferedImage = QRFuncs.generateQRCode(data.toString(), "qrcode.png");
         File file = new File("qrcode.png");
@@ -3558,8 +3572,8 @@ public class FXMLController {
                 collectDataToggleGroup(startLocation, "startLocation");
             }
             case 2 -> {
-                collectDataCheckBox(mobility, "mobility");
                 collectDataToggleGroup(preload, "preload");
+                collectDataCheckBox(mobility, "mobility");
                 collectDataArray(autoPickups, "autoPickups");
                 collectDataArray(autoCones, "autoCones");
                 for (Integer i : autoCones) {
@@ -3583,17 +3597,17 @@ public class FXMLController {
                 collectDataCheckBox(shuttle, "shuttle");
                 collectDataToggleGroup(teleopBalance, "teleopBalance");
                 collectDataCheckBox(buddyClimb, "buddyClimb");
-                collectDataTextField(balanceTime, "balanceTime");
+//                collectDataTextField(balanceTime, "balanceTime");
             }
             case 5 -> {
+                collectDataCheckBox(everybot, "everybot");
+                collectDataToggleGroup(drivetrainType, "drivetrainType");
                 collectDataRating(drivetrain, "drivetrain");
                 collectDataRating(intake, "intake");
                 collectDataRating(speed, "speed");
                 collectDataRating(driver, "driver");
                 collectDataTextField(scoutName, "scoutName");
-                collectDataToggleGroup(drivetrainType, "drivetrainType");
-                collectDataTextArea(comments);
-                collectDataCheckBox(everybot, "everybot");
+                collectDataTextArea(comments, "comments");
             }
         }
     }
@@ -3625,7 +3639,7 @@ public class FXMLController {
                 reloadDataCheckBox(shuttle, "shuttle");
                 reloadDataToggleGroup(teleopBalance, "teleopBalance");
                 reloadDataCheckBox(buddyClimb, "buddyClimb");
-                reloadDataTextField(balanceTime, "balanceTime");
+//                reloadDataTextField(balanceTime, "balanceTime");
             }
             case 5 -> {
                 reloadDataRating(drivetrain, "drivetrain");
@@ -3634,7 +3648,7 @@ public class FXMLController {
                 reloadDataRating(driver, "driver");
                 reloadDataTextField(scoutName, "scoutName");
                 reloadDataToggleGroup(drivetrainType, "drivetrainType");
-                reloadDataTextArea(comments);
+                reloadDataTextArea(comments, "comments");
                 reloadDataCheckBox(everybot, "everybot");
             }
             case 6 -> {
@@ -3658,29 +3672,74 @@ public class FXMLController {
             }
     }
 
-    //saves output to QR Code and text file on computer
-    @FXML private void outputAll() throws IOException {
-        //creates backup and desktop directories (if they don't exist) to store text and QR code files
-        new File("qrcodes").mkdirs();
-        new File("texts").mkdirs();
-        new File("C:\\Users\\robotics\\Desktop\\texts").mkdirs();
-        new File("C:\\Users\\Robotics\\Desktop\\qrcodes").mkdirs();
-
+    //saves output to QR Codes and text files on computer
+    @FXML private void outputAll() {
+        String outputTextPath = "C:\\Users\\robotics\\Documents\\Scouting\\texts";
+        String outputQRCodePath = "C:\\Users\\Robotics\\Documents\\Scouting\\qrcodes";
+        String outputCSVPath = "C:\\Users\\Robotics\\Documents\\Scouting\\output.csv";
+        //m~-#~-name~
         String dataName = "m"  + info.get("matchNum") + "-" + "#" + info.get("teamNum") + "-" + "name" + info.get("scoutName");
 
-            //backups
-            FileWriter backupWriter = new FileWriter("texts\\" + dataName + ".txt");
+        try {
+            //creates local and desktop directories (if they don't exist) to store text and QR code files
+            new File("Scouting").mkdirs();
+            new File("Scouting\\qrcodes").mkdirs();
+            new File("Scouting\\texts").mkdirs();
+            new File("Scouting\\output.csv").createNewFile();
+            new File("C:\\Users\\robotics\\Documents\\Scouting").mkdirs();
+            new File(outputTextPath).mkdirs();
+            new File(outputQRCodePath).mkdirs();
+
+            writeToCSV(outputCSVPath);
+
+
+            FileWriter backupWriter = new FileWriter("Scouting\\texts\\" + dataName + ".txt");
             backupWriter.write(data.toString()); //backup text
             backupWriter.close();
-            ImageIO.write(bufferedImage, "png", new File("qrcodes\\" + dataName + ".png")); //backup qrcode
+            ImageIO.write(bufferedImage, "png", new File("Scouting\\qrcodes\\" + dataName + ".png")); //backup qrcode
 
-            //directory
-            FileWriter writer = new FileWriter("C:\\Users\\robotics\\Desktop\\texts\\" + dataName + ".txt");
+            //Desktop directory
+            FileWriter writer = new FileWriter(outputTextPath + "\\" + dataName + ".txt");
             writer.write(data.toString()); //text
             writer.close();
 
-            ImageIO.write(bufferedImage, "png", new File("C:\\Users\\Robotics\\Desktop\\qrcodes\\" + dataName + ".png")); //qr code
+            ImageIO.write(bufferedImage, "png", new File(outputQRCodePath + "\\" + dataName + ".png")); //qr code
+        }
+        catch (Exception e) {
+            System.out.println("file not found");
+        }
+
     }
+
+    private void writeToCSV(String outputCSVPath) throws IOException {
+        File file = new File("Scouting\\output.csv");
+        FileWriter writer = new FileWriter(file, true);
+//        PrintWriter backupWriter = new PrintWriter("output.csv");
+        Scanner reader = new Scanner(file);
+
+        if (!reader.hasNext()) {
+            StringBuilder headers = new StringBuilder();
+            for (int i = 0; i < info.keySet().size(); i++)
+                headers.append((info.keySet().toArray())[i] + ",");
+            headers.delete(headers.lastIndexOf(","), headers.length());
+            writer.write(headers + "\n");
+        }
+
+        StringBuilder values = new StringBuilder();
+        for (int j = 0; j < info.keySet().size(); j++)
+            values.append(info.get((info.keySet().toArray())[j]) + ",");
+        values.delete(values.lastIndexOf(","), values.length());
+
+        boolean found = false;
+        while (reader.hasNext())
+            if (reader.nextLine().contains(values.toString()))
+                found = true;
+
+        if (!found) writer.write(values + "\n");
+
+        writer.close();
+        reader.close();
+        }
 
     //puts restrictions on certain data fields
     @FXML private void validateInput(KeyEvent keyEvent) {
@@ -3822,16 +3881,16 @@ public class FXMLController {
         }
     }
 
-    //timer functions
-    @FXML private void startTimer(ActionEvent ignoredEvent) {
-        balanceTime.start();
-    }
-    @FXML private void stopTimer(ActionEvent ignoredEvent) {
-        balanceTime.pause();
-    }
-    @FXML private void resetTimer(ActionEvent ignoredEvent) {
-        balanceTime.reset();
-    }
+//    //timer functions
+//    @FXML private void startTimer(ActionEvent ignoredEvent) {
+//        balanceTime.start();
+//    }
+//    @FXML private void stopTimer(ActionEvent ignoredEvent) {
+//        balanceTime.pause();
+//    }
+//    @FXML private void resetTimer(ActionEvent ignoredEvent) {
+//        balanceTime.reset();
+//    }
 
     //template incrementer functions
     private void increment(LimitedTextField txtfield) {
@@ -3878,8 +3937,8 @@ public class FXMLController {
     private void collectDataRating(Rating rating, String key) {
         info.put(key, String.valueOf((int) rating.getRating()));
     }
-    private void collectDataTextArea(TextArea textArea) {
-        info.put("comments", textArea.getText());
+    private void collectDataTextArea(TextArea textArea, String key) {
+        info.put(key, textArea.getText());
     }
     private void collectDataToggleGroup(ToggleGroup toggleGroup, String key) {
         if (toggleGroup.getSelectedToggle() == null) return;
@@ -3918,8 +3977,8 @@ public class FXMLController {
     private void reloadDataRating(Rating rating, String key) {
         if (info.get(key) != null) rating.setRating(Double.parseDouble(info.get(key)));
     }
-    private void reloadDataTextArea(TextArea textArea) {
-        textArea.setText(info.get("comments"));
+    private void reloadDataTextArea(TextArea textArea, String key) {
+        textArea.setText(info.get(key));
     }
     private void reloadDataToggleGroup(ToggleGroup toggleGroup, String key) {
         if (toggleMap.get(key) != null) toggleGroup.selectToggle(toggleGroup.getToggles().get(toggleMap.get(key)));
@@ -3957,4 +4016,3 @@ public class FXMLController {
         }
     }
 }
-

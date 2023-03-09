@@ -1,8 +1,8 @@
 package com.scout;
 
 /**
-  FusionCorps 6672 Scouting App
-  Built with JavaFX framework
+  6672 FusionCorps Scouting App
+  Built with JavaFX framework, JDK 19, and IntelliJ IDEA
   @author FusionCorps-Rishabh Rengarajan
   @version 1.6.9
 
@@ -18,7 +18,7 @@ package com.scout;
  * CopyImageToClipboard.java - copies output QR code/raw text data to clipboard for debugging/extreme circumstances
 
  AppMain.java - main class, launches app
- AppRun.java - main class for running app as an executable JAR
+ AppRun.java - wrapper class for running app as an executable JAR
  FXMLController.java is the main controller that controls all scenes. It handles all logic, such as user input and data storage.
 
  Layout of scenes is in package resources.com.scout.scenes
