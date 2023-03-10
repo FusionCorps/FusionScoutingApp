@@ -9,33 +9,33 @@
 
    <Label id="endgame" layoutX="505.0" layoutY="14.0" text="Endgame" />
 
-   <Label id="chargeStation" layoutX="730.0" layoutY="144.0" text="Charging Station" />
+   <Label id="chargeStation" layoutX="62.0" layoutY="107.0" text="Charging Station" />
 
    <CheckBox id="shuttle" fx:id="shuttle" layoutX="40.0" layoutY="393.0" mnemonicParsing="false" prefHeight="154.0" prefWidth="545.0" text="Shuttlebot? (moves game pieces for other robots to score)" wrapText="true" />
 
    <CheckBox id="buddyClimb" fx:id="buddyClimb" layoutX="40.0" layoutY="558.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="467.0" text="Buddy Climb? (helped other robot climb)" />
 
-   <RadioButton id="chargeStationEngage" layoutX="650.0" layoutY="207.0" mnemonicParsing="false" text="Engage" userData="engage">
+   <RadioButton id="chargeStationEngage" layoutX="14.0" layoutY="172.0" mnemonicParsing="false" text="Engage" userData="engage">
       <toggleGroup>
          <ToggleGroup fx:id="teleopBalance" />
       </toggleGroup>
    </RadioButton>
-   <RadioButton id="chargeStationDock" layoutX="900.0" layoutY="207.0" mnemonicParsing="false" text="Dock" userData="dock">
+   <RadioButton id="chargeStationDock" layoutX="254.0" layoutY="172.0" mnemonicParsing="false" text="Dock" userData="dock">
       <toggleGroup>
          <fx:reference source="teleopBalance" />
       </toggleGroup>
    </RadioButton>
-   <RadioButton id="chargeStationFail" layoutX="900.0" layoutY="351.0" mnemonicParsing="false" text="Fail" userData="fail">
+   <RadioButton id="chargeStationFail" layoutX="254.0" layoutY="313.0" mnemonicParsing="false" text="Fail" userData="fail">
      <toggleGroup>
           <fx:reference source="teleopBalance" />
      </toggleGroup>
    </RadioButton>
-   <RadioButton id="chargeStationPark" layoutX="650.0" layoutY="277.0" mnemonicParsing="false" text="Park" userData="park">
+   <RadioButton id="chargeStationPark" layoutX="133.0" layoutY="247.0" mnemonicParsing="false" text="Park" userData="park">
         <toggleGroup>
              <fx:reference source="teleopBalance" />
         </toggleGroup>
    </RadioButton>
-   <RadioButton id="chargeStationNA" layoutX="650.0" layoutY="351.0" mnemonicParsing="false" text="N/A" userData="N/A">
+   <RadioButton id="chargeStationNA" layoutX="14.0" layoutY="320.0" mnemonicParsing="false" text="N/A" userData="N/A">
         <toggleGroup>
              <fx:reference source="teleopBalance" />
         </toggleGroup>

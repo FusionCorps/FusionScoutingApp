@@ -13,35 +13,11 @@
    <Button id="prevPageButton" layoutX="20.0" layoutY="430.0" mnemonicParsing="false" onAction="#prevPage" prefHeight="60.0" prefWidth="175.0" text="Prev Page" />
    <Button id="nextPageButton" layoutX="1140.0" layoutY="430.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="60.0" prefWidth="175.0" text="Next Page" />
 
-   <TextArea id="comments" fx:id="comments" layoutX="756.0" layoutY="103.0" prefHeight="286.0" prefWidth="548.0" promptText="Comments (fouls, strategy, anything else notable)" />
+   <TextArea id="comments" fx:id="comments" layoutX="649.0" layoutY="103.0" prefHeight="286.0" prefWidth="655.0" promptText="Comments (fouls, strategy, anything else notable)" />
 
-   <CheckBox id="everybot" fx:id="everybot" layoutX="458.0" layoutY="143.0" mnemonicParsing="false" text="Everybot?" />
+   <Label id="driverSkill" layoutX="40.0" layoutY="117.0" text="Driver Skill/SPEED" />
+   <Rating fx:id="driver" layoutX="422.0" layoutY="119.0" rating="3.0" />
 
-   <Label id="driverSkill" layoutX="30.0" layoutY="352.0" text="Driver Skill" />
-   <Rating fx:id="driver" layoutX="260.0" layoutY="352.0" rating="3.0" />
-
-   <Label id="intake" layoutX="60.0" layoutY="218.0" text="Intake" />
-   <Rating fx:id="intake" layoutX="260.0" layoutY="218.0" rating="3.0" />
-
-   <Label id="driveSpeed" layoutX="20.0" layoutY="284.0" text="Drive Speed" />
-   <Rating fx:id="speed" layoutX="260.0" layoutY="284.0" rating="3.0" />
-
-   <Label id="drivetrain" layoutX="35.0" layoutY="113.0" text="Drivetrain" />
-   <Rating fx:id="drivetrain" layoutX="260.0" layoutY="113.0" rating="3.0" />
-
-   <Text id="scoutNameText" layoutX="465.0" layoutY="302.0" text="Scouter Name" />
-   <LimitedTextField id="scoutNameTextField" fx:id="scoutName" layoutX="448.0" layoutY="316.0" onKeyPressed="#validateInput" prefHeight="37.0" prefWidth="299.0" />
-
-   <RadioButton id="drivetrainSwerve" layoutX="33.0" layoutY="170.0" mnemonicParsing="false" text="Swerve" userData="swerve">
-      <toggleGroup>
-         <ToggleGroup fx:id="drivetrainType" />
-      </toggleGroup>
-   </RadioButton>
-   <RadioButton id="drivetrainTank" layoutX="213.0" layoutY="169.0" mnemonicParsing="false" text="Tank" toggleGroup="$drivetrainType" userData="tank">
-   </RadioButton>
-   <Text layoutX="6.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(Structural Stability)">
-      <font>
-         <Font size="20.0" />
-      </font>
-   </Text>
+   <Text id="scoutNameText" layoutX="40.0" layoutY="239.0" text="Scouter Name" />
+   <LimitedTextField id="scoutNameTextField" fx:id="scoutName" layoutX="317.0" layoutY="201.0" onKeyPressed="#validateInput" prefHeight="37.0" prefWidth="299.0" />
 </Pane>

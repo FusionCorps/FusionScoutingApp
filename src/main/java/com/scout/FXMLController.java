@@ -50,7 +50,7 @@ public class FXMLController {
         putIfAbsent("teleopBalance", null);
         putIfAbsent("drivetrainType", null);
     }}; //stores toggle group values
-    private static HashMap<String,String> teamNameMap = new HashMap<>() {{put("1","The Juggernauts");
+    private static final HashMap<String,String> teamNameMap = new HashMap<>() {{put("1","The Juggernauts");
         put("4","Team 4 ELEMENT");
         put("8","Paly Robotics");
         put("11","MORT");
@@ -3405,6 +3405,7 @@ public class FXMLController {
     @FXML private LimitedTextField teamNum; //team number
     @FXML private LimitedTextField matchNum; //match number
     @FXML private ToggleGroup alliance; //robot alliance
+    @FXML private ComboBox<String> driveStation;
     @FXML private ToggleGroup startLocation; //starting location
 
     @FXML private ImageView startLocationPNG; //starting location image
@@ -3433,13 +3434,7 @@ public class FXMLController {
     @FXML private CheckBox shuttle; //shuttlebot
     @FXML private ToggleGroup teleopBalance; //endgame balance status
     @FXML private CheckBox buddyClimb; //buddy climb
-//    @FXML private TimerText balanceTime; //balance time
     //page5 - qualitative notes
-    @FXML private CheckBox everybot; //everybot
-    @FXML private ToggleGroup drivetrainType; //drivetrain type
-    @FXML private Rating drivetrain; //drivetrain rating
-    @FXML private Rating intake; //intake rating
-    @FXML private Rating speed; //robot speed (1 slow, 5 fast)
     @FXML private Rating driver; //driver rating
     @FXML private LimitedTextField scoutName; //scouter name`
     @FXML private TextArea comments; //general comments
@@ -3541,11 +3536,11 @@ public class FXMLController {
         for (int i = 0; i < teleopCones.size(); i++)
             if (autoCones.contains(teleopCones.get(i)))
                 teleopCones.remove(i);
+        collectDataArray(teleopCones, "teleopCones");
+
         for (int i = 0; i < teleopCubes.size(); i++)
             if (autoCubes.contains(teleopCubes.get(i)))
                 teleopCubes.remove(i);
-
-        collectDataArray(teleopCones, "teleopCones");
         collectDataArray(teleopCubes, "teleopCubes");
 
         //specifically ordered (for Kraken parser) output string appended to data StringBuilder
@@ -3569,6 +3564,7 @@ public class FXMLController {
                 collectDataTextField(teamNum, "teamNum");
                 collectDataTextField(matchNum, "matchNum");
                 collectDataToggleGroup(alliance, "alliance");
+                collectDataComboBox(driveStation, "driveStation");
                 collectDataToggleGroup(startLocation, "startLocation");
             }
             case 2 -> {
@@ -3600,11 +3596,6 @@ public class FXMLController {
 //                collectDataTextField(balanceTime, "balanceTime");
             }
             case 5 -> {
-                collectDataCheckBox(everybot, "everybot");
-                collectDataToggleGroup(drivetrainType, "drivetrainType");
-                collectDataRating(drivetrain, "drivetrain");
-                collectDataRating(intake, "intake");
-                collectDataRating(speed, "speed");
                 collectDataRating(driver, "driver");
                 collectDataTextField(scoutName, "scoutName");
                 collectDataTextArea(comments, "comments");
@@ -3619,6 +3610,7 @@ public class FXMLController {
                 reloadDataTextField(teamNum, "teamNum");
                 reloadDataTextField(matchNum, "matchNum");
                 reloadDataToggleGroup(alliance, "alliance");
+                reloadDataComboBox(driveStation, "driveStation");
                 reloadDataToggleGroup(startLocation, "startLocation");
             }
             case 2 -> {
@@ -3642,21 +3634,15 @@ public class FXMLController {
 //                reloadDataTextField(balanceTime, "balanceTime");
             }
             case 5 -> {
-                reloadDataRating(drivetrain, "drivetrain");
-                reloadDataRating(intake, "intake");
-                reloadDataRating(speed, "speed");
                 reloadDataRating(driver, "driver");
                 reloadDataTextField(scoutName, "scoutName");
-                reloadDataToggleGroup(drivetrainType, "drivetrainType");
                 reloadDataTextArea(comments, "comments");
-                reloadDataCheckBox(everybot, "everybot");
             }
             case 6 -> {
                 if (info.get("teamNum") != null)
                     f_reminderBox.setText(info.get("scoutName") + " Scouted Team #" + info.get("teamNum") + ".");
             }
         }
-
     }
 
     //copies either data text or QR code based on button source that was clicked
@@ -3760,11 +3746,11 @@ public class FXMLController {
     private boolean checkRequiredFields() {
         switch (sceneIndex) {
             case 1 -> {
-                if (teamNum.getText().isEmpty() || matchNum.getText().isEmpty() || alliance.getSelectedToggle() == null || startLocation.getSelectedToggle() == null) {
+                if (teamNum.getText().isEmpty() || matchNum.getText().isEmpty() || alliance.getSelectedToggle() == null || driveStation.getValue().isBlank() || startLocation.getSelectedToggle() == null) {
                     AlertBox.display("", "Before proceeding, please fill out ALL FIELDS.");
                     return false;
                 }
-                if (teamNum.getText().equals("0000") || matchNum.getText().equals("000")) {
+                if (teamNum.getText().equals("0000") || matchNum.getText().equals("000") || matchNum.getText().equals("00") || matchNum.getText().equals("0")) {
                     AlertBox.display("", "Please enter a valid team number and match number.");
                     return false;
                 }
@@ -3800,7 +3786,7 @@ public class FXMLController {
                 }
             }
             case 5 -> {
-                if (scoutName.getText().isEmpty() || drivetrainType.getSelectedToggle() == null) {
+                if (scoutName.getText().isEmpty()) {
                     AlertBox.display("", "Before proceeding, please fill out your name and the drivetrain type button. PLEASE INCLUDE COMMENTS!!!");
                     return false;
                 }
@@ -3948,6 +3934,9 @@ public class FXMLController {
         info.put(key, value);
         toggleMap.put(key, index);
     }
+    private void collectDataComboBox(ComboBox comboBox, String key) {
+        info.put(key, comboBox.getValue().toString());
+    }
 
     //used in reloadData() for specific types of data
     private void reloadDataCheckBox(CheckBox checkBox, String key) {
@@ -3982,6 +3971,9 @@ public class FXMLController {
     }
     private void reloadDataToggleGroup(ToggleGroup toggleGroup, String key) {
         if (toggleMap.get(key) != null) toggleGroup.selectToggle(toggleGroup.getToggles().get(toggleMap.get(key)));
+    }
+    private void reloadDataComboBox(ComboBox comboBox, String key) {
+        comboBox.setValue(info.get(key));
     }
 
     //used to change auton pickup image to red/blue

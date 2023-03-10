@@ -6,6 +6,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1324.0" style="-fx-background-color: #d0d1e6;" stylesheets="@../css/scene1.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scout.FXMLController">
 
    <Label id="pregame" layoutX="474.0" layoutY="28.0" text="Pregame" />
@@ -35,23 +37,40 @@
       </toggleGroup>
    </RadioButton>
 
-   <Label id="startLocation" layoutX="477.0" layoutY="232.0" prefHeight="105.0" prefWidth="181.0" text="Starting Location" />
+   <Label id="startLocation" layoutX="427.0" layoutY="288.0" prefHeight="105.0" prefWidth="181.0" text="Starting Location" />
 
-   <RadioButton id="startLocation1" layoutX="662.0" layoutY="206.0" mnemonicParsing="false" text="1" userData="1">
+   <RadioButton id="startLocation1" layoutX="639.0" layoutY="256.0" mnemonicParsing="false" text="1" userData="1">
       <toggleGroup>
          <ToggleGroup fx:id="startLocation" />
       </toggleGroup>
    </RadioButton>
-   <RadioButton id="startLocation2" layoutX="662.0" layoutY="262.0" mnemonicParsing="false" text="2" userData="2">
+   <RadioButton id="startLocation2" layoutX="639.0" layoutY="307.0" mnemonicParsing="false" text="2" userData="2">
       <toggleGroup>
          <fx:reference source="startLocation" />
       </toggleGroup>
    </RadioButton>
-   <RadioButton id="startLocation3" layoutX="662.0" layoutY="319.0" mnemonicParsing="false" text="3" userData="3">
+   <RadioButton id="startLocation3" layoutX="639.0" layoutY="359.0" mnemonicParsing="false" text="3" userData="3">
       <toggleGroup>
          <fx:reference source="startLocation" />
       </toggleGroup>
    </RadioButton>
    <Button id="flipImageButton" layoutX="956.0" layoutY="72.0" mnemonicParsing="false" onAction="#flipImage" text="Flip Image" />
    <Text id="teamNameText" fx:id="teamNameText" layoutX="31.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You are scouting:" wrappingWidth="744.8585796356201" />
+   <Label layoutX="465.0" layoutY="108.0" text="Driver Station">
+      <font>
+         <Font size="24.0" />
+      </font>
+   </Label>
+   <ComboBox id="driveStation" fx:id="driveStation" layoutX="468.0" layoutY="145.0" prefHeight="33.0" prefWidth="181.0">
+      <items>
+         <FXCollections fx:factory="observableArrayList">
+            <String fx:value="Red1" />
+            <String fx:value="Red2" />
+            <String fx:value="Red3" />
+            <String fx:value="Blue1" />
+            <String fx:value="Blue2" />
+            <String fx:value="Blue3" />
+         </FXCollections>
+      </items>
+   </ComboBox>
 </Pane>

@@ -3,8 +3,6 @@ out/
 .mvn/
 .idea/
 
-
-
-
 *.txt
 qrcode.png
+Scouting/
